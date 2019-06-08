@@ -6,10 +6,13 @@ use App\ServerPing;
 use App\ServerVote;
 use App\Events\ServerCreated;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Model;
 
 class Server extends Model
 {
+    use SoftDeletes;
+
     protected $guarded = [];
 
     protected $dispatchesEvents = [
