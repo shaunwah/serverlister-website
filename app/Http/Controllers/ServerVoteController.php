@@ -44,12 +44,12 @@ class ServerVoteController extends Controller
             $validated['ip_address'] = request()->ip();
             $server->addVote($validated);
 
-            session()->flash('alert_color', 'success');
+            session()->flash('alert_colour', 'success');
             session()->flash('alert', 'Thank you for your vote.');
         }
         else
         {
-            session()->flash('alert_color', 'danger');
+            session()->flash('alert_colour', 'danger');
             session()->flash('alert', 'You have already voted for this server today.');
         }
 

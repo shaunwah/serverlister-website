@@ -60,7 +60,7 @@
         <main id="content" class="py-4">
             @if (session('alert'))
             <div class="container">
-                <div class="alert alert-{{ session('alert_color', 'info') }} alert-dismissible fade show" role="alert">
+                <div class="alert alert-{{ session('alert_colour', 'info') }} alert-dismissible fade show" role="alert">
                     <i class="fal fa-info-circle fa-fw"></i> {{ session('alert') }}
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
