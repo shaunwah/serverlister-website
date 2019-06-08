@@ -1,0 +1,20 @@
+// Body
+$body-bg: #f8f9fa;
+$enable-validation-icons: false;
+
+// Typography
+$font-family-sans-serif: 'Nunito', sans-serif;
+$headings-font-weight: 400;
+
+// Borders
+$alert-border-width: 0;
+$card-border-width: 0;
+
+// Shadows
+@mixin box-shadow() {
+    box-shadow: 0 .125rem .25rem rgba(#000, .075);
+}
+
+.alert, .card {
+    @include box-shadow();
+}
