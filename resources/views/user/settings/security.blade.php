@@ -25,10 +25,6 @@
                 <div class="card">
                     <div class="card-body">
                         <h5 class="card-title">{{ __('Security') }}</h5>
-                        <p class="card-text">
-                            You should change your password on a regular basis as a security measure.
-                            ServerLister staff will never ask for your password.
-                        </p>
                         <div class="form-group row">
                             <label for="current_password" class="col-sm-2 col-form-label">{{ __('Current') }}</label>
                             <div class="col-sm-10">
