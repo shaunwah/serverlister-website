@@ -17,7 +17,7 @@
                 <div class="card-body">
                     <div class="row align-items-center">
                         <div class="col-auto mr-auto">
-                            <span class="text-muted">{{ __('Total Servers') }}</span>
+                            <span class="text-muted">{{ __('Servers') }}</span>
                             <h4 class="text-monospace">{{ number_format(App\Server::count()) }}</h4>
                         </div>
                         <div class="col-auto">
@@ -32,8 +32,8 @@
                 <div class="card-body">
                     <div class="row align-items-center">
                         <div class="col-auto mr-auto">
-                            <span class="text-muted">{{ __('Total Users') }}</span>
-                            <h4 class="text-monospace">{{ number_format(App\User::count()) }}</h4>
+                            <span class="text-muted">{{ __('Server Pings') }}</span>
+                            <h4 class="text-monospace">{{ number_format(App\ServerPing::count()) }}</h4>
                         </div>
                         <div class="col-auto">
                             <i class="fal fa-users fa-fw fa-2x text-muted"></i>
@@ -47,7 +47,7 @@
                 <div class="card-body">
                     <div class="row align-items-center">
                         <div class="col-auto mr-auto">
-                            <span class="text-muted">{{ __('Total Votes') }}</span>
+                            <span class="text-muted">{{ __('Votes') }}</span>
                             <h4 class="text-monospace">{{ number_format(App\ServerVote::count()) }}</h4>
                         </div>
                         <div class="col-auto">

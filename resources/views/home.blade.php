@@ -27,8 +27,8 @@
                 <div class="card-body">
                     <div class="row align-items-center">
                         <div class="col-auto mr-auto">
-                            <span class="text-muted">{{ __('Users') }}</span>
-                            <h4 class="text-monospace">{{ number_format(App\User::count()) }}</h4>
+                            <span class="text-muted">{{ __('Server Pings') }}</span>
+                            <h4 class="text-monospace">{{ number_format(App\ServerPing::count()) }}</h4>
                         </div>
                         <div class="col-auto">
                             <i class="fal fa-users fa-fw fa-2x text-muted"></i>
