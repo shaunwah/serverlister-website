@@ -106,7 +106,7 @@
 {{--                         <a class="nav-link" id="comments-tab" data-toggle="pill" href="#comments" role="tab" aria-controls="comments" aria-selected="false">{{ __('Comments') }}
                             <i class="fal fa-comments fa-fw"></i>
                         </a> --}}
-                        <a class="d-none d-md-block nav-link" id="statistics-tab" data-toggle="pill" href="#statistics" role="tab" aria-controls="statistics" aria-selected="false">{{ __('Statistics') }}
+                        <a class="nav-link" id="statistics-tab" data-toggle="pill" href="#statistics" role="tab" aria-controls="statistics" aria-selected="false">{{ __('Statistics') }}
                             <i class="fal fa-chart-line fa-fw"></i>
                         </a>
                     </div>

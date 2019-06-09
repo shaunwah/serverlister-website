@@ -51,7 +51,7 @@
                             </div>
                         </li>
                         <form id="logout-form" method="post" action="{{ route('logout') }}" style="display:none;">
-                        @csrf
+                            @csrf
                         </form>
                 @endguest
                 </div>

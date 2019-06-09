@@ -38,17 +38,7 @@ class ServerPing extends Model
 
     public function pingServer(Server $server) //!!!
     {
-        // $arr = new Arr;
         $data = $this->queryServer($server->host, $server->port);
-
-        // if ($arr->exists($data['description'], 'extra'))
-        // {
-        //     $array = $data['description']['extra'];
-        // }
-        // else
-        // {
-        //     $pingDescrption = $data['description']['text'];
-        // }
 
         $attributes = [
             'server_id' => $server->id,
