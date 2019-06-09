@@ -114,11 +114,12 @@ class UserSettingsController extends Controller
         {
             $attributes['password'] = Hash::make($attributes['password']);
             $user->update($attributes);
+            session()->flash('alert_colour', 'success');
             session()->flash('alert', 'Successfully updated your account!');
         }
         else
         {
-            session()->flash('alert_color', 'danger');
+            session()->flash('alert_colour', 'danger');
             session()->flash('alert', 'Your current password is incorrect!');
         }
 
