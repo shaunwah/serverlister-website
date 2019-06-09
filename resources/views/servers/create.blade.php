@@ -9,7 +9,7 @@
         <div class="col-md-12">
             <a class="text-decoration-none" href="{{ route('servers.index') }}"><i class="fal fa-chevron-left fa-fw"></i> Servers</a>
             <h1 class="font-weight-bold">{{ __('Create Server') }}</h1>
-            <form method="post" action="{{ route('servers.create') }}">
+            <form method="post" action="{{ route('servers.store') }}">
                 @csrf
                 <div class="card mb-3">
                     <div class="card-body">
