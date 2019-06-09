@@ -15,8 +15,8 @@
                     <div class="card-body">
                         {{-- Username Input --}}
                         <div class="form-group">
-                            <label for="username">Username <small class="text-muted">optional</small></label>
-                            <input type="text" class="form-control @error('username') is-invalid @enderror" id="username" aria-describedby="usernameHelp" name="username" value="{{ old('username') }}" autocomplete="username" autofocus>
+                            <label for="username">Username <small class="text-muted">required</small></label>
+                            <input type="text" class="form-control @error('username') is-invalid @enderror" id="username" aria-describedby="usernameHelp" name="username" value="{{ old('username') }}" required autocomplete="username" autofocus>
                             @error('username')
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @else
