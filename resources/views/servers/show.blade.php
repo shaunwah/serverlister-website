@@ -61,6 +61,7 @@
     <div class="row alight-items-center">
         <div class="col-auto mr-auto">
             <h3>{{ __('Information') }}</h3>
+{{--             <h4 class="text-muted">{{ __('Description') }}</h4> --}}
             <p>
                 @isset($server->description)
                     {{ $server->description }}
@@ -77,8 +78,17 @@
             @endcan
         </div>
     </div>
-    <h3>{{ __('Player Count') }}</h3>
-    <canvas id="canvas-player-history" height="128px"></canvas>
+    <h3>{{ __('Statistics') }}</h3>
+    <div class="row">
+        <div class="col-md-12">
+            <h4 class="text-muted">{{ __('Players') }}</h4>
+            <canvas id="canvas-player-history" height="128px"></canvas>
+        </div>
+{{--         <div class="col-md-6">
+            <h4 class="text-muted">{{ __('Votes') }}</h4>
+            <canvas id="canvas-vote-history"></canvas>
+        </div> --}}
+    </div>
 </div>
 
 {{-- Infomation Bar --}}
