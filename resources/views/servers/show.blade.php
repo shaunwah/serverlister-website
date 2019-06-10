@@ -8,8 +8,10 @@
 @section('content')
 <style>
 #hero-wrapper {
-    background: url('{{ $server->pings->last()->favicon }}') center center;
-    background-color: rgb(52, 58, 64);
+    background-image: url('{{ $server->pings->last()->favicon }}');
+    background-color: rgb(108, 117, 125);
+    background-repeat: round;
+
 }
 
 #hero {
