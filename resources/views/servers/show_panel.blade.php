@@ -19,7 +19,7 @@
             <div class="table-responsive">
                 <table class="table">
                     <thead>
-                        <tr class="table-active">
+                        <tr style="background-color:#dee2e6;">
                             <th scope="col">{{ __('#') }}</th>
                             <th scope="col">{{ __('Username') }}</th>
                             <th scope="col">{{ __('IP Address') }}</th>
