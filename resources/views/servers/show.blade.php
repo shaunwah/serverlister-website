@@ -95,7 +95,7 @@ var myChart = new Chart(ctx, {
     data: {
         labels: playerDataLabels,
         datasets: [{
-            label: 'Average Players',
+            label: 'Max Players',
             data: playerData
         }]
     },

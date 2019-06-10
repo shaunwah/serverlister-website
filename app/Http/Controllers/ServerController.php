@@ -87,7 +87,7 @@ class ServerController extends Controller
 
         $playerData = $dates->map(function ($date) {
 
-            return round($date->avg('players_current'));
+            return round($date->max('players_current'));
 
         })->values()->take(10)->toJson();
 
