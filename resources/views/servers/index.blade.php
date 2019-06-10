@@ -4,6 +4,8 @@
 @endsection
 @section('title', isset($filters) ? $filtered->name . ' - ' .  __('Servers') : __('Servers'))
 @section('content')
+@component('partials.alert')
+@endcomponent
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-12">
@@ -54,10 +56,10 @@
                                 </div>
                                 <div class="col-6 col-sm-7 col-md-8 text-left text-truncate">
                                     <a class="font-weight-bold" href="{{ route('servers.show', $server->id) }}">{{ $server->name }}</a>
-                                    <span class="text-muted">{{ $server->host }}{{ $server->port != 25565 ? ':' . $server->port : '' }}</span>
+                                    <span class="d-none d-sm-inline text-muted">{{ $server->host . ($server->port != 25565 ? ':' . $server->port : '') }}</span>
                                     <span class="d-block">
                                         <a href="{{ url('/servers/versions/' . $server->version->slug) }}" class="badge badge-pill badge-danger">{{ $server->version->name }}</a>
-                                        <a href="{{ url('/servers/types/' . $server->type->slug) }}" class="badge badge-pill badge-success">{{ $server->type->name }}</a>
+                                        <a href="{{ url('/servers/types/' . $server->type->slug) }}" class="    badge badge-pill badge-success">{{ $server->type->name }}</a>
                                         <a href="{{ url('/servers/countries/' . $server->country->slug) }}" class="badge badge-pill badge-primary">{{ $server->country->name }}</a>
                                     </span>
                                 </div>
