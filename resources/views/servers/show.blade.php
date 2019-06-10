@@ -9,7 +9,7 @@
 <style>
 #hero-wrapper {
     background: url('{{ $server->pings->last()->favicon }}') center center;
-    background-color: rgb(108, 117, 125);
+    background-color: rgb(173, 181, 189);
 
 }
 
