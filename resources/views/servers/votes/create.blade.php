@@ -23,7 +23,7 @@
                                 <small id="usernameHelp" class="form-text text-muted">{{ __('Your Minecraft username is cAsE-sEnSiTiVe.') }}</small>
                             @enderror
                         </div>
-                        <button type="submit" class="btn btn-success btn-block"><i class="fal fa-vote-yea fa-fw"></i> Vote for {{ $server->name }}</button>
+                        <button type="submit" class="btn btn-success btn-block">Vote for {{ $server->name }}</button>
                     </div>
                 </div>
             </form>
