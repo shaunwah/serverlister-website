@@ -59,7 +59,7 @@
         </div>
     </div>
     <h2 class="font-weight-bold">Popular Servers</h2>
-            @if ($servers->count() > 0)
+            @if (App\Server::count() > 0)
                 @foreach (App\Server::orderBy('rank', 'asc')->paginate(3) as $server)
                     <div class="card {{ !$loop->last ? 'mb-3' : '' }} {{ $server->pings->last()->status == 1 ? 'shift-server-card-online' : 'shift-server-card-offline' }}">
                         <div class="card-body px-3 py-1">
