@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset
+      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+<!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
+
+
+<url>
+  <loc>https://serverlister.io/</loc>
+  <lastmod>2019-06-10T14:46:49+00:00</lastmod>
+  <priority>1.00</priority>
+</url>
+<url>
+  <loc>https://serverlister.io/servers</loc>
+  <lastmod>2019-06-10T14:46:49+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://serverlister.io/support</loc>
+  <lastmod>2019-06-10T14:46:49+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://serverlister.io/login</loc>
+  <lastmod>2019-06-10T14:46:49+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://serverlister.io/register</loc>
+  <lastmod>2019-06-10T14:46:49+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://serverlister.io/servers/1</loc>
+  <lastmod>2019-06-10T14:46:49+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://serverlister.io/servers/versions/1_14_2</loc>
+  <lastmod>2019-06-10T14:46:49+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://serverlister.io/servers/types/survival</loc>
+  <lastmod>2019-06-10T14:46:49+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://serverlister.io/servers/countries/singapore</loc>
+  <lastmod>2019-06-10T14:46:49+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://serverlister.io/servers/2</loc>
+  <lastmod>2019-06-10T14:46:49+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://serverlister.io/servers/3</loc>
+  <lastmod>2019-06-10T14:46:49+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://serverlister.io/servers/countries/canada</loc>
+  <lastmod>2019-06-10T14:46:49+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://serverlister.io/servers/countries/united-states</loc>
+  <lastmod>2019-06-10T14:46:49+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://serverlister.io/servers/4</loc>
+  <lastmod>2019-06-10T14:46:49+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://serverlister.io/servers/types/minigames</loc>
+  <lastmod>2019-06-10T14:46:49+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://serverlister.io/servers/5</loc>
+  <lastmod>2019-06-10T14:46:49+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://serverlister.io/password/reset</loc>
+  <lastmod>2019-06-10T14:46:49+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+
+
+</urlset>
