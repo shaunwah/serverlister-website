@@ -52,7 +52,7 @@
 @component('partials.alert')
 @endcomponent
 <div class="container">
-    <div class="row alight-items-center">
+    <div class="row align-items-center">
         <div class="col-auto mr-auto">
             <h3>{{ __('Information') }}</h3>
 {{--             <h4 class="text-muted">{{ __('Description') }}</h4> --}}
