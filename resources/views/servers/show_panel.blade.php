@@ -1,11 +1,18 @@
 @extends('layouts.app')
-@section('title', $server->name . ' - ' . __('Panel'))
+@section('header')
+<meta name="description" content="{{ $server->description }}">
+<meta name="og:description" content="{{ $server->description }}">
+<meta name="og:image" content="{{ $server->pings->last()->favicon }}">
+@endsection
+@section('title', $server->name)
 @section('content')
+@component('partials.alert')
+@endcomponent
 <div class="container">
-    <div class="row mb-3 align-items-center">
+    <a class="text-decoration-none" href="{{ route('servers.update', $server->id) }}"><i class="fal fa-chevron-left fa-fw"></i> {{ $server->name }}</a>
+    <div class="row align-items-center mb-2">
         <div class="col-auto mr-auto">
-            <a class="text-decoration-none" href="{{ route('servers.show', $server->id) }}"><i class="fal fa-chevron-left fa-fw"></i> {{ $server->name }}</a>
-            <h1 class="font-weight-bold">{{ __('Server Panel') }}</h1>
+            <h2 class="mb-0 font-weight-bold">{{ __('Server Panel') }}</h2>
         </div>
         <div class="col-auto">
             @can('update', $server)
@@ -13,36 +20,34 @@
             @endcan
         </div>
     </div>
-    <div class="card" style="min-height:32rem;">
-        <h5 class="card-header">{{ __('Votes') }}</h5>
-        @if ($server->votes->count() > 0)
-            <div class="table-responsive">
-                <table class="table">
-                    <thead>
-                        <tr style="background-color:#dee2e6;">
-                            <th scope="col">{{ __('#') }}</th>
-                            <th scope="col">{{ __('Username') }}</th>
-                            <th scope="col">{{ __('IP Address') }}</th>
-                            <th scope="col">{{ __('Voted at') }}</th>
+    <h3 class="text-muted">{{ __('Votes') }}</h3>
+    @if ($server->votes->count() > 0)
+        <div class="table-responsive">
+            <table class="table">
+                <thead>
+                    <tr style="background-color:#dee2e6;">
+                        <th scope="col">{{ __('#') }}</th>
+                        <th scope="col">{{ __('Username') }}</th>
+                        <th scope="col">{{ __('IP Address') }}</th>
+                        <th scope="col">{{ __('Voted at') }}</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach ($server->votes->sortByDesc('created_at')->all() as $vote)
+                        <tr>
+                            <th scope="row">{{ $loop->iteration }}</th>
+                            <td>{{ $vote->username }}</td>
+                            <td class="text-monospace">{{ $vote->ip_address }}</td>
+                            <td>{{ Carbon\Carbon::parse($vote->created_at)->diffForHumans() }}</td>
                         </tr>
-                    </thead>
-                    <tbody>
-                        @foreach ($server->votes->sortByDesc('created_at')->all() as $vote)
-                            <tr>
-                                <th scope="row">{{ $loop->iteration }}</th>
-                                <td>{{ $vote->username }}</td>
-                                <td class="text-monospace">{{ $vote->ip_address }}</td>
-                                <td>{{ Carbon\Carbon::parse($vote->created_at)->diffForHumans() }}</td>
-                            </tr>
-                        @endforeach
-                    </tbody>
-                </table>
-            </div>
-        @else
-            <div class="card-body text-muted">
-                No votes.
-            </div>
-        @endif
-    </div>
+                    @endforeach
+                </tbody>
+            </table>
+        </div>
+    @else
+        <div class="text-muted">
+            No votes.
+        </div>
+    @endif
 </div>
 @endsection
