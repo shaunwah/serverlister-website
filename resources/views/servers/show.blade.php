@@ -55,16 +55,8 @@
     <div class="row align-items-center">
         <div class="col-auto mr-auto">
             <h3>{{ __('Information') }}</h3>
-{{--             <h4 class="text-muted">{{ __('Description') }}</h4> --}}
-            <p>
-                @isset($server->description)
-                    {{ $server->description }}
-                @else
-                    <span class="text-muted">{{ __('No description set.') }}</span>
-                @endisset
-            </p>
         </div>
-        <div class="col-auto">
+        <div class="col-auto mb-3 mb-sm-0">
             <a class="btn btn-primary btn-sm" href="{{ route('servers.votes.create', $server->id) }}" role="button"><i class="fal fa-vote-yea fa-fw"></i> Vote</a>
             @can('update', $server)
                 <a class="btn btn-secondary btn-sm" href="{{ route('servers.show.panel', $server->id) }}" role="button"><i class="fal fa-chart-line fa-fw"></i> Panel</a>
@@ -72,6 +64,13 @@
             @endcan
         </div>
     </div>
+    <p>
+        @isset($server->description)
+            {{ $server->description }}
+        @else
+            <span class="text-muted">{{ __('No description set.') }}</span>
+        @endisset
+    </p>
     <h3>{{ __('Statistics') }}</h3>
     <div class="row">
         <div class="col-md-12">
