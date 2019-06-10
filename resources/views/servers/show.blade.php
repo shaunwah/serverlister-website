@@ -17,7 +17,7 @@
     background: rgba(52, 58, 64, 0.9);
 }
 </style>
-{{-- Title --}}
+{{-- Hero --}}
 <div id="hero-wrapper">
     <div class="container-fluid mt-n4 mb-4" id="hero">
         <div class="container py-5 text-white">
@@ -38,7 +38,7 @@
                             <li class="list-inline-item">
                                 <span class="font-weight-bold">{{ __('Players') }}</span>&nbsp;
                                 {{ number_format($server->pings->last()->players_current) }}
-                                <span class="text-muted">/</span>
+                                <span class="text-white-50">/</span>
                                 {{ number_format($server->pings->last()->players_total) }}
                             </li>
                         @endif
@@ -53,7 +53,8 @@
         </div>
     </div>
 </div>
-{{-- Information --}}
+
+{{-- Content --}}
 @component('partials.alert')
 @endcomponent
 <div class="container">
@@ -77,7 +78,23 @@
         </div>
     </div>
     <h3>{{ __('Player Count') }}</h3>
-    <canvas id="canvas-player-history"></canvas>
+    <canvas id="canvas-player-history" height="128px"></canvas>
+</div>
+
+{{-- Infomation Bar --}}
+<div class="container">
+    <div class="row align-items-center">
+        <div class="col-auto mr-auto">
+            <small class="text-muted" data-toggle="tooltip" data-placement="top" title="{{ __('Server Status') }}">
+                <i class="fas {{ $server->pings->last()->status == 1 ? 'fa-check-circle text-success' : 'fa-times-circle text-danger' }} fa-fw"></i> {{ Carbon\Carbon::parse($server->pings->last()->created_at)->diffForHumans() }}
+            </small>
+        </div>
+        <div class="col-auto">
+            <a href="{{ url('/servers/versions/' . $server->version->slug) }}" class="badge badge-pill badge-danger">{{ $server->version->name }}</a>
+            <a href="{{ url('/servers/types/' . $server->type->slug) }}" class="badge badge-pill badge-success">{{ $server->type->name }}</a>
+            <a href="{{ url('/servers/countries/' . $server->country->slug) }}" class="badge badge-pill badge-primary">{{ $server->country->name }}</a>
+        </div>
+    </div>
 </div>
 @endsection
 @section('scripts')
