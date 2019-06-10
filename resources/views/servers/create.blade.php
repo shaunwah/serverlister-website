@@ -68,7 +68,7 @@
                                 @error('country_id')<div class="invalid-feedback">{{ $message }}</div>@enderror
                             </div>
                             <div class="form-group col-md-6">
-                                <label for="type">Version <small class="text-muted">required</small></label>
+                                <label for="type">Type <small class="text-muted">required</small></label>
                                 <select class="form-control @error('type_id') is-invalid @enderror" id="type" name="type_id" required>
                                     <option disabled selected value="">{{ __('select a type') }}</option>
                                     @foreach ($types as $type)
