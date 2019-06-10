@@ -120,9 +120,9 @@
             <small class="text-muted" data-toggle="tooltip" data-placement="top" title="{{ __('Server Status') }}"><i class="fas {{ $server->pings->last()->status == 1 ? 'fa-check-circle text-success' : 'fa-times-circle text-danger' }} fa-fw"></i> {{ Carbon\Carbon::parse($server->pings->last()->created_at)->diffForHumans() }}</small>
         </div>
         <div class="col-auto">
-            <a href="{{ url('/servers/versions/' . $server->version->slug) }}" class="badge badge-pill badge-danger shadow-sm">{{ $server->version->name }}</a>
-            <a href="{{ url('/servers/types/' . $server->type->slug) }}" class="badge badge-pill badge-success shadow-sm">{{ $server->type->name }}</a>
-            <a href="{{ url('/servers/countries/' . $server->country->slug) }}" class="badge badge-pill badge-primary shadow-sm">{{ $server->country->name }}</a>
+            <a href="{{ url('/servers/versions/' . $server->version->slug) }}" class="badge badge-pill badge-danger">{{ $server->version->name }}</a>
+            <a href="{{ url('/servers/types/' . $server->type->slug) }}" class="badge badge-pill badge-success">{{ $server->type->name }}</a>
+            <a href="{{ url('/servers/countries/' . $server->country->slug) }}" class="badge badge-pill badge-primary">{{ $server->country->name }}</a>
         </div>
     </div>
 </div>

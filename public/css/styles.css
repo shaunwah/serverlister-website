@@ -22,13 +22,6 @@
     border-right: .25rem solid #ffc107;
 }
 
-/* Buttons */
-.container > .row > .col-auto > .btn {
-    border: 0;
-    box-shadow: 0 .125rem .25rem rgba(0, 0, 0, .075);
-}
-
-
 /* Misc. Positioning */
 #card-no-data {
     background: url('/img/no_data.svg') center center no-repeat;
