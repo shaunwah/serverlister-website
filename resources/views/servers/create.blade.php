@@ -114,7 +114,7 @@
                                 <small id="voting_service_tokenHelp" class="form-text text-muted">{{ __('Your token can be found in \'config.yml\' of your NuVotifier folder.') }}</small>
                             @enderror
                         </div>
-                        <button type="submit" class="btn btn-primary btn-block"><i class="fal fa-edit fa-fw"></i> Create Server</button>
+                        <button type="submit" class="btn btn-success btn-block"><i class="fal fa-edit fa-fw"></i> Create Server</button>
                     </div>
                 </div>
             </form>

@@ -60,37 +60,7 @@
                                 @endisset
                             </p>
                         </div>
-                        {{-- Comments Tab --}}
-{{--                         <div class="tab-pane" id="comments" role="tabpanel" aria-labelledby="comments-tab">
-                            @auth
-                                <form method="post" action="{{ route('servers.comments.store', $server->id) }}">
-                                    @csrf
-                                    <div class="form-group">
-                                        <textarea class="form-control @error('body') is-invalid @enderror" id="comment_body" name="body" rows="3" style="resize:none;" required></textarea>
-                                        @error('body')<div class="invalid-feedback">{{ $message }}</div>@enderror
-                                    </div>
-                                    <button type="submit" class="btn btn-primary btn-block"><i class="fal fa-comment fa-fw"></i> Comment</button>
-                                </form>
-                            @else
-                                <p class="card-text text-muted"><a href="{{ route('login') }}">Login</a> or <a href="{{ route('register') }}">register an account</a> to post a comment.</p>
-                            @endauth
-                            <hr>
-                            @if($server->comments->count() > 0)
-                                <ul class="list-unstyled">
-                                @foreach ($server->comments->sortByDesc('created_at') as $comment)
-                                    <li class="media {{ $loop->last ? '' : 'mb-3' }} align-items-center">
-                                        <img src="{{ url('https://www.gravatar.com/avatar/' . md5($comment->owner->email) . '.jpg') }}" class="rounded mr-2" alt="Avatar" height="32px" width="32px">
-                                        <div class="media-body">
-                                            <span class="font-weight-bold">{{ $comment->owner->username }}</span> {{ $comment->body }}
-                                            <small class="text-muted">{{ Carbon\Carbon::parse($comment->created_at)->diffForHumans() }}</small>
-                                        </div>
-                                    </li>
-                                @endforeach
-                                </ul>
-                            @else
-                                <p class="card-text text-muted">{{ __('No comments. Make one?') }}</p>
-                            @endif
-                        </div> --}}
+
                         {{-- Statistics Tab --}}
                         <div class="tab-pane" id="statistics" role="tabpanel" aria-labelledby="statistics-tab">
                         <h5 class="card-subtitle mb-2 text-muted">{{ __('Player Count') }}</h5>
@@ -103,9 +73,6 @@
                         <a class="nav-link active" id="information-tab" data-toggle="pill" href="#information" role="tab" aria-controls="information" aria-selected="true">{{ __('Information') }}
                             <i class="fal fa-question-circle fa-fw"></i>
                         </a>
-{{--                         <a class="nav-link" id="comments-tab" data-toggle="pill" href="#comments" role="tab" aria-controls="comments" aria-selected="false">{{ __('Comments') }}
-                            <i class="fal fa-comments fa-fw"></i>
-                        </a> --}}
                         <a class="nav-link" id="statistics-tab" data-toggle="pill" href="#statistics" role="tab" aria-controls="statistics" aria-selected="false">{{ __('Statistics') }}
                             <i class="fal fa-chart-line fa-fw"></i>
                         </a>

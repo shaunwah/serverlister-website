@@ -54,8 +54,12 @@
                                 </div>
                                 <div class="col-6 col-sm-7 col-md-8 text-left text-truncate">
                                     <a class="font-weight-bold" href="{{ route('servers.show', $server->id) }}">{{ $server->name }}</a>
-                                    <span class="text-muted">{{ $server->version->name }}</span>
-                                    <span class="d-block text-truncate">{{ $server->host }}{{ $server->port != 25565 ? ':' . $server->port : '' }}</span>
+                                    <span class="text-muted">{{ $server->host }}{{ $server->port != 25565 ? ':' . $server->port : '' }}</span>
+                                    <span class="d-block mt-n1">
+                                        <a href="{{ url('/servers/versions/' . $server->version->slug) }}" class="badge badge-pill badge-danger">{{ $server->version->name }}</a>
+                                        <a href="{{ url('/servers/types/' . $server->type->slug) }}" class="badge badge-pill badge-success">{{ $server->type->name }}</a>
+                                        <a href="{{ url('/servers/countries/' . $server->country->slug) }}" class="badge badge-pill badge-primary">{{ $server->country->name }}</a>
+                                    </span>
                                 </div>
                                 <div class="col-3 col-sm-2 text-right">
                                     @if ($server->pings->last()->status == 1)
