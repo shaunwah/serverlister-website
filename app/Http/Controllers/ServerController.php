@@ -79,23 +79,18 @@ class ServerController extends Controller
     public function show(Server $server, ServerVote $vote)
     {
         $voteCountThisMonth = $vote->where('server_id', $server->id)->whereMonth('created_at', today()->format('m'))->count();
-        $dates = $server->pings->groupBy(function ($date) {
-
+        $datesPlayers = $server->pings->groupBy(function ($date) {
             return Carbon::parse($date->created_at)->format('DDD');
-
         });
 
-        $playerData = $dates->map(function ($date) {
-
-            return round($date->max('players_current'));
-
-        })->values()->take(10)->toJson();
-
-        $playerDataLabels = $dates->map(function ($date) {
-
+        $playerDataLabels = $datesPlayers->map(function ($date) {
             return Carbon::parse($date->first()->created_at)->isoFormat('D MMM G');
-
         })->values()->take(10)->toJson();
+
+        $playerData = $datesPlayers->map(function ($date) {
+            return round($date->max('players_current'));
+        })->values()->take(10)->toJson();
+
 
         return view('servers.show', compact('server', 'voteCountThisMonth', 'playerDataLabels', 'playerData'));
     }
