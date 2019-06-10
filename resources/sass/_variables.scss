@@ -10,6 +10,9 @@ $headings-font-weight: 400;
 $alert-border-width: 0;
 $card-border-width: 0;
 
+// Colours
+$card-cap-bg: transparent;
+
 // Shadows
 @mixin box-shadow() {
     box-shadow: 0 .125rem .25rem rgba(#000, .075);

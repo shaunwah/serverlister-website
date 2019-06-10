@@ -19,11 +19,10 @@
             <div class="table-responsive">
                 <table class="table">
                     <thead>
-                        <tr>
+                        <tr class="table-active">
                             <th scope="col">{{ __('#') }}</th>
                             <th scope="col">{{ __('Username') }}</th>
                             <th scope="col">{{ __('IP Address') }}</th>
-                            <th scope="col">{{ __('Status') }}</th>
                             <th scope="col">{{ __('Voted at') }}</th>
                         </tr>
                     </thead>
@@ -33,15 +32,6 @@
                                 <th scope="row">{{ $loop->iteration }}</th>
                                 <td>{{ $vote->username }}</td>
                                 <td class="text-monospace">{{ $vote->ip_address }}</td>
-                                @if (isset($vote->voting_service_status))
-                                    @if ($vote->voting_service_status)
-                                        <td class="text-success"><i class="fal fa-check-circle fa-fw"></i> Success</td>
-                                    @else
-                                        <td class="text-danger"><i class="fal fa-times-circle fa-fw"></i> Failure</td>
-                                    @endif
-                                @else
-                                    <td>-</td>
-                                @endif
                                 <td>{{ Carbon\Carbon::parse($vote->created_at)->diffForHumans() }}</td>
                             </tr>
                         @endforeach
