@@ -12,7 +12,7 @@
     <a class="text-decoration-none" href="{{ route('servers.update', $server->id) }}"><i class="fal fa-chevron-left fa-fw"></i> {{ $server->name }}</a>
     <div class="row align-items-center mb-2">
         <div class="col-auto mr-auto">
-            <h2 class="mb-0 font-weight-bold">{{ __('Server Panel') }}</h2>
+            <h1 class="mb-0 font-weight-bold">{{ __('Server Panel') }}</h1>
         </div>
         <div class="col-auto">
             @can('update', $server)
@@ -20,7 +20,7 @@
             @endcan
         </div>
     </div>
-    <h3 class="text-muted">{{ __('Votes') }}</h3>
+    <h4 class="text-muted">{{ __('Votes') }}</h4>
     @if ($server->votes->count() > 0)
         <div class="table-responsive">
             <table class="table">
