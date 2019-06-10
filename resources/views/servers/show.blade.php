@@ -20,36 +20,30 @@
 {{-- Hero --}}
 <div id="hero-wrapper">
     <div class="container-fluid mt-n4 mb-4" id="hero">
-        <div class="container py-5 text-white">
-            <div class="row align-items-center">
-                <div class="col-auto mr-auto">
-                    <h1 class="font-weight-bold">
-                        {{ $server->name }}
-                        <small class="d-block text-white-50">{{ $server->host . ($server->port != 25565 ? ':' . $server->port : '') }}</small>
-                    </h1>
-                    <ul class="list-inline">
-                        <li class="list-inline-item"><span class="font-weight-bold">{{ __('Rank') }}</span>&nbsp;
-                            {{ number_format($server->rank) }}
-                        </li>
-                        <li class="list-inline-item"><span class="font-weight-bold">{{ __('Score') }}</span>&nbsp;
-                            {{ number_format($server->score, 2) }}
-                        </li>
-                        @if ($server->pings->last()->status)
-                            <li class="list-inline-item">
-                                <span class="font-weight-bold">{{ __('Players') }}</span>&nbsp;
-                                {{ number_format($server->pings->last()->players_current) }}
-                                <span class="text-white-50">/</span>
-                                {{ number_format($server->pings->last()->players_total) }}
-                            </li>
-                        @endif
-                        <li class="list-inline-item"><span class="font-weight-bold">{{ __('Votes') }}</span>&nbsp;
-                            {{ number_format($voteCountThisMonth) }}
-                        </li>
-                    </ul>
-                </div>
-                <div class="col-auto">
-                </div>
-            </div>
+        <div class="container px-0 px-sm-3 py-5 text-white">
+            <h1 class="font-weight-bold">
+                {{ $server->name }}
+                <small class="d-block text-white-50">{{ $server->host . ($server->port != 25565 ? ':' . $server->port : '') }}</small>
+            </h1>
+            <ul class="list-inline">
+                <li class="list-inline-item"><span class="font-weight-bold">{{ __('Rank') }}</span>&nbsp;
+                    {{ number_format($server->rank) }}
+                </li>
+                <li class="list-inline-item"><span class="font-weight-bold">{{ __('Score') }}</span>&nbsp;
+                    {{ number_format($server->score, 2) }}
+                </li>
+                @if ($server->pings->last()->status)
+                    <li class="list-inline-item">
+                        <span class="font-weight-bold">{{ __('Players') }}</span>&nbsp;
+                        {{ number_format($server->pings->last()->players_current) }}
+                        <span class="text-white-50">/</span>
+                        {{ number_format($server->pings->last()->players_total) }}
+                    </li>
+                @endif
+                <li class="list-inline-item"><span class="font-weight-bold">{{ __('Votes') }}</span>&nbsp;
+                    {{ number_format($voteCountThisMonth) }}
+                </li>
+            </ul>
         </div>
     </div>
 </div>
