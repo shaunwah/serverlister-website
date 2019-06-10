@@ -78,7 +78,7 @@ class ServerController extends Controller
      */
     public function show(Server $server, ServerVote $vote)
     {
-        $voteCountThisMonth = $vote->whereMonth('created_at', today()->format('m'))->count();
+        $voteCountThisMonth = $vote->where('server_id', $server->id)->whereMonth('created_at', today()->format('m'))->count();
         $dates = $server->pings->groupBy(function ($date) {
 
             return Carbon::parse($date->created_at)->format('DDD');
