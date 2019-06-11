@@ -8,7 +8,7 @@
 @section('content')
 <style>
 #server-show-hero-wrapper {
-    background: url('{{ $server->pings->last()->favicon }}') center center;
+    background: url('{{ $server->pings->where('status', true)->last()->favicon }}') center center;
     background-color: rgb(173, 181, 189);
 
 }
