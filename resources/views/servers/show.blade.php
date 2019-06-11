@@ -55,81 +55,95 @@
 @component('partials.alert')
 @endcomponent
 <div class="container">
-    <div class="row align-items-center">
-        <div class="col-auto mr-auto">
-            <h3>{{ __('Information') }}</h3>
+    <div class="row">
+        <div class="col-md-8">
+            <div class="row align-items-center">
+                <div class="col-auto mr-auto">
+                    <h3>{{ __('About') }}</h3>
+                </div>
+                <div class="col-auto mb-3 mb-sm-0">
+                    <a class="btn btn-primary btn-sm" href="{{ route('servers.votes.create', $server->id) }}" role="button"><i class="fal fa-vote-yea fa-fw"></i> Vote</a>
+                    @can('update', $server)
+                        <a class="btn btn-secondary btn-sm" href="{{ route('servers.show.panel', $server->id) }}" role="button"><i class="fal fa-chart-line fa-fw"></i> Panel</a>
+                        <a class="btn btn-secondary btn-sm" href="{{ route('servers.edit', $server->id) }}" role="button"><i class="fal fa-edit fa-fw"></i> Edit</a>
+                    @endcan
+                </div>
+            </div>
+            @isset($server->description)
+                {!! nl2br($parsedown->text($server->description)) !!}
+            @else
+                <p><span class="text-muted">{{ __('No description set.') }}</span></p>
+            @endisset
         </div>
-        <div class="col-auto mb-3 mb-sm-0">
-            <a class="btn btn-primary btn-sm" href="{{ route('servers.votes.create', $server->id) }}" role="button"><i class="fal fa-vote-yea fa-fw"></i> Vote</a>
-            @can('update', $server)
-                <a class="btn btn-secondary btn-sm" href="{{ route('servers.show.panel', $server->id) }}" role="button"><i class="fal fa-chart-line fa-fw"></i> Panel</a>
-                <a class="btn btn-secondary btn-sm" href="{{ route('servers.edit', $server->id) }}" role="button"><i class="fal fa-edit fa-fw"></i> Edit</a>
-            @endcan
+        <div class="col-md-4">
+            <h3>{{ __('Information') }}</h3>
+            <dl class="row">
+                <dt class="col-sm-3">Version</dt>
+                <dd class="col-sm-9"><a href="{{ url('/servers/versions/' . $server->version->slug) }}">{{ $server->version->name }}</a></dd>
+                <dt class="col-sm-3">Type</dt>
+                <dd class="col-sm-9"><a href="{{ url('/servers/types/' . $server->type->slug) }}">{{ $server->type->name }}</a></dd>
+                <dt class="col-sm-3">Country</dt>
+                <dd class="col-sm-9"><a href="{{ url('/servers/countries/' . $server->country->slug) }}">{{ $server->country->name }}</a></dd>
+            </dl>
+            <hr>
+            <dl class="row">
+                <dt class="col-sm-3">Owner</dt>
+                <dd class="col-sm-9">{{ $server->user->username }}</dd>
+            </dl>
         </div>
     </div>
-        @isset($server->description)
-            {!! nl2br($parsedown->text($server->description)) !!}
-        @else
-            <p><span class="text-muted">{{ __('No description set.') }}</span></p>
-        @endisset
-    <h3>{{ __('Statistics') }}</h3>
+</div>
+
+{{--     <h3>{{ __('Statistics') }}</h3>
     <div class="row">
         <div class="col-md-12">
             <h4 class="text-muted">{{ __('Players') }}</h4>
             <canvas id="canvas-player-history" height="128px"></canvas>
         </div>
-{{--         <div class="col-md-6">
+        <div class="col-md-6">
             <h4 class="text-muted">{{ __('Votes') }}</h4>
             <canvas id="canvas-vote-history"></canvas>
-        </div> --}}
-    </div>
-</div>
+        </div>
+    </div> --}}
+
+<h3></h3>
 
 {{-- Infomation Bar --}}
 <div class="container">
-    <div class="row align-items-center">
-        <div class="col-auto mr-auto">
-            <small class="text-muted" data-toggle="tooltip" data-placement="top" title="{{ __('Server Status') }}">
-                <i class="fas {{ $server->pings->last()->status == 1 ? 'fa-check-circle text-success' : 'fa-times-circle text-danger' }} fa-fw"></i> {{ Carbon\Carbon::parse($server->pings->last()->created_at)->diffForHumans() }}
-            </small>
-        </div>
-        <div class="col-auto">
-            <a href="{{ url('/servers/versions/' . $server->version->slug) }}" class="badge badge-pill badge-danger">{{ $server->version->name }}</a>
-            <a href="{{ url('/servers/types/' . $server->type->slug) }}" class="badge badge-pill badge-success">{{ $server->type->name }}</a>
-            <a href="{{ url('/servers/countries/' . $server->country->slug) }}" class="badge badge-pill badge-primary">{{ $server->country->name }}</a>
-        </div>
-    </div>
+    <small class="text-muted" data-toggle="tooltip" data-placement="top" title="{{ __('Server Status') }}">
+        <i class="fas {{ $server->pings->last()->status == 1 ? 'fa-check-circle text-success' : 'fa-times-circle text-danger' }} fa-fw"></i> {{ Carbon\Carbon::parse($server->pings->last()->created_at)->diffForHumans() }}
+    </small>
 </div>
 @endsection
 @section('scripts')
-<script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0/dist/Chart.min.js"></script>
+{{-- <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0/dist/Chart.min.js"></script> --}}
 <script>
-{{-- Needs optimisation --}}
 $(function () {
   $('[data-toggle="tooltip"]').tooltip()
 })
-Chart.defaults.global.defaultFontFamily = 'Nunito';
-var ctx = document.getElementById('canvas-player-history').getContext('2d');
-var playerDataLabels = {!! $playerDataLabels !!};
-var playerData = {!! $playerData !!};
-var myChart = new Chart(ctx, {
-    type: 'line',
-    data: {
-        labels: playerDataLabels,
-        datasets: [{
-            label: 'Max Players',
-            data: playerData
-        }]
-    },
-    options: {
-        scales: {
-            yAxes: [{
-                ticks: {
-                    beginAtZero: true
-                }
-            }]
-        }
-    }
-});
+{{-- Needs optimisation --}}
+// Chart.defaults.global.defaultFontFamily = 'Nunito';
+// var ctx = document.getElementById('canvas-player-history').getContext('2d');
+// var playerDataLabels = {!! $playerDataLabels !!};
+// var playerData = {!! $playerData !!};
+// var myChart = new Chart(ctx, {
+//     type: 'line',
+//     data: {
+//         labels: playerDataLabels,
+//         datasets: [{
+//             label: 'Max Players',
+//             data: playerData
+//         }]
+//     },
+//     options: {
+//         scales: {
+//             yAxes: [{
+//                 ticks: {
+//                     beginAtZero: true
+//                 }
+//             }]
+//         }
+//     }
+// });
 </script>
 @endsection
