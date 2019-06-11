@@ -34,6 +34,13 @@
         Our system only supports NuVotifier version 2 tokens. Your tokens are encrypted using OpenSSL (AES-256) and stored securely in our databases.
     </p>
 
+    <h3>What if my server has already been listed?</h3>
+    <p>
+        ServerLister occasionally lists noteworthy servers from other Minecraft server lists on its website. You may request for a server takeover through
+        our <a href="{{ url('//discordapp.com/invite/nzqRgUw') }}" target="_blank">Discord server</a>. We are working on an automated server takeover system at the moment
+        through MOTD verification.
+    </p>
+
     <h3>Where can I provide feedback?</h3>
     <p>
         We are currently in development and would love to hear from you. You may provide your valuable feedback through our <a href="{{ url('//discordapp.com/invite/nzqRgUw') }}" target="_blank">Discord server</a>.

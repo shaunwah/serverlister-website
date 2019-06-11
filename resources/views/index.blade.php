@@ -77,7 +77,7 @@
                 @endforeach
             </div>
             <small class="text-white-50">
-                Server data displayed is updated {{ Carbon\Carbon::parse($servers->last()->pings->last()->created_at)->diffForHumans() }}.
+                Server data last updated {{ Carbon\Carbon::parse($servers->last()->pings->last()->created_at)->diffForHumans() }}
             </small>
         </div>
     </div>
@@ -95,7 +95,6 @@
         </div>
     </div>
 </div>
-
 <hr>
 
 {{-- FAQs Section --}}
@@ -130,6 +129,13 @@
     </p>
     <p>
         Our system only supports NuVotifier version 2 tokens. Your tokens are encrypted using OpenSSL (AES-256) and stored securely in our databases.
+    </p>
+
+    <h3>What if my server has already been listed?</h3>
+    <p>
+        ServerLister ocassionally lists noteworthy servers from other Minecraft server lists on its website. You may request for a server takeover through
+        our <a href="{{ url('//discordapp.com/invite/nzqRgUw') }}" target="_blank">Discord server</a>. We are working on a automated server takeover system at the moment
+        through MOTD verification.
     </p>
 
     <h3>Where can I provide feedback?</h3>
