@@ -27,7 +27,7 @@
 
     <h3>How do I list my server?</h3>
     <p>
-        You can create a server by navigating to the <a href="{{ route('servers.index') }}">servers page</a> after creating a ServerLister account. The creation process
+        You can create a server by navigating to the <a href="{{ route('servers.index') }}">servers page</a> after <a href="{{ route('register') }}">creating a ServerLister account</a>. The creation process
         takes less than five minutes so you can have your server listing up in no time!
     </p>
     <p>
