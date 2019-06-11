@@ -66,6 +66,7 @@ class Server extends Model
         $voteCount = $votes->whereMonth('created_at', today()->format('m'))->pluck('server_id')->countBy();
         $pingTotalCount = $pings->pluck('server_id')->countBy();
         $pingOnlineCount = $pings->where('status', 1)->pluck('server_id')->countBy();
+        $playersCurrentCount = $pings->pluck('players_current', 'server_id');
 
         $attributes = [
             'vote_count' => $voteCount,
@@ -73,6 +74,7 @@ class Server extends Model
                 'total' => $pingTotalCount,
                 'online' => $pingOnlineCount,
             ],
+            'player_count' => $playersCurrentCount,
         ];
 
         return collect($attributes);
