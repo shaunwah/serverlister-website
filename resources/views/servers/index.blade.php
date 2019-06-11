@@ -52,7 +52,7 @@
                                     <i class="fal fa-hashtag fa-fw"></i> {{ number_format($server->rank) }}
                                 </div>
                                 <div class="col-3 col-sm-2 col-md-1 text-left text-md-center">
-                                    <img src="{{ asset($server->favicon) }}" class="rounded" alt="Favicon" height="48px" width="48px">
+                                    <img src="{{ @$server->pings->where('status', true)->last()->favicon }}" class="rounded" alt="Favicon" height="48px" width="48px">
                                 </div>
                                 <div class="col-6 col-sm-7 col-md-8 text-left text-truncate">
                                     <span class="flag-icon {{ 'flag-icon-' . strtolower($server->country->code) }}"></span>
