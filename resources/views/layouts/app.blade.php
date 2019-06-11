@@ -69,18 +69,18 @@
         </main>
 
         {{-- Footer --}}
-        <div class="container">
-            <footer class="mt-4 py-4 border-top">
-                <div class="row align-items-center">
+        <footer class="footer">
+            <div class="container py-4 border-top">
+                <div class="row align-items-center text-muted">
                     <div class="col-auto mr-auto">
-                        <span class="text-muted">Crafted with <i class="fal fa-heart fa-sm"></i> in Singapore.</span>
+                        Crafted with <i class="fal fa-heart fa-sm"></i> in Singapore.
                     </div>
                     <div class="col-auto">
-                        <span class="font-weight-bold text-muted">Zodurus Labs</span>
+                        <span class="font-weight-bold">Zodurus Labs</span>
                     </div>
                 </div>
-            </footer>
-        </div>
+            </div>
+        </footer>
     </div>
 
     {{-- Scripts --}}
