@@ -71,7 +71,7 @@
             </div>
             @isset($server->description)
                 <div class="overflow-hidden" id="description">
-                    {!! nl2br($parsedown->text($server->description)) !!}
+                    {!! $parsedown->text($server->description) !!}
                 </div>
             @else
                 <p><span class="text-muted">{{ __('No description set.') }}</span></p>
