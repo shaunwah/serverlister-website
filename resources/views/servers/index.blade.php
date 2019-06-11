@@ -12,9 +12,9 @@
             @isset($filters)
                 <a class="text-decoration-none" href="{{ route('servers.index') }}"><i class="fal fa-chevron-left fa-fw"></i> Servers</a>
             @endisset
-            <div class="row align-items-center">
+            <div class="row mb-2 align-items-center">
                 <div class="col-auto mr-auto">
-                    <h1 class="font-weight-bold">{{ __('Servers') }} @isset($filters)<small class="text-muted">{{ __('in') . ' ' . $filtered->name }}</small>@endisset</h1>
+                    <h1 class="mb-0 font-weight-bold">{{ __('Servers') }} @isset($filters)<small class="text-muted">{{ __('in') . ' ' . $filtered->name }}</small>@endisset</h1>
                 </div>
                 <div class="col-auto">
                     <div class="dropdown d-inline-block">

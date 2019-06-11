@@ -1,3 +1,9 @@
+/* Font */
+body {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
 /* Tables */
 .table th:first-child,
 .table td:first-child {

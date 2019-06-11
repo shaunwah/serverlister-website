@@ -53,7 +53,7 @@
 <div class="container">
     <div class="row">
         <div class="col-md-8">
-            <div class="row align-items-center mb-2">
+            <div class="row mb-2 align-items-center">
                 {{-- About Section --}}
                 <div class="col-auto mr-auto">
                     <h3 class="mb-0">{{ __('About') }}</h3>
