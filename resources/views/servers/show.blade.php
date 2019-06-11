@@ -70,7 +70,9 @@
                 </div>
             </div>
             @isset($server->description)
-                {!! nl2br($parsedown->text($server->description)) !!}
+                <div class="overflow-hidden" id="description">
+                    {!! nl2br($parsedown->text($server->description)) !!}
+                </div>
             @else
                 <p><span class="text-muted">{{ __('No description set.') }}</span></p>
             @endisset
@@ -123,6 +125,7 @@
 $(function () {
   $('[data-toggle="tooltip"]').tooltip()
 })
+$('#description img').addClass('img-fluid');
 {{-- Needs optimisation --}}
 // Chart.defaults.global.defaultFontFamily = 'Nunito';
 // var ctx = document.getElementById('canvas-player-history').getContext('2d');
