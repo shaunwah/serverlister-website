@@ -11,6 +11,8 @@
     <meta name="og:title" content="@yield('title', 'Page') - ServerLister">
     <meta name="og:url" content="{{ url()->current() }}">
 
+    <link rel="canonical" href="{{ secure_url(url()->current()) }}">
+
     @yield('header')
 
     <meta name="csrf-token" content="{{ csrf_token() }}">
