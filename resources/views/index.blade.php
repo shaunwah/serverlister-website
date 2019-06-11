@@ -9,10 +9,17 @@
 <div id="intro-hero-wrapper">
     <div class="container-fluid mt-n4 mb-3" id="intro-hero">
         <div class="container px-0 px-sm-3 py-4">
-            <h1 class="font-weight-bold text-white">ServerLister</h1>
-            <p class="lead text-white">
-                Tracking Minecraft servers worldwide, 24/7.
-            </p>
+            <div class="row align-items-center mb-3 mb-md-0">
+                <div class="col-auto mr-auto">
+                    <h1 class="font-weight-bold text-white">ServerLister</h1>
+                    <p class="lead text-white">
+                        Tracking Minecraft servers worldwide, 24/7.
+                    </p>
+                </div>
+                <div class="col-auto">
+                    <a class="btn btn-outline-light btn-lg" href="{{ route('servers.index') }}" role="button">Find Servers <i class="fal fa-arrow-right fa-fw"></i></a>
+                </div>
+            </div>
             <div>
                 <h2 class="text-white">Top Servers</h2>
                 @foreach (App\Server::orderBy('rank', 'asc')->paginate(3) as $server)
@@ -114,7 +121,7 @@
 
     <h3>How do I list my server?</h3>
     <p>
-        You can create a server by navigating to the <a href="{{ route('servers.index') }}">servers page</a> after creating a ServerLister account. The creation process
+        You can create a server by navigating to the <a href="{{ route('servers.index') }}">servers page</a> after <a href="{{ route('register') }}">creating a ServerLister account</a>. The creation process
         takes less than five minutes so you can have your server listing up in no time!
     </p>
     <p>
