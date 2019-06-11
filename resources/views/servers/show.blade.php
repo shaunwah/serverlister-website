@@ -87,7 +87,7 @@
             </dl>
             <hr>
             <dl class="row">
-                <dt class="col-sm-3">Owner</dt>
+                <dt class="col-sm-3">Creator</dt>
                 <dd class="col-sm-9">{{ $server->user->username }}</dd>
             </dl>
         </div>
