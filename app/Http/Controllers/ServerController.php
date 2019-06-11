@@ -30,7 +30,7 @@ class ServerController extends Controller
      */
     public function index(Server $server)
     {
-        $servers = Server::paginate(25);
+        $servers = Server::orderBy('rank', 'asc')->paginate(25);
         return view('servers.index', compact('servers'));
     }
 
