@@ -95,7 +95,7 @@
 
             {{-- Votes Section --}}
             @if ($server->votes->count() > 0)
-                <h3>{{ __('Players') }} <small class="text-muted">Voted</small></h3>
+                <h3>{{ __('Players') }} <small class="text-muted">Voters</small></h3>
                 @foreach ($server->votes->sortByDesc('id')->pluck('username')->countBy()->keys() as $key => $val)
                     @if ($val != null)
                         <img src="{{ url('https://minotar.net/avatar/' . $val. '/24') }}" class="img-fluid rounded" data-toggle="tooltip" data-placement="top" title="{{ $val }}">
@@ -131,10 +131,10 @@
 @section('scripts')
 {{-- <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0/dist/Chart.min.js"></script> --}}
 <script>
+$('#description img').addClass('img-fluid');
 $(function () {
   $('[data-toggle="tooltip"]').tooltip()
 })
-$('#description img').addClass('img-fluid');
 {{-- Needs optimisation --}}
 // Chart.defaults.global.defaultFontFamily = 'Nunito';
 // var ctx = document.getElementById('canvas-player-history').getContext('2d');
