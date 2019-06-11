@@ -57,11 +57,11 @@
 <div class="container">
     <div class="row">
         <div class="col-md-8">
-            <div class="row align-items-center">
+            <div class="row align-items-center mb-2">
                 <div class="col-auto mr-auto">
-                    <h3>{{ __('About') }}</h3>
+                    <h3 class="mb-0">{{ __('About') }}</h3>
                 </div>
-                <div class="col-auto mb-3 mb-sm-0">
+                <div class="col-auto">
                     <a class="btn btn-primary btn-sm" href="{{ route('servers.votes.create', $server->id) }}" role="button"><i class="fal fa-vote-yea fa-fw"></i> Vote</a>
                     @can('update', $server)
                         <a class="btn btn-secondary btn-sm" href="{{ route('servers.show.panel', $server->id) }}" role="button"><i class="fal fa-chart-line fa-fw"></i> Panel</a>
