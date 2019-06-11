@@ -94,10 +94,14 @@
             </dl>
 
             {{-- Votes Section --}}
-            <h3>{{ __('Players') }} <small class="text-muted">Voted</small></h3>
-            @foreach ($server->votes as $vote)
-                <img src="{{ url('https://minotar.net/avatar/' . $vote->username . '/24') }}" class="img-fluid" data-toggle="tooltip" data-placement="top" title="{{ $vote->username }}">
-            @endforeach
+            @if ($server->votes->count() > 0)
+                <h3>{{ __('Players') }} <small class="text-muted">Voted</small></h3>
+                @foreach ($server->votes as $vote)
+                    @isset($vote->username)
+                        <img src="{{ url('https://minotar.net/avatar/' . $vote->username . '/24') }}" class="img-fluid" data-toggle="tooltip" data-placement="top" title="{{ $vote->username }}">
+                    @endisset
+                @endforeach
+            @endif
 
         </div>
     </div>
