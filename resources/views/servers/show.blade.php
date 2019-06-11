@@ -2,13 +2,13 @@
 @section('header')
 <meta name="description" content="{{ $server->description }}">
 <meta name="og:description" content="{{ $server->description }}">
-<meta name="og:image" content="{{ $server->pings->last()->favicon }}">
+<meta name="og:image" content="{{ asset($server->favicon) }}">
 @endsection
 @section('title', $server->name)
 @section('content')
 <style>
 #server-show-hero-wrapper {
-    background: url('{{ @$server->pings->where('status', true)->last()->favicon }}') center center;
+    background: url('{{ asset($server->favicon) }}') center center;
     background-color: rgb(173, 181, 189);
 
 }
