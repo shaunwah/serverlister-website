@@ -31,6 +31,7 @@ body {
 /* Heroes */
 #intro-hero-wrapper {
     background: url('/img/creative_night.webp') center center;
+    background-color: rgb(173, 181, 189);
 }
 
 #intro-hero {
