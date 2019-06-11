@@ -40,9 +40,8 @@ class ServerPingCommand extends Command
     public function handle()
     {
         $this->info('Starting to ping servers...');
-        $server = new Server;
-        $servers = $server->all();
-        foreach ($servers->all() as $server)
+        $servers = Server::orderBy('rank', 'asc')->get();
+        foreach ($servers as $server)
         {
             $ping = new ServerPing;
             $ping->pingServer($server);

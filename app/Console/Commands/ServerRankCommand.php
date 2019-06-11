@@ -36,13 +36,12 @@ class ServerRankCommand extends Command
      *
      * @return mixed
      */
-    public function handle()
+    public function handle(Server $server)
     {
         $this->info('Starting to rank servers...');
-        $server = new Server;
-        $servers = $server->all();
         $scoreData = $server->retrieveScores();
         $rankData = $server->retrieveRanks();
+        $servers = Server::orderBy('rank', 'asc')->get();
         foreach ($servers as $server)
         {
             $voteCount = (isset($scoreData['vote_count'][$server->id]) ? $scoreData['vote_count'][$server->id] : 0);
