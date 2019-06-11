@@ -66,7 +66,7 @@
                 @endforeach
             </div>
             <small class="text-white-50">
-                Information displayed on this page is updated as at {{ Carbon\Carbon::parse(App\ServerPing::all()->last()->created_at)->diffForHumans() }}.
+                Server data displayed is updated {{ Carbon\Carbon::parse(App\ServerPing::all()->last()->created_at)->diffForHumans() }}.
             </small>
         </div>
     </div>
