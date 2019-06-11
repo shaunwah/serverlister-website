@@ -54,6 +54,7 @@
     <div class="row">
         <div class="col-md-8">
             <div class="row align-items-center mb-2">
+                {{-- About Section --}}
                 <div class="col-auto mr-auto">
                     <h3 class="mb-0">{{ __('About') }}</h3>
                 </div>
@@ -74,6 +75,7 @@
             @endisset
         </div>
         <div class="col-md-4">
+            {{-- Information Section --}}
             <h3>{{ __('Information') }}</h3>
             <dl class="row">
                 <dt class="col-sm-3">Game</dt>
@@ -90,6 +92,13 @@
                 <dt class="col-sm-3">Creator</dt>
                 <dd class="col-sm-9">{{ $server->user->username }}</dd>
             </dl>
+
+            {{-- Votes Section --}}
+            <h3>{{ __('Players') }} <small class="text-muted">Voted</small></h3>
+            @foreach ($server->votes as $vote)
+                <img src="{{ url('https://minotar.net/avatar/' . $vote->username . '/24') }}" class="img-fluid" data-toggle="tooltip" data-placement="top" title="{{ $vote->username }}">
+            @endforeach
+
         </div>
     </div>
 </div>
