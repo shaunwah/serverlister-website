@@ -30,7 +30,7 @@
                                     <i class="fal fa-hashtag fa-fw"></i> {{ number_format($server->rank) }}
                                 </div>
                                 <div class="col-3 col-sm-2 col-md-1 text-left text-md-center">
-                                    <img src="{{ @$server->pings->where('status', true)->last()->favicon }}" class="rounded" alt="Favicon" height="48px" width="48px">
+                                    <img src="{{ asset($server->favicon) }}" class="rounded" alt="Favicon" height="48px" width="48px">
                                 </div>
                                 <div class="col-6 col-sm-7 col-md-8 text-left text-truncate">
                                     <span class="flag-icon {{ 'flag-icon-' . strtolower($server->country->code) }}"></span>
@@ -58,7 +58,7 @@
                                     <i class="fal fa-hashtag fa-fw"></i> {{ number_format($server->rank) }}
                                 </div>
                                 <div class="col-3 col-sm-2 col-md-1 text-left text-md-center">
-                                    <img src="{{ @$server->pings->where('status', true)->last()->favicon }}" class="rounded" alt="Favicon" height="48px" width="48px">
+                                    <img src="{{ asset($server->favicon) }}" class="rounded" alt="Favicon" height="48px" width="48px">
                                 </div>
                                 <div class="col-6 col-sm-7 col-md-8 text-left text-truncate">
                                     <span class="flag-icon {{ 'flag-icon-' . strtolower($server->country->code) }}"></span>
@@ -133,8 +133,8 @@
 
     <h3>What if my server has already been listed?</h3>
     <p>
-        ServerLister ocassionally lists noteworthy servers from other Minecraft server lists on its website. You may request for a server takeover through
-        our <a href="{{ url('//discordapp.com/invite/nzqRgUw') }}" target="_blank">Discord server</a>. We are working on a automated server takeover system at the moment
+        ServerLister occasionally lists noteworthy servers from other Minecraft server lists on its website. You may request for a server takeover through
+        our <a href="{{ url('//discordapp.com/invite/nzqRgUw') }}" target="_blank">Discord server</a>. We are working on an automated server takeover system at the moment
         through MOTD verification.
     </p>
 
