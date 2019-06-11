@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Server;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -13,7 +14,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware('auth')->only('indexLoggedIn');
     }
 
     /**
@@ -21,8 +22,14 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index()
+    public function indexLoggedIn()
     {
         return view('home');
+    }
+
+    public function index()
+    {
+        $servers = Server::all();
+        return view('index', compact('servers'));
     }
 }

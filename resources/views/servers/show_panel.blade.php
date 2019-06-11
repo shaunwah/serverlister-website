@@ -10,7 +10,7 @@
 @endcomponent
 <div class="container">
     <a class="text-decoration-none" href="{{ route('servers.update', $server->id) }}"><i class="fal fa-chevron-left fa-fw"></i> {{ $server->name }}</a>
-    <div class="row align-items-center mb-2">
+    <div class="row mb-2 align-items-center">
         <div class="col-auto mr-auto">
             <h1 class="mb-0 font-weight-bold">{{ __('Server Panel') }}</h1>
         </div>

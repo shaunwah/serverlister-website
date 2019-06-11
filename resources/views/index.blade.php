@@ -22,7 +22,7 @@
             </div>
             <div>
                 <h2 class="text-white">Top Servers</h2>
-                @foreach (App\Server::orderBy('rank', 'asc')->paginate(3) as $server)
+                @foreach ($servers->sortBy('rank')->take(3) as $server)
                     <div class="card bg-dark text-white {{ !$loop->last ? 'mb-3' : '' }} {{ $server->pings->last()->status == 1 ? 'shift-server-card-online' : 'shift-server-card-offline' }} shadow-none">
                         <div class="card-body px-3 py-1">
                             <div class="row no-gutters align-items-center">
@@ -50,7 +50,7 @@
             </div>
             <div class="mb-3">
                 <h2 class="mt-3 text-white">New Servers</h2>
-                @foreach (App\Server::orderBy('id', 'desc')->paginate(3) as $server)
+                @foreach ($servers->sortByDesc('created_at')->take(3) as $server)
                     <div class="card bg-dark text-white {{ !$loop->last ? 'mb-3' : '' }} {{ $server->pings->last()->status == 1 ? 'shift-server-card-online' : 'shift-server-card-offline' }} shadow-none">
                         <div class="card-body px-3 py-1">
                             <div class="row no-gutters align-items-center">
@@ -77,7 +77,7 @@
                 @endforeach
             </div>
             <small class="text-white-50">
-                Server data displayed is updated {{ Carbon\Carbon::parse(App\ServerPing::all()->last()->created_at)->diffForHumans() }}.
+                Server data displayed is updated {{ Carbon\Carbon::parse($servers->last()->pings->last()->created_at)->diffForHumans() }}.
             </small>
         </div>
     </div>
@@ -88,7 +88,7 @@
     <h2>Statistics</h2>
     <div class="row">
         <div class="col-md-6 text-center">
-            <h3>{{ number_format(App\Server::count()) }}<small class="d-block text-muted">Servers</small></h3>
+            <h3>{{ number_format($servers->count()) }}<small class="d-block text-muted">Servers</small></h3>
         </div>
         <div class="col-md-6 text-center">
             <h3>{{ number_format(App\ServerPing::pluck('players_current', 'server_id')->sum()) }}<small class="d-block text-muted">Players</small></h3>
