@@ -25,7 +25,6 @@
 /* Heroes */
 #intro-hero-wrapper {
     background: url('/img/creative_night.webp') center center;
-    background-attachment: fixed;
 }
 
 #intro-hero {
