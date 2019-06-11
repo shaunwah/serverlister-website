@@ -55,7 +55,9 @@
                                     <img src="{{ @$server->pings->where('status', true)->last()->favicon }}" class="rounded" alt="Favicon" height="48px" width="48px">
                                 </div>
                                 <div class="col-6 col-sm-7 col-md-8 text-left text-truncate">
-                                    <a class="font-weight-bold" href="{{ route('servers.show', $server->id) }}">{{ $server->name }}</a> <span class="text-muted">{{ $server->version->name }}</span>
+                                    <span class="flag-icon {{ 'flag-icon-' . strtolower($server->country->code) }} rounded"></span>
+                                    <a class="font-weight-bold" href="{{ route('servers.show', $server->id) }}">{{ $server->name }}</a>
+                                    <span class="text-muted">{{ $server->version->name }}</span>
                                     <span class="d-block">{{ $server->host . ($server->port != 25565 ? ':' . $server->port : '') }}</span>
                                 </div>
                                 <div class="col-3 col-sm-2 text-right">
