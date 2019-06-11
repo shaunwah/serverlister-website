@@ -78,6 +78,14 @@
                                 @error('country_id')<div class="invalid-feedback">{{ $message }}</div>@enderror
                             </div>
                         </div>
+                        <hr>
+
+                        {{-- Website Link Input --}}
+                        <div class="form-group">
+                            <label for="link_website">Website</label>
+                            <input type="url" class="form-control @error('link_website') is-invalid @enderror" id="link_website" name="link_website" value="{{ old('link_website') }}">
+                            @error('link_website')<div class="invalid-feedback">{{ $message }}</div>@enderror
+                        </div>
                     </div>
                 </div>
                 <div class="card">

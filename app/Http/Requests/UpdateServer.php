@@ -34,6 +34,7 @@ class UpdateServer extends FormRequest
             'version_id' => ['required', 'integer'],
             'type_id' => ['required', 'integer'],
             'country_id' => ['required', 'integer'],
+            'link_website' => ['nullable', 'active_url'],
             'voting_service_host' => ['nullable', 'string', 'min:3', 'max:24'],
             'voting_service_port' => ['nullable', 'integer', 'gte:0'],
             'voting_service_token' => ['nullable', 'alpha_num'],

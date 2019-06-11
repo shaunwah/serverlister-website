@@ -44,6 +44,9 @@
                     {{ number_format($voteCountThisMonth) }}
                 </li>
             </ul>
+            @isset($server->link_website)
+                <a href="{{ $server->link_website }}" class="badge badge-light">Website</a>
+            @endisset
         </div>
     </div>
 </div>
