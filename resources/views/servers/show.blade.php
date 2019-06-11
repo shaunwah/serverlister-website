@@ -78,6 +78,8 @@
         <div class="col-md-4">
             <h3>{{ __('Information') }}</h3>
             <dl class="row">
+                <dt class="col-sm-3">Game</dt>
+                <dd class="col-sm-9">Minecraft: Java Edition</dd>
                 <dt class="col-sm-3">Version</dt>
                 <dd class="col-sm-9"><a href="{{ url('/servers/versions/' . $server->version->slug) }}">{{ $server->version->name }}</a></dd>
                 <dt class="col-sm-3">Type</dt>
