@@ -13,6 +13,7 @@
                 @csrf
                 <div class="card">
                     <div class="card-body">
+
                         {{-- Username Input --}}
                         <div class="form-group">
                             <label for="username">Username <small class="text-muted">required</small></label>
@@ -23,6 +24,7 @@
                                 <small id="usernameHelp" class="form-text text-muted">{{ __('Your Minecraft username is cAsE-sEnSiTiVe.') }}</small>
                             @enderror
                         </div>
+
                         <button type="submit" class="btn btn-success btn-block">Vote for {{ $server->name }}</button>
                     </div>
                 </div>
