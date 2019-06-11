@@ -45,7 +45,7 @@
                 </li>
             </ul>
             @isset($server->link_website)
-                <a href="{{ $server->link_website }}" class="badge badge-light">Website</a>
+                <a href="{{ $server->link_website }}" target="_blank" class="badge badge-light">Website</a>
             @endisset
         </div>
     </div>
