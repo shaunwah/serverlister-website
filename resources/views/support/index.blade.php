@@ -40,8 +40,8 @@
     </p>
     <small class="text-muted">
         <ul class="list-unstyled">
-            <li>This website includes GeoLite2 data created by MaxMind, available from <a href="{{ url('//www.maxmind.com') }}" target="_blank">maxmind.com</a>.</li>
-            <li>This website is not affiliated, associated, endorsed by, or in any way connected to Microsoft Corporation or any of its subsidaries or its affiliates.</li>
+            <li>ServerLister includes GeoLite2 data created by MaxMind, available from <a href="{{ url('//www.maxmind.com') }}" target="_blank">maxmind.com</a>.</li>
+            <li>ServerLister is not affiliated, associated, endorsed by, or in any way connected to Microsoft Corporation or any of its subsidaries or its affiliates.</li>
         </ul>
     </small>
 </div>
