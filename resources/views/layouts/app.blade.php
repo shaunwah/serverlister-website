@@ -31,13 +31,13 @@
         {{-- Navbar --}}
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}"><i class="fal fa-server"></i></a>
+                <a class="navbar-brand" href="{{ route('index') }}"><i class="fal fa-server"></i></a>
                 <button class="navbar-toggler pr-0 border-0" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                     <div class="navbar-nav mr-auto">
-                            <a class="nav-item nav-link" href="{{ url('/') }}">Home {{-- <span class="sr-only">(current)</span> --}}</a>
+                            <a class="nav-item nav-link" href="{{ route('index') }}">Home {{-- <span class="sr-only">(current)</span> --}}</a>
                             <a class="nav-item nav-link" href="{{ route('servers.index') }}">Servers</a>
                             <a class="nav-item nav-link" href="{{ url('/support') }}">Support</a>
                     </div>
