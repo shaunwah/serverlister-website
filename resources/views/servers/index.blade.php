@@ -18,7 +18,7 @@
                 </div>
                 <div class="col-auto">
                     <div class="dropdown d-inline-block">
-                        <a class="btn btn-secondary btn-sm dropdown-toggle border-0 shadow-sm" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <a class="btn btn-secondary btn-sm dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             {{ __('Filter by') }}
                         </a>
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuLink">
