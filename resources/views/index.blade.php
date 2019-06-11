@@ -7,8 +7,8 @@
 @section('content')
 {{-- Hero --}}
 <div id="intro-hero-wrapper">
-    <div class="container-fluid mt-n4 mb-3 py-4" id="intro-hero">
-        <div class="container">
+    <div class="container-fluid mt-n4 mb-3" id="intro-hero">
+        <div class="container px-0 px-sm-3 py-4">
             <h1 class="font-weight-bold text-white">ServerLister</h1>
             <p class="lead text-white">
                 Tracking Minecraft servers worldwide, 24/7.
