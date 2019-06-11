@@ -67,13 +67,11 @@
             @endcan
         </div>
     </div>
-    <p>
         @isset($server->description)
-            {{ $server->description }}
+            {!! nl2br($parsedown->text($server->description)) !!}
         @else
-            <span class="text-muted">{{ __('No description set.') }}</span>
+            <p><span class="text-muted">{{ __('No description set.') }}</span></p>
         @endisset
-    </p>
     <h3>{{ __('Statistics') }}</h3>
     <div class="row">
         <div class="col-md-12">

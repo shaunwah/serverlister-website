@@ -10,6 +10,7 @@ use App\ServerVote;
 use App\Http\Requests\StoreServer;
 use App\Http\Requests\UpdateServer;
 use Illuminate\Support\Str;
+use Parsedown;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
@@ -57,6 +58,7 @@ class ServerController extends Controller
         $validated = $request->validated();
         $validated['user_id'] = auth()->id();
         $validated['slug'] = Str::slug(request()->name) . '-' . mt_rand(0, 999999999);
+        $validated['description'] = strip_tags($validated['description']); //!!!
         $validated['host'] = strtolower($validated['host']); //!!!
         $validated['rank'] = $server->count() + 1;
         $validated['voting_service_enabled'] = request()->has('voting_service_enabled');
@@ -78,6 +80,7 @@ class ServerController extends Controller
      */
     public function show(Server $server, ServerVote $vote)
     {
+        $parsedown = new Parsedown;
         $voteCountThisMonth = $vote->where('server_id', $server->id)->whereMonth('created_at', today()->format('m'))->count();
         $datesPlayers = $server->pings->groupBy(function ($date) {
             return Carbon::parse($date->created_at)->format('DDD');
@@ -92,7 +95,7 @@ class ServerController extends Controller
         })->values()->take(10)->toJson();
 
 
-        return view('servers.show', compact('server', 'voteCountThisMonth', 'playerDataLabels', 'playerData'));
+        return view('servers.show', compact('server', 'parsedown', 'voteCountThisMonth', 'playerDataLabels', 'playerData'));
     }
 
     public function showPanel(Server $server)
@@ -127,6 +130,7 @@ class ServerController extends Controller
         $this->authorize('update', $server);
         $validated = $request->validated();
 
+        $validated['description'] = strip_tags($validated['description']); //!!!
         $validated['host'] = strtolower($validated['host']); //!!!
         $validated['voting_service_enabled'] = request()->has('voting_service_enabled');
         $validated['voting_service_host'] = strtolower($validated['voting_service_host']); //!!!
