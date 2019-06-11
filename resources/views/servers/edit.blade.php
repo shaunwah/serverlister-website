@@ -26,7 +26,11 @@
                         <div class="form-group">
                             <label for="description">Description</label>
                             <textarea class="form-control @error('description') is-invalid @enderror" id="description" name="description" rows="5">{{ old('description', $server->description) }}</textarea>
-                            @error('description')<div class="invalid-feedback">{{ $message }}</div>@enderror
+                            @error('description')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @else
+                                <small id="descriptionHelp" class="form-text text-muted">You can use <a href="{{ url('//guides.github.com/features/mastering-markdown/#examples') }}" target="_blank">Markdown</a> to stylise your description</small>
+                            @enderror
                         </div>
 
                         {{-- Host & Port Input --}}
