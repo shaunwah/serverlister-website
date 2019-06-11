@@ -30,7 +30,7 @@
                                     <i class="fal fa-hashtag fa-fw"></i> {{ number_format($server->rank) }}
                                 </div>
                                 <div class="col-3 col-sm-2 col-md-1 text-left text-md-center">
-                                    <img src="{{ $server->pings->last()->favicon }}" class="rounded" alt="Favicon" height="48px" width="48px">
+                                    <img src="{{ $server->pings->where('status', true)->last()->favicon }}" class="rounded" alt="Favicon" height="48px" width="48px">
                                 </div>
                                 <div class="col-6 col-sm-7 col-md-8 text-left text-truncate">
                                     <a class="font-weight-bold" href="{{ route('servers.show', $server->id) }}">{{ $server->name }}</a> <span class="text-white-50">{{ $server->version->name }}</span>
@@ -56,7 +56,7 @@
                                     <i class="fal fa-hashtag fa-fw"></i> {{ number_format($server->rank) }}
                                 </div>
                                 <div class="col-3 col-sm-2 col-md-1 text-left text-md-center">
-                                    <img src="{{ $server->pings->last()->favicon }}" class="rounded" alt="Favicon" height="48px" width="48px">
+                                    <img src="{{ $server->pings->where('status', true)->last()->favicon }}" class="rounded" alt="Favicon" height="48px" width="48px">
                                 </div>
                                 <div class="col-6 col-sm-7 col-md-8 text-left text-truncate">
                                     <a class="font-weight-bold" href="{{ route('servers.show', $server->id) }}">{{ $server->name }}</a> <span class="text-white-50">{{ $server->version->name }}</span>
