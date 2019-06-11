@@ -27,9 +27,9 @@
                             <a class="dropdown-item" href="{{ url('/servers/countries/united-states') }}">{{ __('Country') }}</a>
                         </div>
                     </div>
-                    @auth
+{{--                     @auth --}}
                         <a class="btn btn-success btn-sm" href="{{ route('servers.create') }}" role="button"><i class="fal fa-plus fa-fw"></i> {{ __('Create') }}</a>
-                    @endauth
+{{--                     @endauth --}}
                 </div>
             </div>
 
