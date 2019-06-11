@@ -22,13 +22,17 @@
     border-right: .25rem solid #ffc107;
 }
 
-/* Jumbotrons */
+/* Heroes */
 #intro-hero-wrapper {
     background: url('/img/creative_night.png') center center;
 }
 
 #intro-hero {
     background: rgba(52, 58, 64, 0.5);
+}
+
+#server-show-hero {
+    background: rgba(52, 58, 64, 0.9);
 }
 
 
