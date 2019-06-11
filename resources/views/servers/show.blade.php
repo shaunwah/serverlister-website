@@ -98,7 +98,7 @@
                 <h3>{{ __('Players') }} <small class="text-muted">Voted</small></h3>
                 @foreach ($server->votes->pluck('username')->countBy()->keys() as $key => $val)
                     @if ($val != null)
-                        <img src="{{ url('https://minotar.net/avatar/' . $val. '/24') }}" class="img-fluid" data-toggle="tooltip" data-placement="top" title="{{ $val }}">
+                        <img src="{{ url('https://minotar.net/avatar/' . $val. '/24') }}" class="img-fluid rounded" data-toggle="tooltip" data-placement="top" title="{{ $val }}">
                     @endif
                 @endforeach
             @endif
