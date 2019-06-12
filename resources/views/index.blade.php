@@ -82,7 +82,7 @@
             </div>
 
             <small class="text-white-50">
-                Server data last updated {{ Carbon\Carbon::parse($servers->last()->pings->last()->created_at)->diffForHumans() }}
+                Server data last updated {{ Carbon\Carbon::parse($servers->sortBy('rank', 'asc')->first()->pings->last()->created_at)->diffForHumans() }}
             </small>
         </div>
     </div>
