@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Reports;
 use App\ServerPing;
 use App\ServerVote;
 use App\Events\ServerCreated;
@@ -22,6 +23,11 @@ class Server extends Model
     public function user()
     {
         return $this->belongsTo(User::class);
+    }
+
+    public function reports()
+    {
+        return $this->belongsToMany(Report::class);
     }
 
     public function country()
@@ -47,6 +53,11 @@ class Server extends Model
     public function votes()
     {
         return $this->hasMany(ServerVote::class);
+    }
+
+    public function addReport($report) //!!!
+    {
+        $this->reports()->create($report);
     }
 
     public function addPing($ping)
