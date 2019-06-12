@@ -10,11 +10,17 @@ class Report extends Model
 
     public function users()
     {
-        return $this->belongsToMany(User::class);
+        return $this->morphedByMany('App\User', 'reportable');
     }
 
     public function servers()
     {
-        return $this->belongsToMany(Server::class);
+        return $this->morphedByMany('App\Server', 'reportable');
     }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
 }

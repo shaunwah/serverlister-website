@@ -27,7 +27,7 @@ class Server extends Model
 
     public function reports()
     {
-        return $this->belongsToMany(Report::class);
+        return $this->morphToMany('App\Report', 'reportable');
     }
 
     public function country()
@@ -53,11 +53,6 @@ class Server extends Model
     public function votes()
     {
         return $this->hasMany(ServerVote::class);
-    }
-
-    public function addReport($report) //!!!
-    {
-        $this->reports()->create($report);
     }
 
     public function addPing($ping)
