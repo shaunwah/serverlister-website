@@ -9,6 +9,8 @@
         <h3>Welcome back, {{ auth()->user()->username }}.</h3>
     </div>
 </div>
+@component('partials.alert')
+@endcomponent
 <div class="container mb-3">
     <h2 class="font-weight-bold">Your Statistics</h2>
     <div class="card-deck">
