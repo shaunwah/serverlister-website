@@ -11,6 +11,11 @@ use Illuminate\Http\Request;
 
 class ReportController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -40,12 +45,27 @@ class ReportController extends Controller
     public function store(StoreReport $request, Report $report)
     {
         $validated = $request->validated();
-
         $validated['user_id'] = auth()->id();
 
-        $result = $report->create($validated);
-        $report = Report::find($result->id);
-        $report->{Str::plural(request()->entity)}()->attach(request()->entity_id);
+        if (request()->entity == 'server') // To clean up
+        {
+            $report = new Report($validated);
+            $server = Server::findOrFail(request()->entity_id);
+            $server->reports()->save($report);
+        }
+        elseif (request()->entity == 'user')
+        {
+            $report = new Report($validated);
+            $server = User::findOrFail(request()->entity_id);
+            $server->reports()->save($report);
+        }
+        else
+        {
+            session()->flash('alert_colour', 'warning');
+            session()->flash('alert', 'You encounted an error while submitting a report.');
+
+            return redirect('/dashboard');
+        }
 
         session()->flash('alert_colour', 'success');
         session()->flash('alert', 'You have successfully submitted a report.');
@@ -61,7 +81,9 @@ class ReportController extends Controller
      */
     public function show(Report $report)
     {
-        //
+        $this->authorize('view', $report);
+
+        return view('reports.show', compact('report'));
     }
 
     /**
