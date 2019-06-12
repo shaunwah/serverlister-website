@@ -58,8 +58,8 @@
                                     <span class="d-block">{{ $server->host . ($server->port != 25565 ? ':' . $server->port : '') }}</span>
                                 </div>
                                 <div class="col-3 col-sm-2 text-right">
-                                    @if ($server->pings->last()->status == 1)
-                                        {{ number_format($server->pings->last()->players_current) }} <i class="fal fa-users fa-fw"></i>
+                                    @if (@$server->pings->last()->status == 1)
+                                        {{ number_format(@$server->pings->last()->players_current) }} <i class="fal fa-users fa-fw"></i>
                                     @endif
                                 </div>
                             </div>
