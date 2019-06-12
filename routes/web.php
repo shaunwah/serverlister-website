@@ -22,8 +22,12 @@ Route::get('/servers/versions/{version}', 'VersionController@index');
 Route::get('/servers/countries/{country}', 'CountryController@index');
 
 // Reports
-Route::resource('/reports', 'ReportController')->except('create');
+Route::get('/reports/create', function () {
+    session()->flash('alert', 'Use the \'Flag\' function to make a report.');
+    return redirect('/dashboard');
+})->middleware('auth');
 Route::post('/reports/create', 'ReportController@create')->name('reports.create');
+Route::resource('/reports', 'ReportController')->except('create');
 
 // ServerComments
 // Route::post('/servers/{server}/comments', 'ServerCommentController@store')->name('servers.comments.store');
