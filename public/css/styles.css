@@ -1,7 +1,15 @@
-/* Sizing */
-
+/* Sizing & Display */
 html, body, #app {
     height: 100%;
+}
+
+#app {
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    flex-shrink: 0;
 }
 
 /* Font */

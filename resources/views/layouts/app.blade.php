@@ -26,7 +26,7 @@
     <script src="https://kit.fontawesome.com/ef9f9fad9d.js"></script>
 </head>
 <body>
-    <div id="app" class="d-flex flex-column">
+    <div id="app">
 
         {{-- Navbar --}}
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -66,18 +66,13 @@
             </div>
         </nav>
 
-        <main role="main" class="py-4 flex-shrink-0">
+        <main role="main" class="py-4">
 
             @yield('content')
 
         </main>
 
         {{-- Footer --}}
-        <style>
-            .footer {
-                width: 100%;
-            }
-        </style>
         <footer class="footer mt-auto">
             <div class="container-fluid text-white" style="background-color: hsl(0, 0%, 25%);">
                 <div class="container py-4">
