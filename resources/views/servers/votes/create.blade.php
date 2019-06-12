@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('header')
-<meta name="robots" content="noindex">
+<meta name="robots" content="noindex, nofollow">
 @endsection
 @section('title', $server->name . ' - ' . __('Vote'))
 @section('content')
