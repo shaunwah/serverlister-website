@@ -104,6 +104,7 @@
                     <div>
                         <ul class="list-inline text-white-50">
                             <li class="list-inline-item"><a href="{{ url('/support/privacy-policy') }}" class="text-reset">{{ __('Privacy Policy') }}</a></li>
+                            <li class="list-inline-item"><a href="{{ url('/support/terms-of-service') }}" class="text-reset">{{ __('Terms of Service') }}</a></li>
                         </ul>
                     </div>
                 </div>
