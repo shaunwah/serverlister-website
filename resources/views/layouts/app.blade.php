@@ -8,7 +8,7 @@
 
     <meta name="og:type" content="website">
     <meta name="og:site_name" content="ServerLister">
-    <meta name="og:title" content="@yield('title', 'Page') - ServerLister">
+    <meta name="og:title" content="@yield('title', 'Page')">
     <meta name="og:url" content="{{ url()->current() }}">
 
     <link rel="canonical" href="{{ secure_url(url()->current()) }}">
@@ -19,11 +19,11 @@
 
     <title>@yield('title', 'Page') - ServerLister</title>
 
+    <script defer src="https://kit.fontawesome.com/ef9f9fad9d.js"></script>
+
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     <link rel="stylesheet" href="{{ asset('css/flag-icon.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
-
-    <script src="https://kit.fontawesome.com/ef9f9fad9d.js"></script>
 </head>
 <body>
     <div id="app">
@@ -79,8 +79,9 @@
                     <div class="row align-items-top mb-3">
                         <div class="col-12 col-sm-auto mr-auto">
                             <h3>ServerLister</h3>
-                            <p>
+                            <p class="text-white-50">
                                 Crafted with <i class="fal fa-heart fa-sm"></i> in Singapore<br>
+                                Copyright &copy; Zodurus Labs. All rights reserved.
                             </p>
                         </div>
                         <div class="col-auto col-sm-2">
