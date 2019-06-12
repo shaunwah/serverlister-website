@@ -24,7 +24,14 @@
     </div>
 </div>
 <div class="container">
-    <h2 class="font-weight-bold">Your Servers</h2>
+    <div class="row mb-2 align-items-center">
+        <div class="col-auto mr-auto">
+            <h2 class="mb-0 font-weight-bold">{{ __('Your Servers') }}</h2>
+        </div>
+        <div class="col-auto">
+            <a class="btn btn-success btn-sm" href="{{ route('servers.create') }}" role="button"><i class="fal fa-plus fa-fw"></i> {{ __('Create') }}</a>
+        </div>
+    </div>
     @if ($servers->count() > 0)
         @foreach ($servers as $server)
             <div class="card {{ !$loop->last ? 'mb-3' : '' }} {{ @$server->pings->last()->status == 1 ? 'shift-server-card-online' : 'shift-server-card-offline' }}">
