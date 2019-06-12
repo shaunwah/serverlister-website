@@ -21,6 +21,10 @@ Route::get('/servers/types/{type}', 'ServerTypeController@index');
 Route::get('/servers/versions/{version}', 'VersionController@index');
 Route::get('/servers/countries/{country}', 'CountryController@index');
 
+// Reports
+Route::resource('/reports', 'ReportController')->except('create');
+Route::post('/reports/create', 'ReportController@create')->name('reports.create');
+
 // ServerComments
 // Route::post('/servers/{server}/comments', 'ServerCommentController@store')->name('servers.comments.store');
 
