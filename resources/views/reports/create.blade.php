@@ -45,7 +45,7 @@
                             @error('description')
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @else
-                                <small id="descriptionHelp" class="form-text text-muted">Describing the issue in detail helps us resolve the issue as soon as possible.</small>
+                                <small id="descriptionHelp" class="form-text text-muted">Describing the issue in detail helps us resolve the issue as fast as possible.</small>
                             @enderror
                         </div>
 
