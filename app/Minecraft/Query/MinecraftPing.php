@@ -31,7 +31,7 @@ class MinecraftPing
 	private $ServerPort;
 	private $Timeout;
 
-	public function __construct( $Address, $Port = 25565, $Timeout = 2, $ResolveSRV = true )
+	public function __construct( $Address, $Port = 25565, $Timeout = 5, $ResolveSRV = true )
 	{
 		$this->ServerAddress = $Address;
 		$this->ServerPort = (int)$Port;
