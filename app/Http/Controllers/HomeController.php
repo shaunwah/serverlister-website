@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Report;
 use App\Server;
 use Illuminate\Http\Request;
 
@@ -24,8 +25,9 @@ class HomeController extends Controller
      */
     public function indexLoggedIn()
     {
+        $reports = Report::all();
         $servers = collect(auth()->user()->servers->sortBy('rank')->all());
-        return view('dashboard', compact('servers'));
+        return view('dashboard', compact(['reports', 'servers']));
     }
 
     public function index()
