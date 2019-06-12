@@ -30,12 +30,13 @@ body {
 
 /* Heroes */
 #intro-hero-wrapper {
-    background: url('/img/creative_night.webp') center center;
+    background-image: url('/img/creative_night.webp'), url('/img/creative_night.png');
+    background-position: center;
+    background-repeat: no-repeat;
     background-color: hsla(0, 0%, 25%, 1);
 }
 
 #intro-hero {
-/*    background: rgba(52, 58, 64, 0.5);*/
     background-color: hsla(0, 0%, 5%, 0.8);
 }
 
