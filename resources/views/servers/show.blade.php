@@ -40,7 +40,7 @@
                 </li>
             </ul>
             @isset($server->link_website)
-                <a href="{{ $server->link_website }}" target="_blank" class="badge badge-light">Website</a>
+                <a href="{{ $server->link_website }}" target="_blank" class="badge badge-pill badge-light">Website</a>
             @endisset
         </div>
     </div>
@@ -122,7 +122,7 @@
 
 {{-- Infomation Bar --}}
 <div class="container">
-    <small class="text-muted" data-toggle="tooltip" data-placement="top" title="{{ __('Server Status') }}">
+    <small class="text-muted" data-toggle="tooltip" data-placement="top" title="{{ __('Last updated at') }}">
         <i class="fas {{ @$server->pings->last()->status == 1 ? 'fa-check-circle text-success' : 'fa-times-circle text-danger' }} fa-fw"></i> {{ Carbon\Carbon::parse(@$server->pings->last()->created_at)->diffForHumans() }}
     </small>
 </div>
