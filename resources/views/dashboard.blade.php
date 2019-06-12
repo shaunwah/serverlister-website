@@ -11,6 +11,8 @@
 </div>
 @component('partials.alert')
 @endcomponent
+
+{{-- Statistics Section --}}
 <div class="container mb-3">
     <h2 class="font-weight-bold">Your Statistics</h2>
     <div class="card-deck">
@@ -25,6 +27,35 @@
         </div>
     </div>
 </div>
+
+{{-- Reports Section --}}
+@if (auth()->id() == 1)
+    <div class="container">
+        <h2 class="font-weight-bold">Your Reports</h2>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">{{ __('#') }}</th>
+                    <th scope="col">{{ __('Issue') }}</th>
+                    <th scope="col">{{ __('Reporter') }}</th>
+                    <th scope="col">{{ __('Updated') }}</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach ($reports->sortByDesc('updated_at') as $report)
+                <tr>
+                    <th scope="row">{{ $loop->iteration }}</th>
+                    <td>{{ $report->issue }}</td>
+                    <td>{{ $report->user->username }}</td>
+                    <td>{{ $report->updated_at }}</td>
+                </tr>
+                @endforeach
+            </tbody>
+        </table>
+    </div>
+@endif
+
+{{-- Servers Section --}}
 <div class="container">
     <div class="row mb-2 align-items-center">
         <div class="col-auto mr-auto">
