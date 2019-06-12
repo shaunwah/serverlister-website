@@ -80,8 +80,8 @@
                         <div class="col-12 col-sm-auto mr-auto">
                             <h3>ServerLister</h3>
                             <p class="text-white-50">
-                                Crafted with <i class="fal fa-heart fa-sm"></i> in Singapore<br>
-                                Copyright &copy; Zodurus Labs. All rights reserved.
+                                Crafted with love in Singapore<br>
+                                Copyright &copy; Zodurus Labs
                             </p>
                         </div>
                         <div class="col-auto col-sm-2">
