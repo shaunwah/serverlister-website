@@ -27,22 +27,17 @@
                             </p>
                         @endif
 
-                        {{-- Type Input --}}
+                        {{-- Issue Input --}}
                         <div class="form-group">
-                            <label for="type">Issue <small class="text-muted">required</small></label>
-                            <select class="form-control @error('type_id') is-invalid @enderror" id="type" name="type_id">
-                                <option disabled selected value="">{{ __('select an issue') }}</option>
-{{--                                 @foreach ($countries as $country)
-                                    <option {{ old('country_id') == $country->id ? 'selected' : '' }} value="{{ $country->id }}">{{ $country->name }}</option>
-                                @endforeach --}}
-                            </select>
-                            @error('country_id')<div class="invalid-feedback">{{ $message }}</div>@enderror
+                            <label for="issue">Issue <small class="text-muted">required</small></label>
+                            <input type="text" class="form-control @error('issue') is-invalid @enderror" id="issue" name="issue" value="{{ old('issue') }}" minlength="3" required autofocus>
+                            @error('issue')<div class="invalid-feedback">{{ $message }}</div>@enderror
                         </div>
 
                         {{-- Description Input --}}
                         <div class="form-group">
                             <label for="description">Description <small class="text-muted">required</small></label>
-                            <textarea class="form-control @error('description') is-invalid @enderror" id="description" aria-describedby="descriptionHelp" name="description" rows="9">{{ old('description') }}</textarea>
+                            <textarea class="form-control @error('description') is-invalid @enderror" id="description" aria-describedby="descriptionHelp" name="description" rows="9" required>{{ old('description') }}</textarea>
                             @error('description')
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @else
