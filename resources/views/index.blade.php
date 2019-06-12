@@ -20,6 +20,8 @@
                     <a class="btn btn-outline-light btn-lg" href="{{ route('servers.index') }}" role="button">Find Servers <i class="fal fa-arrow-right fa-fw"></i></a>
                 </div>
             </div>
+
+            {{-- Top Servers --}}
             <div>
                 <h2 class="text-white">Top Servers</h2>
                 @foreach ($servers->sortBy('rank')->take(3) as $server)
@@ -48,6 +50,8 @@
                     </div>
                 @endforeach
             </div>
+
+            {{-- New Servers --}}
             <div class="mb-3">
                 <h2 class="mt-3 text-white">New Servers</h2>
                 @foreach ($servers->sortByDesc('created_at')->take(3) as $server)
@@ -76,6 +80,7 @@
                     </div>
                 @endforeach
             </div>
+
             <small class="text-white-50">
                 Server data last updated {{ Carbon\Carbon::parse($servers->last()->pings->last()->created_at)->diffForHumans() }}
             </small>
@@ -85,13 +90,25 @@
 
 {{-- Statistics Section --}}
 <div class="container">
-    <h2>Statistics</h2>
-    <div class="row">
-        <div class="col-md-6 text-center">
-            <h3>{{ number_format($servers->count()) }}<small class="d-block text-muted">Servers</small></h3>
+    <h2 class="font-weight-bold">Statistics</h2>
+    <div class="card-deck">
+        <div class="card">
+            <div class="card-body">
+                <span class="fa-stack fa-2x align-middle">
+                    <i class="fas fa-circle fa-stack-2x text-dark"></i>
+                    <i class="fal fa-server fa-stack-1x fa-inverse"></i>
+                </span>
+                <h3 class="card-title d-inline-block mb-0 align-middle">{{ number_format($servers->count()) }}<small class="d-block text-muted">Servers</small></h3>
+            </div>
         </div>
-        <div class="col-md-6 text-center">
-            <h3>{{ number_format(App\ServerPing::pluck('players_current', 'server_id')->sum()) }}<small class="d-block text-muted">Players</small></h3>
+        <div class="card">
+            <div class="card-body">
+                <span class="fa-stack fa-2x align-middle">
+                    <i class="fas fa-circle fa-stack-2x text-dark"></i>
+                    <i class="fal fa-users fa-stack-1x fa-inverse"></i>
+                </span>
+                <h3 class="card-title d-inline-block mb-0 align-middle ">{{ number_format(App\ServerPing::pluck('players_current', 'server_id')->sum()) }}<small class="d-block text-muted">Players</small></h3>
+            </div>
         </div>
     </div>
 </div>
@@ -99,7 +116,7 @@
 
 {{-- FAQs Section --}}
 <div class="container">
-    <h2>FAQs</h2>
+    <h2 class="font-weight-bold">FAQs</h2>
     <h3>What is ServerLister?</h3>
     <p>
         ServerLister is a Minecraft server list made to help you find the best Minecraft servers in the wild. We make use of multiple
