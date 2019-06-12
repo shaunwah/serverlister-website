@@ -24,7 +24,7 @@ class StoreReport extends FormRequest
     public function rules()
     {
         return [
-            'type_id' => ['required', 'integer'],
+            'issue' => ['required', 'string', 'min:3'],
             'description' => ['required'],
         ];
     }
