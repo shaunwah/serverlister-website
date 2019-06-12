@@ -27,6 +27,7 @@ class CreateServerPingsTable extends Migration
             $table->integer('players_current')->nullable();
             $table->timestamps();
             $table->softDeletes();
+
             $table->foreign('user_id')->references('id')->on('users');
             $table->foreign('server_id')->references('id')->on('servers');
         });

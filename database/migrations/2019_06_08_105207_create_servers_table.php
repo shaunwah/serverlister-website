@@ -32,6 +32,7 @@ class CreateServersTable extends Migration
             $table->binary('voting_service_token')->nullable();
             $table->timestamps();
             $table->softDeletes();
+
             $table->foreign('user_id')->references('id')->on('users');
             $table->foreign('country_id')->references('id')->on('countries');
             $table->foreign('version_id')->references('id')->on('versions');

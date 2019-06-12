@@ -21,6 +21,7 @@ class CreateVersionsTable extends Migration
             $table->string('slug')->unique();
             $table->timestamps();
             $table->softDeletes();
+
             $table->foreign('user_id')->references('id')->on('users');
         });
     }
