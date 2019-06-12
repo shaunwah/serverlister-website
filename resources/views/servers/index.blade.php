@@ -1,7 +1,4 @@
 @extends('layouts.app')
-@section('header')
-<meta name="description" content="noindex, nofollow">
-@endsection
 @section('title', isset($filters) ? $filtered->name . ' - ' .  __('Servers') : __('Servers'))
 @section('content')
 @component('partials.alert')
