@@ -5,7 +5,7 @@
     <h1 class="font-weight-bold">Privacy Policy</h1>
     <h3>Who we are.</h3>
     <p>
-        We are ServerLister, a Minecraft server list built and based in Singapore.
+        We are ServerLister, a Minecraft server list, a product of Zodurus Labs based in Singapore.
     </p>
 
     <h3>What personal data we collect.</h3>
