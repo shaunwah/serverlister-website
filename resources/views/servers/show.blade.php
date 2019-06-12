@@ -59,8 +59,9 @@
                 </div>
                 <div class="col-auto">
                     <a class="btn btn-primary btn-sm" href="{{ route('servers.votes.create', $server->id) }}" role="button"><i class="fal fa-vote-yea fa-fw"></i> Vote</a>
+                    <a class="btn btn-warning btn-sm" href="{{ route('reports.create') }}" onClick="event.preventDefault(); document.getElementById('report-form').submit();" role="button"><i class="fal fa-flag-alt fa-fw"></i> Flag</a>
                     @can('update', $server)
-                        <a class="btn btn-secondary btn-sm" href="{{ route('servers.show.panel', $server->id) }}" role="button"><i class="fal fa-chart-line fa-fw"></i> Panel</a>
+{{--                         <a class="btn btn-secondary btn-sm" href="{{ route('servers.show.panel', $server->id) }}" role="button"><i class="fal fa-chart-line fa-fw"></i> Panel</a> --}}
                         <a class="btn btn-secondary btn-sm" href="{{ route('servers.edit', $server->id) }}" role="button"><i class="fal fa-edit fa-fw"></i> Edit</a>
                     @endcan
                 </div>
@@ -126,6 +127,13 @@
         <i class="fas {{ @$server->pings->last()->status == 1 ? 'fa-check-circle text-success' : 'fa-times-circle text-danger' }} fa-fw"></i> {{ Carbon\Carbon::parse(@$server->pings->last()->created_at)->diffForHumans() }}
     </small>
 </div>
+
+<form id="report-form" method="post" action="{{ route('reports.create') }}" style="display:none;">
+    @csrf
+    <input type="hidden" name="entity" value="server"></input>
+    <input type="hidden" name="entity_id" value="{{ $server->id }}"></input>
+    <input type="hidden" name="entity_name" value="{{ $server->name }}"></input>
+</form>
 @endsection
 @section('scripts')
 {{-- <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0/dist/Chart.min.js"></script> --}}
