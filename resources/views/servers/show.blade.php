@@ -27,12 +27,12 @@
                 <li class="list-inline-item"><span class="font-weight-bold">{{ __('Score') }}</span>&nbsp;
                     {{ number_format($server->score, 2) }}
                 </li>
-                @if ($server->pings->last()->status)
+                @if (@$server->pings->last()->status)
                     <li class="list-inline-item">
                         <span class="font-weight-bold">{{ __('Players') }}</span>&nbsp;
-                        {{ number_format($server->pings->last()->players_current) }}
+                        {{ number_format(@$server->pings->last()->players_current) }}
                         <span class="text-white-50">/</span>
-                        {{ number_format($server->pings->last()->players_total) }}
+                        {{ number_format(@$server->pings->last()->players_total) }}
                     </li>
                 @endif
                 <li class="list-inline-item"><span class="font-weight-bold">{{ __('Votes') }}</span>&nbsp;
