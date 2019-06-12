@@ -75,7 +75,7 @@
         {{-- Footer --}}
         <footer class="footer mt-auto">
             <div class="container-fluid text-white" style="background-color: hsl(0, 0%, 25%);">
-                <div class="container py-4">
+                <div class="container px-0 px-sm-3 py-4">
                     <div class="row align-items-top mb-3">
                         <div class="col-12 col-sm-auto mr-auto">
                             <h3>ServerLister</h3>
