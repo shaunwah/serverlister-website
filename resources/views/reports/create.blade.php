@@ -21,9 +21,13 @@
                         </p>
                         @if (request()->entity == 'server')
                             <p>
-                                ServerLister and its staff cannot mitigate issues regarding internal server matters.
-                                In such cases, you are advised to liase directly with the server staff to resolve your
+                                ServerLister and its staff cannot resolve issues regarding internal server matters.
+                                In such cases, you are advised to communicate directly with the server staff to resolve your
                                 issues.
+
+                                <span class="text-muted">
+                                    Automated server takeover/verification will be available soon.
+                                </span>
                             </p>
                         @endif
 
