@@ -26,18 +26,18 @@
     <script src="https://kit.fontawesome.com/ef9f9fad9d.js"></script>
 </head>
 <body>
-    <div id="app">
+    <div id="app" class="d-flex flex-column">
 
         {{-- Navbar --}}
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <div class="container">
-                <a class="navbar-brand" href="{{ route('index') }}"><i class="fal fa-server"></i></a>
+                <a class="navbar-brand" href="{{ route('home') }}"><i class="fal fa-server"></i></a>
                 <button class="navbar-toggler pr-0 border-0" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                     <div class="navbar-nav mr-auto">
-                            <a class="nav-item nav-link" href="{{ route('index') }}">Home {{-- <span class="sr-only">(current)</span> --}}</a>
+                            <a class="nav-item nav-link" href="{{ route('home') }}">Home {{-- <span class="sr-only">(current)</span> --}}</a>
                             <a class="nav-item nav-link" href="{{ route('servers.index') }}">Servers</a>
                             <a class="nav-item nav-link" href="{{ url('/support') }}">Support</a>
                     </div>
@@ -51,7 +51,7 @@
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{ Auth::user()->username }}</a>
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-                                    <a class="dropdown-item" href="{{ route('home') }}"><i class="fal fa-columns fa-fw"></i> {{ __('Dashboard') }}</a>
+                                    <a class="dropdown-item" href="{{ route('dashboard') }}"><i class="fal fa-columns fa-fw"></i> {{ __('Dashboard') }}</a>
                                     <a class="dropdown-item" href="{{ url('user/settings/account') }}"><i class="fal fa-cogs fa-fw"></i> {{ __('Settings') }}</a>
                                     <div class="dropdown-divider"></div>
                                     <a class="dropdown-item" href="{{ route('logout') }}" onClick="event.preventDefault(); document.getElementById('logout-form').submit();"><i class="fal fa-sign-out-alt fa-fw"></i> {{ __('Logout') }}</a>
@@ -66,21 +66,49 @@
             </div>
         </nav>
 
-        <main id="content" class="py-4">
+        <main role="main" class="py-4 flex-shrink-0">
 
             @yield('content')
 
         </main>
 
         {{-- Footer --}}
-        <footer class="footer">
-            <div class="container py-4 border-top">
-                <div class="row align-items-center text-muted">
-                    <div class="col-auto mr-auto">
-                        Crafted with <i class="fal fa-heart fa-sm"></i> in Singapore.
+        <style>
+            .footer {
+                width: 100%;
+            }
+        </style>
+        <footer class="footer mt-auto">
+            <div class="container-fluid text-white" style="background-color: hsl(0, 0%, 25%);">
+                <div class="container py-4">
+                    <div class="row align-items-top mb-3">
+                        <div class="col-12 col-sm-auto mr-auto">
+                            <h3>ServerLister</h3>
+                            <p>
+                                Crafted with <i class="fal fa-heart fa-sm"></i> in Singapore
+                            </p>
+                        </div>
+                        <div class="col-auto text-sm-right">
+                            <h5 class="font-weight-bold text-white-50">Popular Servers</h5>
+                            <ul class="list-unstyled">
+                                @foreach(App\Server::orderBy('rank', 'asc')->paginate(5) as $server)
+                                    <li><a href="{{ route('servers.show', $server->id) }}" class="text-reset">{{ $server->name }}</a></li>
+                                @endforeach
+                            </ul>
+                        </div>
+                        <div class="col-auto text-sm-right">
+                            <h5 class="font-weight-bold text-white-50">New Servers</h5>
+                            <ul class="list-unstyled">
+                                @foreach(App\Server::orderBy('created_at', 'desc')->paginate(5) as $server)
+                                    <li><a href="{{ route('servers.show', $server->id) }}" class="text-reset">{{ $server->name }}</a></li>
+                                @endforeach
+                            </ul>
+                        </div>
                     </div>
-                    <div class="col-auto">
-                        <span class="font-weight-bold">Zodurus Labs</span>
+                    <div>
+                        <ul class="list-inline text-white-50">
+                            <li class="list-inline-item"><a href="{{ url('/support/privacy-policy') }}" class="text-reset">{{ __('Privacy Policy') }}</a></li>
+                        </ul>
                     </div>
                 </div>
             </div>

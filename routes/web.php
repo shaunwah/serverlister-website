@@ -38,7 +38,7 @@ Route::patch('/user/settings/security', 'UserSettingsController@updateSecurity')
 Route::get('/', function () {
     return view('index');
 })->name('index');
-Route::get('/', 'HomeController@index')->name('index');
-Route::get('/home', 'HomeController@indexLoggedIn')->name('home');
+Route::get('/', 'HomeController@index')->name('home');
+Route::get('/dashboard', 'HomeController@indexLoggedIn')->name('dashboard');
 Route::get('/support', function () { return view('support.index'); });
 Route::get('/support/privacy-policy', function () { return view('support.privacy_policy'); });

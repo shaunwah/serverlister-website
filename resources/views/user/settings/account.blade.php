@@ -5,7 +5,6 @@
 @section('title', __('Account'))
 @section('content')
 <div class="container">
-    <a class="text-decoration-none" href="{{ route('index') }}"><i class="fal fa-chevron-left fa-fw"></i> {{ __('Home') }}</a>
     <h1 class="font-weight-bold">{{ __('Settings') }}</h1>
     <div class="row">
         <div class="col-md-3 mb-3 mb-md-0">
