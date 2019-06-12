@@ -13,6 +13,7 @@
                 @csrf
                 <div class="card mb-3">
                     <div class="card-body">
+
                         {{-- Name Input --}}
                         <div class="form-group">
                             <label for="name">Name <small class="text-muted">required</small></label>
@@ -27,7 +28,7 @@
                             @error('description')
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @else
-                                <small id="descriptionHelp" class="form-text text-muted">You may use <a href="{{ url('//guides.github.com/features/mastering-markdown/#examples') }}" target="_blank">Markdown</a> to stylise your description</small>
+                                <small id="descriptionHelp" class="form-text text-muted">You may use <a href="{{ url('//guides.github.com/features/mastering-markdown/#examples') }}" target="_blank">Markdown</a> to stylise your description.</small>
                             @enderror
                         </div>
 
