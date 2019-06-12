@@ -9,6 +9,10 @@ use Illuminate\Http\Request;
 
 class ServerVoteController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('throttle:6,1')->only('store', 'update');
+    }
     /**
      * Display a listing of the resource.
      *

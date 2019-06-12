@@ -20,6 +20,7 @@ class ServerController extends Controller
     public function __construct()
     {
         $this->middleware('auth')->except(['index', 'show']);
+        $this->middleware('throttle:3,1')->only('store', 'update');
     }
 
 
