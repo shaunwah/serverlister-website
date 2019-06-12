@@ -9,7 +9,7 @@ use Illuminate\Auth\Access\HandlesAuthorization;
 class ReportPolicy
 {
     use HandlesAuthorization;
-    
+
     /**
      * Determine whether the user can view any reports.
      *
@@ -18,7 +18,7 @@ class ReportPolicy
      */
     public function viewAny(User $user)
     {
-        //
+        return $user->id == 1;
     }
 
     /**
@@ -30,7 +30,7 @@ class ReportPolicy
      */
     public function view(User $user, Report $report)
     {
-        //
+        return $user->id == $report->user_id || $user->id == 1;
     }
 
     /**
@@ -53,7 +53,7 @@ class ReportPolicy
      */
     public function update(User $user, Report $report)
     {
-        //
+        return $user->id == $report->user_id || $user->id == 1;
     }
 
     /**
