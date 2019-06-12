@@ -25,7 +25,7 @@
             <div>
                 <h2 class="text-white">Top Servers</h2>
                 @foreach ($servers->sortBy('rank')->take(3) as $server)
-                    <div class="card bg-dark text-white {{ !$loop->last ? 'mb-3' : '' }} {{ $server->pings->last()->status == 1 ? 'shift-server-card-online' : 'shift-server-card-offline' }} shadow-none">
+                    <div class="card bg-dark text-white {{ !$loop->last ? 'mb-3' : '' }} {{ @$server->pings->last()->status == 1 ? 'shift-server-card-online' : 'shift-server-card-offline' }} shadow-none">
                         <div class="card-body px-3 py-1">
                             <div class="row no-gutters align-items-center">
                                 <div class="d-none d-sm-block col-sm-1 text-left">
@@ -55,7 +55,7 @@
             <div class="mb-3">
                 <h2 class="mt-3 text-white">New Servers</h2>
                 @foreach ($servers->sortByDesc('created_at')->take(3) as $server)
-                    <div class="card bg-dark text-white {{ !$loop->last ? 'mb-3' : '' }} {{ $server->pings->last()->status == 1 ? 'shift-server-card-online' : 'shift-server-card-offline' }} shadow-none">
+                    <div class="card bg-dark text-white {{ !$loop->last ? 'mb-3' : '' }} {{ @$server->pings->last()->status == 1 ? 'shift-server-card-online' : 'shift-server-card-offline' }} shadow-none">
                         <div class="card-body px-3 py-1">
                             <div class="row no-gutters align-items-center">
                                 <div class="d-none d-sm-block col-sm-1 text-left">

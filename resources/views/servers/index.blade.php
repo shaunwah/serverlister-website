@@ -42,7 +42,7 @@
 
             @if ($servers->count() > 0)
                 @foreach ($servers as $server)
-                    <div class="card {{ !$loop->last ? 'mb-3' : '' }} {{ $server->pings->last()->status == 1 ? 'shift-server-card-online' : 'shift-server-card-offline' }}">
+                    <div class="card {{ !$loop->last ? 'mb-3' : '' }} {{ @$server->pings->last()->status == 1 ? 'shift-server-card-online' : 'shift-server-card-offline' }}">
                         <div class="card-body px-3 py-1">
                             <div class="row no-gutters align-items-center">
                                 <div class="d-none d-sm-block col-sm-1 text-left">
