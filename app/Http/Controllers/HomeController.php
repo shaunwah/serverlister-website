@@ -24,7 +24,7 @@ class HomeController extends Controller
      */
     public function indexLoggedIn()
     {
-        $servers = collect(auth()->user()->servers->all());
+        $servers = collect(auth()->user()->servers->sortBy('rank')->all());
         return view('home', compact('servers'));
     }
 
