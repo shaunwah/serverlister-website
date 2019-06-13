@@ -26,7 +26,7 @@ class HomeController extends Controller
     public function indexLoggedIn()
     {
         $reports = Report::all();
-        $servers = collect(auth()->user()->servers->sortBy('rank')->all());
+        $servers = Server::where('user_id', auth()->id())->orderBy('rank', 'asc')->paginate(5);
         return view('dashboard', compact(['reports', 'servers']));
     }
 

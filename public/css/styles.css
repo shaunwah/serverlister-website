@@ -12,6 +12,11 @@ main {
     flex-shrink: 0;
 }
 
+ul.pagination {
+    margin-top: 16px;
+    justify-content: flex-end;
+}
+
 /* Font */
 body {
     -webkit-font-smoothing: antialiased;

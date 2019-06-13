@@ -92,6 +92,7 @@
                 </div>
             </div>
         @endforeach
+        {{ $servers->links() }}
     @else
         <div class="card bg-transparent border shadow-none">
             <div class="card-body text-muted text-center" id="card-no-data">
