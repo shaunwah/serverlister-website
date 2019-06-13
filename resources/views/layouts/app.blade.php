@@ -38,45 +38,47 @@
 </head>
 <body>
     <div id="app">
+        <header>
 
-        {{-- Navbar --}}
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-            <div class="container">
-                <a class="navbar-brand" href="{{ route('home') }}"><i class="fal fa-server"></i></a>
-                <button class="navbar-toggler pr-0 border-0" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-                    <div class="navbar-nav mr-auto">
-                            <a class="nav-item nav-link" href="{{ route('home') }}">Home {{-- <span class="sr-only">(current)</span> --}}</a>
-                            <a class="nav-item nav-link" href="{{ route('servers.index') }}">Servers</a>
-                            <a class="nav-item nav-link" href="{{ url('/support') }}">Support</a>
-                    </div>
-                    <div class="navbar-nav">
-                        @guest
-                            <a class="nav-item nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-                            @if (Route::has('register'))
-                                <a class="nav-item nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                            @endif
-                        @else
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{ Auth::user()->username }}</a>
-                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-                                    <a class="dropdown-item" href="{{ route('dashboard') }}"><i class="fal fa-columns fa-fw"></i> {{ __('Dashboard') }}</a>
-                                    <a class="dropdown-item" href="{{ url('user/settings/account') }}"><i class="fal fa-cogs fa-fw"></i> {{ __('Settings') }}</a>
-                                    <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item" href="{{ route('logout') }}" onClick="event.preventDefault(); document.getElementById('logout-form').submit();"><i class="fal fa-sign-out-alt fa-fw"></i> {{ __('Logout') }}</a>
-                                </div>
-                            </li>
-                            <form id="logout-form" method="post" action="{{ route('logout') }}" style="display:none;">
-                                @csrf
-                            </form>
-                        @endguest
+            {{-- Navbar --}}
+            <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+                <div class="container">
+                    <a class="navbar-brand" href="{{ route('home') }}"><i class="fal fa-server"></i></a>
+                    <button class="navbar-toggler pr-0 border-0" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                        <div class="navbar-nav mr-auto">
+                                <a class="nav-item nav-link" href="{{ route('home') }}">Home {{-- <span class="sr-only">(current)</span> --}}</a>
+                                <a class="nav-item nav-link" href="{{ route('servers.index') }}">Servers</a>
+                                <a class="nav-item nav-link" href="{{ url('/support') }}">Support</a>
+                        </div>
+                        <div class="navbar-nav">
+                            @guest
+                                <a class="nav-item nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                                @if (Route::has('register'))
+                                    <a class="nav-item nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                @endif
+                            @else
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{ Auth::user()->username }}</a>
+                                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
+                                        <a class="dropdown-item" href="{{ route('dashboard') }}"><i class="fal fa-columns fa-fw"></i> {{ __('Dashboard') }}</a>
+                                        <a class="dropdown-item" href="{{ url('user/settings/account') }}"><i class="fal fa-cogs fa-fw"></i> {{ __('Settings') }}</a>
+                                        <div class="dropdown-divider"></div>
+                                        <a class="dropdown-item" href="{{ route('logout') }}" onClick="event.preventDefault(); document.getElementById('logout-form').submit();"><i class="fal fa-sign-out-alt fa-fw"></i> {{ __('Logout') }}</a>
+                                    </div>
+                                </li>
+                                <form id="logout-form" method="post" action="{{ route('logout') }}" style="display:none;">
+                                    @csrf
+                                </form>
+                            @endguest
+                        </div>
                     </div>
                 </div>
-            </div>
-        </nav>
+            </nav>
 
+        </header>
         <main role="main" class="py-4">
 
             @yield('content')
@@ -84,40 +86,38 @@
         </main>
 
         {{-- Footer --}}
-        <footer class="footer mt-auto">
-            <div class="container-fluid" style="background-color: hsl(0, 0%, 25%);">
-                <div class="container px-0 px-sm-3 py-4 text-white">
-                    <div class="row align-items-top mb-3">
-                        <div class="col-12 col-sm-auto mr-auto">
-                            <h3>ServerLister</h3>
-                            <p class="text-white-50">
-                                Crafted with love in Singapore<br>
-                                Copyright &copy; Zodurus Labs
-                            </p>
-                        </div>
-                        <div class="col-auto col-sm-2">
-                            <h5 class="font-weight-bold text-white-50">Popular Servers</h5>
-                            <ul class="list-unstyled text-truncate">
-                                @foreach(App\Server::orderBy('rank', 'asc')->paginate(5) as $server)
-                                    <li><a href="{{ route('servers.show', $server->id) }}" class="text-reset">{{ $server->name }}</a></li>
-                                @endforeach
-                            </ul>
-                        </div>
-                        <div class="col-auto col-sm-2">
-                            <h5 class="font-weight-bold text-white-50">New Servers</h5>
-                            <ul class="list-unstyled text-truncate">
-                                @foreach(App\Server::orderBy('created_at', 'desc')->paginate(5) as $server)
-                                    <li><a href="{{ route('servers.show', $server->id) }}" class="text-reset">{{ $server->name }}</a></li>
-                                @endforeach
-                            </ul>
-                        </div>
+        <footer class="footer">
+            <div class="container py-4 text-white">
+                <div class="row align-items-top mb-3">
+                    <div class="col-12 col-sm-auto mr-auto">
+                        <h3>ServerLister</h3>
+                        <p class="text-white-50">
+                            Crafted with love in Singapore<br>
+                            Copyright &copy; Zodurus Labs
+                        </p>
                     </div>
-                    <div>
-                        <ul class="list-inline text-white-50">
-                            <li class="list-inline-item"><a href="{{ url('/support/privacy-policy') }}" class="text-reset">{{ __('Privacy Policy') }}</a></li>
-                            <li class="list-inline-item"><a href="{{ url('/support/terms-of-service') }}" class="text-reset">{{ __('Terms of Service') }}</a></li>
+                    <div class="col-auto col-sm-2">
+                        <h5 class="font-weight-bold text-white-50">Popular Servers</h5>
+                        <ul class="list-unstyled text-truncate">
+                            @foreach(App\Server::orderBy('rank', 'asc')->paginate(5) as $server)
+                                <li><a href="{{ route('servers.show', $server->id) }}" class="text-reset">{{ $server->name }}</a></li>
+                            @endforeach
                         </ul>
                     </div>
+                    <div class="col-auto col-sm-2">
+                        <h5 class="font-weight-bold text-white-50">New Servers</h5>
+                        <ul class="list-unstyled text-truncate">
+                            @foreach(App\Server::orderBy('created_at', 'desc')->paginate(5) as $server)
+                                <li><a href="{{ route('servers.show', $server->id) }}" class="text-reset">{{ $server->name }}</a></li>
+                            @endforeach
+                        </ul>
+                    </div>
+                </div>
+                <div>
+                    <ul class="list-inline text-white-50">
+                        <li class="list-inline-item"><a href="{{ url('/support/privacy-policy') }}" class="text-reset">{{ __('Privacy Policy') }}</a></li>
+                        <li class="list-inline-item"><a href="{{ url('/support/terms-of-service') }}" class="text-reset">{{ __('Terms of Service') }}</a></li>
+                    </ul>
                 </div>
             </div>
         </footer>

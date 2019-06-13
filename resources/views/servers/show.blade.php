@@ -13,8 +13,8 @@
 </style>
 {{-- Hero --}}
 <div id="server-show-hero-wrapper">
-    <div class="container-fluid mt-n4 mb-4" id="server-show-hero">
-        <div class="container px-0 px-sm-3 py-5 text-white">
+    <div class="mt-n4 mb-4" id="server-show-hero">
+        <div class="container py-5 text-white">
             <h1 class="font-weight-bold">
                 {{ $server->name }}
                 <small class="d-block text-white-50">{{ $server->host . ($server->port != 25565 ? ':' . $server->port : '') }}</small>
