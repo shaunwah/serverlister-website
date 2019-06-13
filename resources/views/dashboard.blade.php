@@ -1,4 +1,5 @@
 @extends('layouts.app')
+@section('meta_robots', 'noindex, nofollow')
 @section('title', __('Home'))
 @section('content')
 <div class="container-fluid mt-n4 mb-3 bg-secondary text-white">

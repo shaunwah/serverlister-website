@@ -1,9 +1,5 @@
 @extends('layouts.app')
-@section('header')
-<meta name="description" content="{{ $server->description }}">
-<meta name="og:description" content="{{ $server->description }}">
-<meta name="og:image" content="{{ $server->pings->last()->favicon }}">
-@endsection
+@section('meta_robots', 'noindex, nofollow')
 @section('title', $server->name)
 @section('content')
 @component('partials.alert')
