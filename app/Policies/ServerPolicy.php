@@ -30,7 +30,7 @@ class ServerPolicy
      */
     public function view(User $user, Server $server)
     {
-        return $user->id == $server->user_id;
+        //
     }
 
     /**

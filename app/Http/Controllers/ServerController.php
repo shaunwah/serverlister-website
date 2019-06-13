@@ -102,7 +102,7 @@ class ServerController extends Controller
 
     public function showPanel(Server $server)
     {
-        $this->authorize('view', $server);
+        $this->authorize('update', $server);
         return view('servers.show_panel', compact('server'));
     }
 
