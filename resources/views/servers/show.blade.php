@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('meta_description', Str::limit(strip_tags($parsedown->line($server->description)), 480))
+@section('meta_description', preg_replace('/&#?[a-z0-9]{2,8};/i', '', htmlspecialchars(strip_tags($parsedown->line($server->description)))))
 @section('header')
 <meta name="og:image" content="{{ asset($server->favicon) }}">
 @endsection
