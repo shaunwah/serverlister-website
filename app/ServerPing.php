@@ -50,7 +50,7 @@ class ServerPing extends Model
         if (isset($data))
         {
             $attributes['protocol'] = $data['version']['protocol'];
-            $attributes['description'] = null;
+            $attributes['description'] = null; // To be implemented
             $attributes['players_total'] = $data['players']['max'];
             $attributes['players_current'] = $data['players']['online'];
 
