@@ -122,7 +122,7 @@
 
 {{-- Infomation Bar --}}
 <div class="container">
-    <small class="text-muted" data-toggle="tooltip" data-placement="top" title="{{ __('Last updated at') }}">
+    <small class="text-muted" data-toggle="tooltip" data-placement="top" title="{{ __('Last pinged at') }}">
         <i class="fas {{ @$server->pings->last()->status == 1 ? 'fa-check-circle text-success' : 'fa-times-circle text-danger' }} fa-fw"></i> {{ Carbon\Carbon::parse(@$server->pings->last()->created_at)->diffForHumans() }}
     </small>
 </div>
