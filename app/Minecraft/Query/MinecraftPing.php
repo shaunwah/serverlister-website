@@ -220,12 +220,12 @@ class MinecraftPing
 
 	private function resolveSRV()
 	{
-		if( ip2long( gethostbyname($this->ServerAddress) ) !== false )
+		if( ip2long( $this->ServerAddress ) !== false )
 		{
 			return;
 		}
 
-		$Record = dns_get_record( '_minecraft._tcp.' . $this->ServerAddress, DNS_SRV );
+		$Record = @dns_get_record( '_minecraft._tcp.' . $this->ServerAddress, DNS_SRV );
 
 		if( empty( $Record ) )
 		{
