@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('meta_description', 'ServerLister is a Minecraft server list that helps you find the best servers in the wild.')
-@section('title', __('Welcome'))
+@section('title', __('Home'))
 @section('content')
 {{-- Hero --}}
 <div id="intro-hero-wrapper">

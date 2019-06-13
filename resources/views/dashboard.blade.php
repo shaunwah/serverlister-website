@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('meta_robots', 'noindex, nofollow')
-@section('title', __('Home'))
+@section('title', __('Dashboard'))
 @section('content')
 <div class="container-fluid mt-n4 mb-3 bg-secondary text-white">
     <div class="container px-0 px-sm-3 py-4">
