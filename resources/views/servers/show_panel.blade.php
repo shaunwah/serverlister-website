@@ -12,7 +12,7 @@
         </div>
         <div class="col-auto">
             @can('update', $server)
-                <a class="btn btn-secondary btn-sm" href="{{ route('servers.edit', $server->id) }}" role="button"><i class="fal fa-edit fa-fw"></i> Edit</a>
+                <a class="btn btn-secondary btn-sm" href="{{ route('servers.edit', $server->id) }}" role="button"><i class="fal fa-edit fa-fw"></i> {{ __('Edit') }}</a>
             @endcan
         </div>
     </div>

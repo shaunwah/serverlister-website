@@ -31,14 +31,14 @@
 
                         {{-- Issue Input --}}
                         <div class="form-group">
-                            <label for="issue">Issue <small class="text-muted">required</small></label>
+                            <label for="issue">{{ __('Issue') }}</label>
                             <input type="text" class="form-control @error('issue') is-invalid @enderror" id="issue" name="issue" value="{{ old('issue') }}" minlength="3" required autofocus>
                             @error('issue')<div class="invalid-feedback">{{ $message }}</div>@enderror
                         </div>
 
                         {{-- Description Input --}}
                         <div class="form-group">
-                            <label for="description">Description <small class="text-muted">required</small></label>
+                            <label for="description">{{ __('Description') }}</label>
                             <textarea class="form-control @error('description') is-invalid @enderror" id="description" aria-describedby="descriptionHelp" name="description" rows="9" required>{{ old('description') }}</textarea>
                             @error('description')
                                 <div class="invalid-feedback">{{ $message }}</div>
@@ -47,7 +47,7 @@
                             @enderror
                         </div>
 
-                        <button type="submit" class="btn btn-primary btn-block">Send Report</button>
+                        <button type="submit" class="btn btn-primary btn-block">{{ __('Send Report') }}</button>
                     </div>
                 </div>
             </form>

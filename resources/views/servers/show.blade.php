@@ -39,7 +39,7 @@
                 </li>
             </ul>
             @isset($server->link_website)
-                <a href="{{ $server->link_website }}" target="_blank" class="badge badge-pill badge-light">Website</a>
+                <a href="{{ $server->link_website }}" target="_blank" class="badge badge-pill badge-light">{{ __('Website') }}</a>
             @endisset
         </div>
     </div>
@@ -57,11 +57,11 @@
                     <h3 class="mb-0">{{ __('About') }}</h3>
                 </div>
                 <div class="col-auto">
-                    <a class="btn btn-primary btn-sm" href="{{ route('servers.votes.create', $server->id) }}" role="button"><i class="fal fa-vote-yea fa-fw"></i> Vote</a>
-                    <a class="btn btn-warning btn-sm" href="{{ route('reports.create') }}" onClick="event.preventDefault(); document.getElementById('report-form').submit();" role="button"><i class="fal fa-exclamation-triangle fa-fw"></i> Report</a>
+                    <a class="btn btn-primary btn-sm" href="{{ route('servers.votes.create', $server->id) }}" role="button"><i class="fal fa-vote-yea fa-fw"></i> {{ __('Vote') }}</a>
+                    <a class="btn btn-warning btn-sm" href="{{ route('reports.create') }}" onClick="event.preventDefault(); document.getElementById('report-form').submit();" role="button"><i class="fal fa-exclamation-triangle fa-fw"></i> {{ __('Report') }}</a>
                     @can('update', $server)
 {{--                         <a class="btn btn-secondary btn-sm" href="{{ route('servers.show.panel', $server->id) }}" role="button"><i class="fal fa-chart-line fa-fw"></i> Panel</a> --}}
-                        <a class="btn btn-secondary btn-sm" href="{{ route('servers.edit', $server->id) }}" role="button"><i class="fal fa-edit fa-fw"></i> Edit</a>
+                        <a class="btn btn-secondary btn-sm" href="{{ route('servers.edit', $server->id) }}" role="button"><i class="fal fa-edit fa-fw"></i> {{ __('Edit') }}</a>
                     @endcan
                 </div>
             </div>
@@ -77,13 +77,13 @@
             {{-- Information Section --}}
             <h3>{{ __('Information') }}</h3>
             <dl class="row">
-                <dt class="col-sm-3">Game</dt>
+                <dt class="col-sm-3">{{ __('Game') }}</dt>
                 <dd class="col-sm-9">Minecraft: Java Edition</dd>
-                <dt class="col-sm-3">Version</dt>
+                <dt class="col-sm-3">{{ __('Version') }}</dt>
                 <dd class="col-sm-9"><a href="{{ url('/servers/versions/' . $server->version->slug) }}">{{ $server->version->name }}</a></dd>
-                <dt class="col-sm-3">Type</dt>
+                <dt class="col-sm-3">{{ __('Type') }}</dt>
                 <dd class="col-sm-9"><a href="{{ url('/servers/types/' . $server->type->slug) }}">{{ $server->type->name }}</a></dd>
-                <dt class="col-sm-3">Country</dt>
+                <dt class="col-sm-3">{{ __('Country') }}</dt>
                 <dd class="col-sm-9"><a href="{{ url('/servers/countries/' . $server->country->slug) }}">{{ $server->country->name }}</a></dd>
             </dl>
             <hr>
@@ -94,7 +94,7 @@
 
             {{-- Votes Section --}}
             @if ($server->votes->count() > 0)
-                <h3>{{ __('Players') }} <small class="text-muted">Voters</small></h3>
+                <h3>{{ __('Players') }} <small class="text-muted">{{ __('Voters') }}</small></h3>
                 @foreach ($server->votes->sortByDesc('id')->pluck('username')->countBy()->keys() as $key => $val)
                     @if ($val != null)
                         <img src="{{ url('https://minotar.net/avatar/' . $val. '/24') }}" class="img-fluid rounded" data-toggle="tooltip" data-placement="top" title="{{ $val }}">

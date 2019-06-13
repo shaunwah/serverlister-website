@@ -14,7 +14,7 @@
 
                         {{-- Username Input --}}
                         <div class="form-group">
-                            <label for="username">Username <small class="text-muted">required</small></label>
+                            <label for="username">{{ __('Username') }}</label>
                             <input type="text" class="form-control @error('username') is-invalid @enderror" id="username" aria-describedby="usernameHelp" name="username" value="{{ old('username') }}" required autocomplete="username" autofocus>
                             @error('username')
                                 <div class="invalid-feedback">{{ $message }}</div>
@@ -23,7 +23,7 @@
                             @enderror
                         </div>
 
-                        <button type="submit" class="btn btn-success btn-block">Vote for {{ $server->name }}</button>
+                        <button type="submit" class="btn btn-success btn-block">{{ __('Vote for :server_name', ['server_name' => $server->name]) }}</button>
                     </div>
                 </div>
             </form>

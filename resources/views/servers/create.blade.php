@@ -14,14 +14,14 @@
 
                         {{-- Name Input --}}
                         <div class="form-group">
-                            <label for="name">Name <small class="text-muted">required</small></label>
+                            <label for="name">{{ __('Name') }}</label>
                             <input type="text" class="form-control @error('name') is-invalid @enderror" id="name" name="name" value="{{ old('name') }}" minlength="3" maxlength="24" placeholder="My Minecraft Server" required autofocus>
                             @error('name')<div class="invalid-feedback">{{ $message }}</div>@enderror
                         </div>
 
                         {{-- Description Input --}}
                         <div class="form-group">
-                            <label for="description">Description</label>
+                            <label for="description">{{ __('Description') }} <small class="text-muted">{{ __('optional') }}</small></label>
                             <textarea class="form-control @error('description') is-invalid @enderror" id="description" aria-describedby="descriptionHelp" name="description" rows="9">{{ old('description') }}</textarea>
                             @error('description')
                                 <div class="invalid-feedback">{{ $message }}</div>
@@ -33,12 +33,12 @@
                         {{-- Host & Port Input --}}
                         <div class="form-row">
                             <div class="form-group col-md-9">
-                                <label for="host">Host <small class="text-muted">required</small></label>
+                                <label for="host">{{ __('Host') }}</label>
                                 <input type="text" class="form-control @error('host') is-invalid @enderror" id="host" name="host" value="{{ old('host') }}" minlength="3" maxlength="24" placeholder="play.server.xyz" required>
                                 @error('host')<div class="invalid-feedback">{{ $message }}</div>@enderror
                             </div>
                             <div class="form-group col-md-3">
-                                <label for="port">Port <small class="text-muted">required</small></label>
+                                <label for="port">{{ __('Port') }}</label>
                                 <input type="text" class="form-control @error('port') is-invalid @enderror" id="port" name="port" value="{{ old('port', 25565) }}" placeholder="25565" required>
                                 @error('port')<div class="invalid-feedback">{{ $message }}</div>@enderror
                             </div>
@@ -48,7 +48,7 @@
 
                         {{-- Country Input --}}
                         <div class="form-group">
-                            <label for="country">Country <small class="text-muted">required</small></label>
+                            <label for="country">{{ __('Country') }}</label>
                             <select class="form-control @error('country_id') is-invalid @enderror" id="country" name="country_id" required>
                                 <option disabled selected value="">{{ __('select a country') }}</option>
                                 @foreach ($countries as $country)
@@ -61,7 +61,7 @@
                         {{-- Version & Type Input --}}
                         <div class="form-row">
                             <div class="form-group col-md-6">
-                                <label for="version">Version <small class="text-muted">required</small></label>
+                                <label for="version">{{ __('Version') }}</label>
                                 <select class="form-control @error('version_id') is-invalid @enderror" id="version" name="version_id" required>
                                     <option disabled selected value="">{{ __('select a version') }}</option>
                                     @foreach ($versions as $version)
@@ -71,7 +71,7 @@
                                 @error('country_id')<div class="invalid-feedback">{{ $message }}</div>@enderror
                             </div>
                             <div class="form-group col-md-6">
-                                <label for="type">Type <small class="text-muted">required</small></label>
+                                <label for="type">{{ __('Type') }}</label>
                                 <select class="form-control @error('type_id') is-invalid @enderror" id="type" name="type_id" required>
                                     <option disabled selected value="">{{ __('select a type') }}</option>
                                     @foreach ($types as $type)
@@ -85,8 +85,8 @@
 
                         {{-- Website Link Input --}}
                         <div class="form-group">
-                            <label for="link_website">Website</label>
-                            <input type="url" class="form-control @error('link_website') is-invalid @enderror" id="link_website" name="link_website" value="{{ old('link_website') }}">
+                            <label for="link_website">{{ __('Website') }} <small class="text-muted">{{ __('optional') }}</small></label>
+                            <input type="url" class="form-control @error('link_website') is-invalid @enderror" id="link_website" name="link_website" value="{{ old('link_website') }}" placeholder="https://www.minecraft.net/">
                             @error('link_website')<div class="invalid-feedback">{{ $message }}</div>@enderror
                         </div>
                     </div>
@@ -104,12 +104,12 @@
                         {{-- Voting Service Host & Port Input --}}
                         <div class="form-row">
                             <div class="form-group col-md-9">
-                                <label for="voting_service_host">Host</label>
+                                <label for="voting_service_host">{{ __('Host') }} <small class="text-muted">{{ __('optional') }}</small></label>
                                 <input type="text" class="form-control @error('voting_service_host') is-invalid @enderror" id="voting_service_host" name="voting_service_host" value="{{ old('voting_service_host') }}" minlength="3" maxlength="24">
                                 @error('voting_service_host')<div class="invalid-feedback">{{ $message }}</div>@enderror
                             </div>
                             <div class="form-group col-md-3">
-                                <label for="voting_service_port">Port</label>
+                                <label for="voting_service_port">{{ __('Port') }} <small class="text-muted">{{ __('optional') }}</small></label>
                                 <input type="text" class="form-control @error('voting_service_port') is-invalid @enderror" id="voting_service_port" name="voting_service_port" value="{{ old('voting_service_port', 8192) }}" placeholder="8192">
                                 @error('voting_service_port')<div class="invalid-feedback">{{ $message }}</div>@enderror
                             </div>
@@ -117,7 +117,7 @@
 
                         {{-- Voting Service Token Input --}}
                         <div class="form-group">
-                            <label for="voting_service_token">Token</label>
+                            <label for="voting_service_token">{{ __('Token') }} <small class="text-muted">{{ __('optional') }}</small></label>
                             <input type="text" class="form-control @error('voting_service_token') is-invalid @enderror" id="voting_service_token" aria-describedby="voting_service_tokenHelp" name="voting_service_token" value="{{ old('voting_service_token') }}">
                             @error('voting_service_token')
                                 <div class="invalid-feedback">{{ $message }}</div>
@@ -126,7 +126,7 @@
                             @enderror
                         </div>
 
-                        <button type="submit" class="btn btn-success btn-block">Create Server</button>
+                        <button type="submit" class="btn btn-success btn-block">{{ __('Create Server') }}</button>
                     </div>
                 </div>
             </form>
