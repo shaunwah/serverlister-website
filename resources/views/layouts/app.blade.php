@@ -7,8 +7,8 @@
     <link rel="canonical" href="{{ secure_url(url()->current()) }}">
     @if (View::hasSection('meta_description'))
         <meta name="description" content="@yield('meta_description')">
-        <meta name="og:description" content="@yield('meta_description')">
     @endif
+    <meta name="og:description" content="@yield('meta_description', 'ServerLister is a Minecraft server list that helps you find the best servers in the wild.')">
     <meta name="og:type" content="website">
     <meta name="og:site_name" content="ServerLister">
     <meta name="og:title" content="@yield('title', 'Page')">
