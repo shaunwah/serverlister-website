@@ -17,7 +17,7 @@ class CountryController extends Controller
     {
         $filtered = $country;
         $filters = Country::orderBy('name', 'asc')->get();
-        $servers = $server->where('country_id', $country->id)->orderBy('rank', 'asc')->paginate(10);
+        $servers = $server->where('country_id', $country->id)->orderBy('rank', 'asc')->paginate(25);
         return view('servers.index', compact(['servers', 'filtered', 'filters']));
     }
 

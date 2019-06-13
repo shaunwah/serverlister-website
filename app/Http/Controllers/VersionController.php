@@ -17,7 +17,7 @@ class VersionController extends Controller
     {
         $filtered = $version;
         $filters = Version::orderBy('id', 'desc')->get();
-        $servers = $server->where('version_id', $version->id)->orderBy('rank', 'asc')->paginate(10);
+        $servers = $server->where('version_id', $version->id)->orderBy('rank', 'asc')->paginate(25);
         return view('servers.index', compact(['servers', 'filtered', 'filters']));
     }
 

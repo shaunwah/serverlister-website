@@ -17,7 +17,7 @@ class ServerTypeController extends Controller
     {
         $filtered = $type;
         $filters = ServerType::orderBy('name', 'asc')->get();
-        $servers = $server->where('type_id', $type->id)->orderBy('rank', 'asc')->paginate(10);
+        $servers = $server->where('type_id', $type->id)->orderBy('rank', 'asc')->paginate(25);
         return view('servers.index', compact(['servers', 'filtered', 'filters']));
     }
 
