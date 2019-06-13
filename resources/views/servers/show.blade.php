@@ -86,11 +86,11 @@
                 <dt class="col-sm-3">{{ __('Country') }}</dt>
                 <dd class="col-sm-9"><a href="{{ url('/servers/countries/' . $server->country->slug) }}">{{ $server->country->name }}</a></dd>
             </dl>
-            <hr>
+{{--             <hr>
             <dl class="row">
                 <dt class="col-sm-3">Creator</dt>
                 <dd class="col-sm-9">{{ $server->user->username }}</dd>
-            </dl>
+            </dl> --}}
 
             {{-- Votes Section --}}
             @if ($server->votes->count() > 0)
