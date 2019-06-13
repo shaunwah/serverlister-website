@@ -1,4 +1,5 @@
 @extends('layouts.app')
+@section('meta_description', isset($filters) ? __('Displaying Minecraft servers related to :filtered_name', ['filtered_name' => $filtered->name]) : __('Displaying all Minecraft servers on ServerLister.'))
 @section('title', isset($filters) ? $filtered->name . ' - ' .  __('Servers') : __('Servers'))
 @section('content')
 @component('partials.alert')
