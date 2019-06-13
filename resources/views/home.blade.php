@@ -1,8 +1,5 @@
 @extends('layouts.app')
-@section('header')
-<meta name="description" content="ServerLister helps you to find the best Minecraft servers out there.">
-<meta name="og:description" content="ServerLister helps you to find the best Minecraft servers out there.">
-@endsection
+@section('meta_description', 'ServerLister is a Minecraft server list that helps you find the best servers in the wild.')
 @section('title', __('Welcome'))
 @section('content')
 {{-- Hero --}}

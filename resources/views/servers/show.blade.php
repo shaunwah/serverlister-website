@@ -1,7 +1,6 @@
 @extends('layouts.app')
+@section('meta_description', Str::limit(strip_tags($parsedown->line($server->description)), 160))
 @section('header')
-<meta name="description" content="{{ $parsedown->line($server->description) }}">
-<meta name="og:description" content="{{ $parsedown->line($server->description) }}">
 <meta name="og:image" content="{{ asset($server->favicon) }}">
 @endsection
 @section('title', $server->name)

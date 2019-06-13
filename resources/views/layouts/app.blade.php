@@ -3,15 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="keywords" content="minecraft, minecraft asia, minecraft singapore, minecraft server, minecraft servers, best minecraft server, best minecraft servers, server list, best server list, top server list, top list">
     <meta name="robots" content="@yield('meta_robots', 'index, follow')">
-
+    <link rel="canonical" href="{{ secure_url(url()->current()) }}">
+    @if (View::hasSection('meta_description'))
+        <meta name="description" content="@yield('meta_description')">
+        <meta name="og:description" content="@yield('meta_description')">
+    @endif
     <meta name="og:type" content="website">
     <meta name="og:site_name" content="ServerLister">
     <meta name="og:title" content="@yield('title', 'Page')">
     <meta name="og:url" content="{{ url()->current() }}">
-
-    <link rel="canonical" href="{{ secure_url(url()->current()) }}">
 
     @yield('header')
 
@@ -25,11 +26,7 @@
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
-
         gtag('config', 'UA-142060979-1');
-        {{-- @auth
-            gtag('set', {'user_id': '{{ auth()->id() }}'});
-        @endauth --}}
     </script>
 
     <script defer src="https://kit.fontawesome.com/ef9f9fad9d.js"></script>

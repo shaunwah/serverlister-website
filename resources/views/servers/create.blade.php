@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('meta_robots', 'noindex, nofollow')
+@section('meta_robots', 'noindex')
 @section('title', __('Create - Servers'))
 @section('content')
 <div class="container">

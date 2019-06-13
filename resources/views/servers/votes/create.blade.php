@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('meta_robots', 'noindex, nofollow')
+@section('meta_robots', 'noindex')
 @section('title', $server->name . ' - ' . __('Vote'))
 @section('content')
 <div class="container">
