@@ -27,7 +27,23 @@
                     </div>
                 </div>
             </form>
+            @if ($server->votes->count() > 0)
+                <div class="mt-3">
+                    @foreach ($server->votes->sortByDesc('id')->pluck('username')->countBy()->keys() as $key => $val)
+                        @if ($val != null)
+                            <img src="{{ url('https://minotar.net/avatar/' . $val. '/24') }}" class="img-fluid rounded" data-toggle="tooltip" data-placement="top" title="{{ $val }}">
+                        @endif
+                    @endforeach
+                </div>
+            @endif
         </div>
     </div>
 </div>
+@endsection
+@section('scripts')
+<script>
+    $(function () {
+      $('[data-toggle="tooltip"]').tooltip()
+    })
+</script>
 @endsection

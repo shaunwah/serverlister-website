@@ -137,33 +137,33 @@
 @section('scripts')
 {{-- <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0/dist/Chart.min.js"></script> --}}
 <script>
-$('#description img').addClass('img-fluid');
-$(function () {
-  $('[data-toggle="tooltip"]').tooltip()
-})
-{{-- Needs optimisation
-Chart.defaults.global.defaultFontFamily = 'Nunito';
-var ctx = document.getElementById('canvas-player-history').getContext('2d');
-var playerDataLabels = {!! $playerDataLabels !!};
-var playerData = {!! $playerData !!};
-var myChart = new Chart(ctx, {
-    type: 'line',
-    data: {
-        labels: playerDataLabels,
-        datasets: [{
-            label: 'Max Players',
-            data: playerData
-        }]
-    },
-    options: {
-        scales: {
-            yAxes: [{
-                ticks: {
-                    beginAtZero: true
-                }
+    $('#description img').addClass('img-fluid');
+    $(function () {
+      $('[data-toggle="tooltip"]').tooltip()
+    })
+    {{-- Needs optimisation
+    Chart.defaults.global.defaultFontFamily = 'Nunito';
+    var ctx = document.getElementById('canvas-player-history').getContext('2d');
+    var playerDataLabels = {!! $playerDataLabels !!};
+    var playerData = {!! $playerData !!};
+    var myChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: playerDataLabels,
+            datasets: [{
+                label: 'Max Players',
+                data: playerData
             }]
+        },
+        options: {
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: true
+                    }
+                }]
+            }
         }
-    }
-}); --}}
+    }); --}}
 </script>
 @endsection
