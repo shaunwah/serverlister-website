@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', __('Support'))
+@section('title', __('Privacy Policy'))
 @section('content')
 <div class="container">
     <h1 class="font-weight-bold">Privacy Policy</h1>
