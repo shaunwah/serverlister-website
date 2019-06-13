@@ -29,7 +29,7 @@
         gtag('config', 'UA-142060979-1');
     </script>
 
-    <script defer src="https://kit.fontawesome.com/ef9f9fad9d.js"></script>
+    <script src="https://kit.fontawesome.com/ef9f9fad9d.js"></script>
 
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     <link rel="stylesheet" href="{{ asset('css/flag-icon.min.css') }}">
