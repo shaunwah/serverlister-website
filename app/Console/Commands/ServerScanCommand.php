@@ -49,11 +49,18 @@ class ServerScanCommand extends Command
 
         $grouped2 = $grouped1->filter(function ($server) {
             return $server->count() > 1;
-        })->all();
+        });
 
-        foreach ($grouped2 as $ipAddress => $server)
+        if ($grouped2->count() > 0)
         {
-            $this->info($ipAddress . ' has duplicated server IDs: ' . $server);
+            foreach ($grouped2->all() as $ipAddress => $server)
+            {
+                $this->info($ipAddress . ' has duplicated server IDs: ' . $server);
+            }
+        }
+        else
+        {
+                $this->info('No duplicated server IP addresses found.');
         }
 
         $this->info('Finished scanning servers!');
