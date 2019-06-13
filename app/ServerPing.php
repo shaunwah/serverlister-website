@@ -42,26 +42,26 @@ class ServerPing extends Model
         $data = $this->queryServer($server->host, $server->port);
 
         $attributes = [
-            'server_id' => $server->id,
             'rank' => $server->rank,
             'score' => $server->score,
             'status' => isset($data['version']['protocol']),
-            // 'favicon' => (isset($data['favicon']) ? $data['favicon'] : null),
-            'protocol' => $data['version']['protocol'],
-            'description' => null, //!!!
-            'players_total' => $data['players']['max'],
-            'players_current' => $data['players']['online'],
         ];
-        $server->addPing($attributes);
 
-        if (isset($data['favicon']))
+        if (isset($data))
         {
-            $dataFavicon = base64_decode(preg_replace('#^data:image/\w+;base64,#i', '', $data['favicon']));
-            $file = Storage::disk('local')->put('public/servers/favicons/' . md5($server->id) . '.png', $dataFavicon);
-            $attributes = [
-                'favicon' => Storage::url('servers/favicons/' . md5($server->id) . '.png'),
-            ];
-            $server->update($attributes);
+            $attributes['protocol'] = $data['version']['protocol'];
+            $attributes['description'] = null;
+            $attributes['players_total'] = $data['players']['max'];
+            $attributes['players_current'] = $data['players']['online'];
+
+            if (isset($data['favicon']))
+            {
+                $dataFavicon = base64_decode(preg_replace('#^data:image/\w+;base64,#i', '', $data['favicon']));
+                $file = Storage::disk('local')->put('public/servers/favicons/' . md5($server->id) . '.png', $dataFavicon);
+                $server->update(['favicon' => Storage::url('servers/favicons/' . md5($server->id) . '.png')]);
+            }
         }
+
+        $server->addPing($attributes);
     }
 }
