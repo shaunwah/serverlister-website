@@ -22,11 +22,22 @@
 
     <title>@yield('title', 'Page') - ServerLister</title>
 
+    {{-- Global site tag (gtag.js) - Google Analytics --}}
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-142060979-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'UA-142060979-1');
+    </script>
+
     <script defer src="https://kit.fontawesome.com/ef9f9fad9d.js"></script>
 
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     <link rel="stylesheet" href="{{ asset('css/flag-icon.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
+
 </head>
 <body>
     <div id="app">
