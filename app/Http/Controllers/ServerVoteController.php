@@ -13,6 +13,7 @@ class ServerVoteController extends Controller
     {
         $this->middleware('throttle:6,1')->only('store', 'update');
     }
+
     /**
      * Display a listing of the resource.
      *
