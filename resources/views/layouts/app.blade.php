@@ -27,9 +27,9 @@
         gtag('js', new Date());
 
         gtag('config', 'UA-142060979-1');
-        @auth
+        {{-- @auth
             gtag('set', {'user_id': '{{ auth()->id() }}'});
-        @endauth
+        @endauth --}}
     </script>
 
     <script defer src="https://kit.fontawesome.com/ef9f9fad9d.js"></script>
