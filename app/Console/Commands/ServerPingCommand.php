@@ -20,7 +20,7 @@ class ServerPingCommand extends Command
      *
      * @var string
      */
-    protected $description = 'Command description';
+    protected $description = 'Pings all servers in the database.';
 
     /**
      * Create a new command instance.

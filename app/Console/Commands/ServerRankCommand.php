@@ -19,7 +19,7 @@ class ServerRankCommand extends Command
      *
      * @var string
      */
-    protected $description = 'Command description';
+    protected $description = 'Ranks all servers in the database.';
 
     /**
      * Create a new command instance.
