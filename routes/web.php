@@ -43,9 +43,6 @@ Route::patch('/user/settings/account', 'UserSettingsController@updateAccount');
 Route::patch('/user/settings/security', 'UserSettingsController@updateSecurity');
 
 // Etc
-Route::get('/', function () {
-    return view('index');
-})->name('index');
 Route::get('/', 'HomeController@index')->name('home');
 Route::get('/dashboard', 'HomeController@indexLoggedIn')->name('dashboard');
 Route::get('/support', function () { return view('support.index'); });
