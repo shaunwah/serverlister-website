@@ -6,6 +6,9 @@
     <meta name="keywords" content="minecraft, minecraft asia, minecraft singapore, minecraft server, minecraft servers, best minecraft server, best minecraft servers, server list, best server list, top server list, top list">
     <meta name="robots" content="@yield('meta_robots', 'index, follow')">
 
+    {{-- Verification Tags --}}
+    <meta name="msvalidate.01" content="E48147192B8FF13081852B78DCAA72F7">
+
     <meta name="og:type" content="website">
     <meta name="og:site_name" content="ServerLister">
     <meta name="og:title" content="@yield('title', 'Page')">
