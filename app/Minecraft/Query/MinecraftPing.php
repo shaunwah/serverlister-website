@@ -220,7 +220,7 @@ class MinecraftPing
 
 	private function resolveSRV()
 	{
-		if( ip2long( $this->ServerAddress ) !== false )
+		if( ip2long( gethostbyname($this->ServerAddress) ) !== false )
 		{
 			return;
 		}
