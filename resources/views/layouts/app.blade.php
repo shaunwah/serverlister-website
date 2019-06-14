@@ -99,7 +99,7 @@
                     <div class="col-auto col-sm-2">
                         <h5 class="font-weight-bold text-white-50">Popular Servers</h5>
                         <ul class="list-unstyled text-truncate">
-                            @foreach(App\Server::orderBy('rank', 'asc')->paginate(5) as $server)
+                            @foreach(App\Server::orderBy('rank', 'asc')->take(5)->get() as $server)
                                 <li><a href="{{ route('servers.show', $server->id) }}" class="text-reset">{{ $server->name }}</a></li>
                             @endforeach
                         </ul>
@@ -107,7 +107,7 @@
                     <div class="col-auto col-sm-2">
                         <h5 class="font-weight-bold text-white-50">New Servers</h5>
                         <ul class="list-unstyled text-truncate">
-                            @foreach(App\Server::orderBy('created_at', 'desc')->paginate(5) as $server)
+                            @foreach(App\Server::orderBy('created_at', 'desc')->take(5)->get() as $server)
                                 <li><a href="{{ route('servers.show', $server->id) }}" class="text-reset">{{ $server->name }}</a></li>
                             @endforeach
                         </ul>
