@@ -50,3 +50,4 @@ Route::get('/', 'HomeController@index')->name('home');
 Route::get('/support', function () { return view('support.index'); });
 Route::get('/support/privacy-policy', function () { return view('support.privacy_policy'); });
 Route::get('/support/terms-of-service', function () { return view('support.terms_of_service'); });
+Route::get('/support/rules', function () { return view('support.rules'); });
