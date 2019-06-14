@@ -4,6 +4,8 @@
 @endsection
 @section('title', __('Account'))
 @section('content')
+@component('partials.alert')
+@endcomponent
 <div class="container">
     <h1 class="font-weight-bold">{{ __('Settings') }}</h1>
     <div class="row">
@@ -18,7 +20,7 @@
             </div>
         </div>
         <div class="col-md-9">
-            <form method="post" action="{{ url('user/settings') }}">
+            <form method="post" action="{{ url('user/settings/account') }}">
                 @method('patch')
                 @csrf
                 <div class="card">

@@ -4,6 +4,8 @@
 @endsection
 @section('title', __('Security'))
 @section('content')
+@component('partials.alert')
+@endcomponent
 <div class="container">
     <h1 class="font-weight-bold">{{ __('Settings') }}</h1>
     <div class="row">
