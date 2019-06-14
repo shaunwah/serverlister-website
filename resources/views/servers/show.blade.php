@@ -23,9 +23,6 @@
                 <li class="list-inline-item"><span class="font-weight-bold">{{ __('Rank') }}</span>&nbsp;
                     {{ number_format($server->rank) }}
                 </li>
-                <li class="list-inline-item"><span class="font-weight-bold">{{ __('Score') }}</span>&nbsp;
-                    {{ number_format($server->score, 2) }}
-                </li>
                 @if (@$server->pings->last()->status)
                     <li class="list-inline-item">
                         <span class="font-weight-bold">{{ __('Players') }}</span>&nbsp;
