@@ -14,6 +14,9 @@
 // Auth
 Auth::routes();
 
+// Admin Control Panel
+Route::get('/acp', 'AdminControlPanelController@index')->name('acp.dashboard');
+
 // Servers
 Route::resource('/servers', 'ServerController');
 Route::get('/servers/{server}/panel', 'ServerController@showPanel')->name('servers.show.panel');
@@ -41,10 +44,11 @@ Route::get('/user/settings/account', 'UserSettingsController@editAccount');
 Route::get('/user/settings/security', 'UserSettingsController@editSecurity');
 Route::patch('/user/settings/account', 'UserSettingsController@updateAccount');
 Route::patch('/user/settings/security', 'UserSettingsController@updateSecurity');
+Route::get('/user/dashboard', 'HomeController@indexDashboard')->name('dashboard');
 
 // Etc
 Route::get('/', 'HomeController@index')->name('home');
-Route::get('/dashboard', 'HomeController@indexLoggedIn')->name('dashboard');
+
 Route::get('/support', function () { return view('support.index'); });
 Route::get('/support/privacy-policy', function () { return view('support.privacy_policy'); });
 Route::get('/support/terms-of-service', function () { return view('support.terms_of_service'); });
