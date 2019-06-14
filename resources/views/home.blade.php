@@ -37,7 +37,7 @@
             </div>
 
             <small class="text-white-50">
-                Server data last updated {{ Carbon\Carbon::parse($servers->sortBy('rank')->first()->pings->last()->created_at)->diffForHumans() }}
+                Server information last retrieved {{ Carbon\Carbon::parse($servers->sortBy('rank')->first()->pings->last()->created_at)->diffForHumans() }}
             </small>
         </div>
     </div>
