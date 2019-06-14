@@ -9,177 +9,192 @@
 
 <url>
   <loc>https://serverlister.io/</loc>
-  <changefreq>always</changefreq>
+  <changefreq>hourly</changefreq>
   <priority>1.00</priority>
 </url>
 <url>
   <loc>https://serverlister.io/servers</loc>
-  <changefreq>always</changefreq>
+  <changefreq>hourly</changefreq>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://serverlister.io/support</loc>
-  <changefreq>always</changefreq>
+  <changefreq>hourly</changefreq>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://serverlister.io/login</loc>
-  <changefreq>always</changefreq>
+  <changefreq>hourly</changefreq>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://serverlister.io/register</loc>
-  <changefreq>always</changefreq>
+  <changefreq>hourly</changefreq>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://serverlister.io/servers/5</loc>
-  <changefreq>always</changefreq>
+  <changefreq>hourly</changefreq>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://serverlister.io/servers/11</loc>
-  <changefreq>always</changefreq>
+  <changefreq>hourly</changefreq>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://serverlister.io/servers/1</loc>
-  <changefreq>always</changefreq>
+  <changefreq>hourly</changefreq>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://serverlister.io/servers/16</loc>
+  <changefreq>hourly</changefreq>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://serverlister.io/servers/15</loc>
+  <changefreq>hourly</changefreq>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://serverlister.io/servers/14</loc>
-  <changefreq>always</changefreq>
+  <changefreq>hourly</changefreq>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://serverlister.io/servers/13</loc>
-  <changefreq>always</changefreq>
+  <changefreq>hourly</changefreq>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://serverlister.io/servers/12</loc>
-  <changefreq>always</changefreq>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://serverlister.io/servers/4</loc>
-  <changefreq>always</changefreq>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://serverlister.io/servers/10</loc>
-  <changefreq>always</changefreq>
+  <changefreq>hourly</changefreq>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://serverlister.io/support/privacy-policy</loc>
-  <changefreq>always</changefreq>
+  <changefreq>hourly</changefreq>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://serverlister.io/support/terms-of-service</loc>
-  <changefreq>always</changefreq>
+  <changefreq>hourly</changefreq>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://serverlister.io/servers/versions/1_14_2</loc>
-  <changefreq>always</changefreq>
+  <changefreq>hourly</changefreq>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://serverlister.io/servers/types/survival</loc>
-  <changefreq>always</changefreq>
+  <changefreq>hourly</changefreq>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://serverlister.io/servers/countries/united-states</loc>
-  <changefreq>always</changefreq>
+  <changefreq>hourly</changefreq>
   <priority>0.64</priority>
 </url>
 <url>
-  <loc>https://serverlister.io/servers/6</loc>
-  <changefreq>always</changefreq>
+  <loc>https://serverlister.io/servers/4</loc>
+  <changefreq>hourly</changefreq>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://serverlister.io/servers/10</loc>
+  <changefreq>hourly</changefreq>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://serverlister.io/servers/7</loc>
-  <changefreq>always</changefreq>
+  <changefreq>hourly</changefreq>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://serverlister.io/servers/8</loc>
-  <changefreq>always</changefreq>
+  <changefreq>hourly</changefreq>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://serverlister.io/servers/3</loc>
-  <changefreq>always</changefreq>
+  <changefreq>hourly</changefreq>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://serverlister.io/servers/6</loc>
+  <changefreq>hourly</changefreq>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://serverlister.io/servers/2</loc>
-  <changefreq>always</changefreq>
+  <changefreq>hourly</changefreq>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://serverlister.io/servers/9</loc>
-  <changefreq>always</changefreq>
+  <changefreq>hourly</changefreq>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://serverlister.io/servers/types/minigames</loc>
-  <changefreq>always</changefreq>
+  <changefreq>hourly</changefreq>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://serverlister.io/servers/types/other</loc>
-  <changefreq>always</changefreq>
+  <changefreq>hourly</changefreq>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://serverlister.io/servers/countries/singapore</loc>
-  <changefreq>always</changefreq>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://serverlister.io/servers/versions/1_13_1</loc>
-  <changefreq>always</changefreq>
+  <changefreq>hourly</changefreq>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://serverlister.io/servers/versions/1_13_2</loc>
-  <changefreq>always</changefreq>
+  <changefreq>hourly</changefreq>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://serverlister.io/servers/types/pvp</loc>
+  <changefreq>hourly</changefreq>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://serverlister.io/servers/versions/1_13_1</loc>
+  <changefreq>hourly</changefreq>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://serverlister.io/servers/types/city</loc>
-  <changefreq>always</changefreq>
+  <changefreq>hourly</changefreq>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://serverlister.io/servers/countries/united-kingdom</loc>
-  <changefreq>always</changefreq>
-  <priority>0.64</priority>
+  <changefreq>hourly</changefreq>
+  <priority>0.51</priority>
 </url>
 <url>
   <loc>https://serverlister.io/servers/countries/sweden</loc>
-  <changefreq>always</changefreq>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://serverlister.io/servers/countries/australia</loc>
-  <changefreq>always</changefreq>
+  <changefreq>hourly</changefreq>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://serverlister.io/servers/types/skyblock</loc>
-  <changefreq>always</changefreq>
+  <changefreq>hourly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://serverlister.io/servers/countries/australia</loc>
+  <changefreq>hourly</changefreq>
   <priority>0.51</priority>
 </url>
 <url>
   <loc>https://serverlister.io/servers/countries/hong-kong</loc>
-  <changefreq>always</changefreq>
+  <changefreq>hourly</changefreq>
   <priority>0.51</priority>
 </url>
 
