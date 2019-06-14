@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\User;
 use App\Server;
 use App\Report;
+use App\Reportable;
 use App\Http\Requests\StoreReport;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
@@ -82,8 +83,17 @@ class ReportController extends Controller
     public function show(Report $report)
     {
         $this->authorize('view', $report);
+        $reportable = Reportable::where('report_id', $report->id)->first();
+        if ($reportable->reportable_type == "App\Server")
+        {
+            $entity = Server::find($reportable->reportable_id);
+        }
+        elseif ($reportable->reportable_type == "App\User")
+        {
+            $entity = User::find($reportable->reportable_id);
+        }
 
-        return view('reports.show', compact('report'));
+        return view('reports.show', compact('report', 'entity'));
     }
 
     /**

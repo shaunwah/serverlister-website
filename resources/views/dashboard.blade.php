@@ -46,7 +46,7 @@
                 @foreach ($reports->sortByDesc('updated_at') as $report)
                 <tr>
                     <th scope="row">{{ $loop->iteration }}</th>
-                    <td>{{ $report->issue }}</td>
+                    <td><a href="{{ route('reports.show', $report->id) }}">{{ $report->issue }}</a></td>
                     <td>{{ $report->user->username }}</td>
                     <td>{{ $report->updated_at }}</td>
                 </tr>
