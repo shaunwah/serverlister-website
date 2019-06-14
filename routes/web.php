@@ -14,8 +14,9 @@
 // Auth
 Auth::routes();
 
-// Admin Control Panel
-Route::get('/acp', 'AdminControlPanelController@index')->name('acp.dashboard');
+// Console
+Route::get('/console', 'ConsoleController@index')->name('console.dashboard');
+Route::get('/console/reports/{report}', 'ConsoleController@showReport')->name('console.reports.show');
 
 // Servers
 Route::resource('/servers', 'ServerController');
@@ -32,9 +33,6 @@ Route::get('/reports/create', function () {
 Route::post('/reports/create', 'ReportController@create')->name('reports.create');
 Route::resource('/reports', 'ReportController')->except('create');
 
-// ServerComments
-// Route::post('/servers/{server}/comments', 'ServerCommentController@store')->name('servers.comments.store');
-
 // ServerVotes
 Route::post('/servers/{server}/votes', 'ServerVoteController@store')->name('servers.votes.store');
 Route::get('/servers/{server}/vote', 'ServerVoteController@create')->name('servers.votes.create');
@@ -44,7 +42,7 @@ Route::get('/user/settings/account', 'UserSettingsController@editAccount');
 Route::get('/user/settings/security', 'UserSettingsController@editSecurity');
 Route::patch('/user/settings/account', 'UserSettingsController@updateAccount');
 Route::patch('/user/settings/security', 'UserSettingsController@updateSecurity');
-Route::get('/user/dashboard', 'HomeController@indexDashboard')->name('dashboard');
+Route::get('/user/dashboard', 'HomeController@indexDashboard')->name('user.dashboard'); // To be updated
 
 // Etc
 Route::get('/', 'HomeController@index')->name('home');

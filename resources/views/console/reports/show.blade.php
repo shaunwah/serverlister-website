@@ -23,18 +23,19 @@
             <dl class="row">
                 <dt class="col-sm-3">{{ __('Entity') }}</dt>
                 <dd class="col-sm-9"><a href="{{ route('servers.show', $entity->id) }}">{{ $entity->name }}</a></dd>
-            </dl>
-            <hr>
-            <dl class="row">
-                <dt class="col-sm-3">{{ __('Created') }}</dt>
-                <dd class="col-sm-9">{{ $report->created_at }}</dd>
-                <dt class="col-sm-3">{{ __('Updated') }}</dt>
-                <dd class="col-sm-9">{{ $report->updated_at }}</dd>
+                <dt class="col-sm-3">{{ __('Status') }}</dt>
+                <dd class="col-sm-9">{{ $report->status }}</dd>
             </dl>
             <hr>
             <dl class="row">
                 <dt class="col-sm-3">Creator</dt>
                 <dd class="col-sm-9">{{ $report->user->username }}</dd>
+                <dt class="col-sm-3">Assignee</dt>
+                <dd class="col-sm-9">NIL</dd>
+                <dt class="col-sm-3">{{ __('Created') }}</dt>
+                <dd class="col-sm-9">{{ $report->created_at }}</dd>
+                <dt class="col-sm-3">{{ __('Updated') }}</dt>
+                <dd class="col-sm-9">{{ $report->updated_at }}</dd>
             </dl>
         </div>
     </div>

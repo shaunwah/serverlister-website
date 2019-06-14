@@ -5,7 +5,7 @@
 <div class="mt-n4 mb-3 bg-secondary text-white">
     <div class="container py-4">
         <h1 class="font-weight-bold">
-            Dashboard <sup><span class="badge badge-pill badge-light">beta</span></sup>
+            Dashboard
         </h1>
         <h3>Welcome back, {{ auth()->user()->username }}.</h3>
     </div>
