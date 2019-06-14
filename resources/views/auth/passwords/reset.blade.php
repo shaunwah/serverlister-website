@@ -1,5 +1,5 @@
 @extends('layouts.app')
-
+@section('meta_robots', 'noindex, nofollow')
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
