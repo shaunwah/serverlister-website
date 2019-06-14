@@ -41,7 +41,6 @@ class ServerScanCommand extends Command
         $this->info('Starting to scan servers...');
         $servers = Server::all();
 
-        // Checks if IP addresses are duplicated
         $this->info('Checking for duplicated server IP addresses...');
         $grouped1 = $servers->mapToGroups(function ($server) {
             return [(gethostbyname($server->host) . ':' . $server->port) => $server->id];
@@ -51,18 +50,29 @@ class ServerScanCommand extends Command
             return $server->count() > 1;
         });
 
+        $this->info('Checking for cracked servers...');
+        $this->info('Finished scanning servers!');
+        $this->info('');
+        $this->info('--------------- Results ---------------');
+
         if ($grouped2->count() > 0)
         {
-            foreach ($grouped2->all() as $ipAddress => $server)
+            foreach ($grouped2->all() as $ipAddress => $serversDuplicate)
             {
-                $this->info($ipAddress . ' has duplicated server IDs: ' . $server);
+                $serverDuplicate = $serversDuplicate->map(function ($server) {
+                    return Server::find($server)->name;
+                });
+                $this->info('Servers ' . implode(', ', $serverDuplicate->all()) . ' both point to the same IP address at ' . $ipAddress . '.');
             }
         }
-        else
+
+        foreach ($servers as $server)
         {
-                $this->info('No duplicated server IP addresses found.');
+            if (strpos($server->name, 'crack') == true || strpos($server->description, 'crack') == true)
+            {
+                $this->info('Server ' . $server->name . ' may possibly be a cracked server.');
+            }
         }
 
-        $this->info('Finished scanning servers!');
     }
 }
