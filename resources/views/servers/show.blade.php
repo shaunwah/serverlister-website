@@ -62,13 +62,13 @@
                     @endcan
                 </div>
             </div>
-            @isset($server->description)
+            @empty(!$server->description)
                 <div class="overflow-hidden" id="description">
                     {!! $parsedown->text($server->description) !!}
                 </div>
             @else
                 <p><span class="text-muted">{{ __('No description set.') }}</span></p>
-            @endisset
+            @endempty
         </div>
         <div class="col-md-4">
             {{-- Information Section --}}
