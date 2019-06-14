@@ -15,8 +15,8 @@
             <h1 class="font-weight-bold">{{ __('Create Server') }}</h1>
             <form method="post" action="{{ route('servers.store') }}">
                 @csrf
-                @captcha
-                @endcaptcha
+                @recaptcha
+                @endrecaptcha
                 <div class="card mb-3">
                     <div class="card-body">
 

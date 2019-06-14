@@ -14,8 +14,8 @@
             <h1 class="font-weight-bold">{{ __('User Registration') }}</h1>
             <form method="post" action="{{ route('register') }}">
                 @csrf
-                @captcha
-                @endcaptcha
+                @recaptcha
+                @endrecaptcha
                 <div class="card">
                     <div class="card-body">
                         <div class="form-group row">
