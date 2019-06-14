@@ -2,6 +2,8 @@
 @section('meta_robots', 'noindex')
 @section('title', __('Create - Servers'))
 @section('content')
+@component('partials.alert')
+@endcomponent
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-12">
@@ -9,6 +11,8 @@
             <h1 class="font-weight-bold">{{ __('Create Server') }}</h1>
             <form method="post" action="{{ route('servers.store') }}">
                 @csrf
+                @captcha
+                @endcaptcha
                 <div class="card mb-3">
                     <div class="card-body">
 
@@ -133,4 +137,15 @@
         </div>
     </div>
 </div>
+@endsection
+@section('scripts')
+<script>
+    grecaptcha.ready(function() {
+        grecaptcha.execute('{{ env('GOOGLE_RECAPTCHA_KEY') }}', {action: 'create_server'}).then(function (response) {
+            if (response) {
+                document.getElementsByName('g-recaptcha-response')[0].value = response;
+            }
+        });
+    });
+</script>
 @endsection

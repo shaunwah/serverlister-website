@@ -1,8 +1,14 @@
 @extends('layouts.app')
 @section('meta_description', __('Vote for :server_name, a :server_version :server_type-based Minecraft server (:server_ip_address) located in :server_country.', ['server_name' => $server->name, 'server_version' => $server->version->name, 'server_type' => $server->type->name, 'server_country' => $server->country->name, 'server_ip_address' => $server->host . ($server->port != 25565 ? ':' . $server->port : '')]))
 @section('meta_robots', 'noindex')
+@section('head')
+{{-- ReCaptcha --}}
+<script src="https://www.google.com/recaptcha/api.js?render={{ env('GOOGLE_RECAPTCHA_KEY') }}"></script>
+@endsection
 @section('title', $server->name . ' - ' . __('Vote'))
 @section('content')
+@component('partials.alert')
+@endcomponent
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
@@ -10,6 +16,8 @@
             <h1 class="font-weight-bold">{{ __('Vote Server') }}</h1>
             <form method="post" action="{{ route('servers.votes.store', $server->id) }}">
                 @csrf
+                @recaptcha
+                @endrecaptcha
                 <div class="card">
                     <div class="card-body">
 
@@ -28,15 +36,6 @@
                     </div>
                 </div>
             </form>
-            @if ($server->votes->count() > 0)
-                <div class="mt-3">
-                    @foreach ($server->votes->sortByDesc('id')->pluck('username')->countBy()->keys() as $key => $val)
-                        @if ($val != null)
-                            <img src="{{ url('https://minotar.net/avatar/' . $val. '/24') }}" class="img-fluid rounded" data-toggle="tooltip" data-placement="top" title="{{ $val }}">
-                        @endif
-                    @endforeach
-                </div>
-            @endif
         </div>
     </div>
 </div>
@@ -46,5 +45,12 @@
     $(function () {
       $('[data-toggle="tooltip"]').tooltip()
     })
+    grecaptcha.ready(function() {
+        grecaptcha.execute('{{ env('GOOGLE_RECAPTCHA_KEY') }}', {action: 'create_server_vote'}).then(function (response) {
+            if (response) {
+                document.getElementsByName('g-recaptcha-response')[0].value = response;
+            }
+        });
+    });
 </script>
 @endsection

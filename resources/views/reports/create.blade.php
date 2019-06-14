@@ -9,6 +9,8 @@
             <h1 class="font-weight-bold">{{ __('Report ' . ucwords(request()->entity)) }}</h1>
             <form method="post" action="{{ route('reports.store') }}">
                 @csrf
+                @captcha
+                @endcaptcha
                 <input type="hidden" name="entity" value="{{ request()->entity }}"></input>
                 <input type="hidden" name="entity_id" value="{{ request()->entity_id }}"></input>
                 <input type="hidden" name="type_id" value="1"></input> {{-- !!! --}}
@@ -54,4 +56,15 @@
         </div>
     </div>
 </div>
+@endsection
+@section('scripts')
+<script>
+    grecaptcha.ready(function() {
+        grecaptcha.execute('{{ env('GOOGLE_RECAPTCHA_KEY') }}', {action: 'create_report'}).then(function (response) {
+            if (response) {
+                document.getElementsByName('g-recaptcha-response')[0].value = response;
+            }
+        });
+    });
+</script>
 @endsection

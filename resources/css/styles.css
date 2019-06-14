@@ -97,3 +97,8 @@ body {
     bottom: 1.25rem;
     opacity: 0.5;
 }
+
+/* Google reCAPTCHA */
+.grecaptcha-badge {
+    visibility: hidden;
+}

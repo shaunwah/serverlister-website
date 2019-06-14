@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Server;
 use App\ServerVote;
 use App\Http\Requests\StoreServerVote;
+use App\Utilities\GoogleReCaptcha;
 use Illuminate\Http\Request;
 
 class ServerVoteController extends Controller
@@ -42,23 +43,32 @@ class ServerVoteController extends Controller
      */
     public function store(StoreServerVote $request, Server $server, ServerVote $vote)
     {
-        if ($server->checkIfVotedToday())
+        if (GoogleReCaptcha::validateResponse())
         {
-            $validated = $request->validated();
-            $validated['user_id'] = auth()->id();
-            $validated['ip_address'] = request()->ip();
-            $server->addVote($validated);
+            if ($server->checkIfVotedToday())
+            {
+                $validated = $request->validated();
+                $validated['user_id'] = auth()->id();
+                $validated['ip_address'] = request()->ip();
+                $server->addVote($validated);
 
-            session()->flash('alert_colour', 'success');
-            session()->flash('alert', 'Thank you for your vote.');
+                session()->flash('alert_colour', 'success');
+                session()->flash('alert', 'Thank you for your vote.');
+            }
+            else
+            {
+                session()->flash('alert_colour', 'danger');
+                session()->flash('alert', 'You have already voted for this server today.');
+            }
+
+            return redirect('/servers/' . $server->id);
         }
         else
         {
             session()->flash('alert_colour', 'danger');
-            session()->flash('alert', 'You have already voted for this server today.');
+            session()->flash('alert', 'Your device failed reCAPTCHA validation. Please try again.');
+            return back();
         }
-
-        return redirect('/servers/' . $server->id);
     }
 
     /**

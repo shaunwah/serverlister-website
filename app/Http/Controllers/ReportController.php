@@ -45,33 +45,42 @@ class ReportController extends Controller
      */
     public function store(StoreReport $request, Report $report)
     {
-        $validated = $request->validated();
-        $validated['user_id'] = auth()->id();
+        if (GoogleReCaptcha::validateResponse())
+        {
+            $validated = $request->validated();
+            $validated['user_id'] = auth()->id();
 
-        if (request()->entity == 'server') // To clean up
-        {
-            $report = new Report($validated);
-            $server = Server::findOrFail(request()->entity_id);
-            $server->reports()->save($report);
-        }
-        elseif (request()->entity == 'user')
-        {
-            $report = new Report($validated);
-            $server = User::findOrFail(request()->entity_id);
-            $server->reports()->save($report);
-        }
-        else
-        {
-            session()->flash('alert_colour', 'warning');
-            session()->flash('alert', 'You encounted an error while submitting a report.');
+            if (request()->entity == 'server') // To clean up
+            {
+                $report = new Report($validated);
+                $server = Server::findOrFail(request()->entity_id);
+                $server->reports()->save($report);
+            }
+            elseif (request()->entity == 'user')
+            {
+                $report = new Report($validated);
+                $server = User::findOrFail(request()->entity_id);
+                $server->reports()->save($report);
+            }
+            else
+            {
+                session()->flash('alert_colour', 'warning');
+                session()->flash('alert', 'You encounted an error while submitting a report.');
+
+                return redirect('/dashboard');
+            }
+
+            session()->flash('alert_colour', 'success');
+            session()->flash('alert', 'You have successfully submitted a report.');
 
             return redirect('/dashboard');
         }
-
-        session()->flash('alert_colour', 'success');
-        session()->flash('alert', 'You have successfully submitted a report.');
-
-        return redirect('/dashboard');
+        else
+        {
+            session()->flash('alert_colour', 'danger');
+            session()->flash('alert', 'Your device failed reCAPTCHA validation. Please try again.');
+            return back();
+        }
     }
 
     /**

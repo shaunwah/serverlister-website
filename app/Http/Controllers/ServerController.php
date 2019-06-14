@@ -9,9 +9,10 @@ use App\Server;
 use App\ServerVote;
 use App\Http\Requests\StoreServer;
 use App\Http\Requests\UpdateServer;
-use Illuminate\Support\Str;
 use Parsedown;
 use Carbon\Carbon;
+use App\Utilities\GoogleReCaptcha;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 
 class ServerController extends Controller
@@ -20,7 +21,7 @@ class ServerController extends Controller
     public function __construct()
     {
         $this->middleware('auth')->except(['index', 'show']);
-        $this->middleware('throttle:3,1')->only('store', 'update');
+        $this->middleware('throttle:6,1')->only('store', 'update');
     }
 
 
@@ -56,21 +57,30 @@ class ServerController extends Controller
      */
     public function store(StoreServer $request, Server $server)
     {
-        $validated = $request->validated();
-        $validated['user_id'] = auth()->id();
-        $validated['slug'] = Str::slug(request()->name) . '-' . mt_rand(0, 999999999);
-        $validated['description'] = strip_tags($validated['description']); //!!!
-        $validated['host'] = strtolower($validated['host']); //!!!
-        $validated['rank'] = $server->count() + 1;
-        $validated['voting_service_enabled'] = request()->has('voting_service_enabled');
-        $validated['voting_service_host'] = strtolower($validated['voting_service_host']); //!!!
-        $validated['voting_service_token'] = encrypt($validated['voting_service_token']);
-        $server->create($validated);
+        if (GoogleReCaptcha::validateResponse())
+        {
+            $validated = $request->validated();
+            $validated['user_id'] = auth()->id();
+            $validated['slug'] = Str::slug(request()->name) . '-' . mt_rand(0, 999999999);
+            $validated['description'] = strip_tags($validated['description']); //!!!
+            $validated['host'] = strtolower($validated['host']); //!!!
+            $validated['rank'] = $server->count() + 1;
+            $validated['voting_service_enabled'] = request()->has('voting_service_enabled');
+            $validated['voting_service_host'] = strtolower($validated['voting_service_host']); //!!!
+            $validated['voting_service_token'] = encrypt($validated['voting_service_token']);
+            $server->create($validated);
 
-        session()->flash('alert_colour', 'success');
-        session()->flash('alert', request()->name . ' has been successfully added to ServerLister.');
+            session()->flash('alert_colour', 'success');
+            session()->flash('alert', request()->name . ' has been successfully added to ServerLister.');
 
-        return redirect('/servers');
+            return redirect('/servers');
+        }
+        else
+        {
+            session()->flash('alert_colour', 'danger');
+            session()->flash('alert', 'Your device failed reCAPTCHA validation. Please try again.');
+            return back();
+        }
     }
 
     /**

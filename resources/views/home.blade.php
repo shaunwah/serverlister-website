@@ -117,6 +117,7 @@
     <small class="text-muted">
         <ul class="list-unstyled">
             <li>ServerLister includes GeoLite2 data created by MaxMind, available from <a href="{{ url('//www.maxmind.com') }}" target="_blank">maxmind.com</a>.</li>
+            <li>ServerLister is protected by reCAPTCHA and the Google  <a href="https://policies.google.com/privacy" target="_blank">Privacy Policy</a> and <a href="https://policies.google.com/terms" target="_blank">Terms of Service</a> apply.</li>
             <li>ServerLister is not affiliated, associated, endorsed by, or in any way connected to Microsoft Corporation or any of its subsidaries or its affiliates.</li>
         </ul>
     </small>
