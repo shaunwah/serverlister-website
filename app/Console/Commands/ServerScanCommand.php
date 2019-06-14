@@ -41,9 +41,9 @@ class ServerScanCommand extends Command
         $this->info('Starting to scan servers...');
         $servers = Server::all();
 
-        $this->info('Checking for duplicated server IP addresses...');
+        // Checking for duplicate IP addresses from servers
         $grouped1 = $servers->mapToGroups(function ($server) {
-            return [(gethostbyname($server->host) . ':' . $server->port) => $server->id];
+            return [gethostbyname($server->host) => $server->id];
         });
 
         $grouped2 = $grouped1->filter(function ($server) {
@@ -55,18 +55,18 @@ class ServerScanCommand extends Command
             foreach ($grouped2->all() as $ipAddress => $serversDuplicate)
             {
                 $serverDuplicate = $serversDuplicate->map(function ($server) {
-                    return Server::find($server)->name;
+                    return Server::find($server)->host;
                 });
-                $this->info('Servers ' . implode(', ', $serverDuplicate->all()) . ' both point to the same IP address at ' . $ipAddress . '.');
+                $this->info('Possible duplicated IP address ' . $ipAddress . ' from servers: ' . implode(', ', $serverDuplicate->all()));
             }
         }
 
-        $this->info('Checking for cracked servers...');
+        // Checking for offline/VPN-required servers
         foreach ($servers as $server)
         {
-            if (strpos($server->name, 'crack') == true || strpos($server->description, 'crack') == true)
+            if (strpos($server->name, 'crack') == true || strpos($server->description, 'crack') == true || strpos($server->description, 'hamachi') == true || strpos($server->description, 'hamachi') == true)
             {
-                $this->info('Server ' . $server->name . ' may possibly be a cracked server.');
+                $this->info('Possible offline/VPN-required server: ' . $server->host);
             }
         }
 
