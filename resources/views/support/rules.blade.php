@@ -5,7 +5,7 @@
     <h1 class="font-weight-bold">Rules</h1>
 
     <p>
-        In addition to the <a href="{{ url('/support/terms-of-service') }}">Terms of Service</a> laid down by <a href="{{ route('home') }}">ServerLister</a>, your access to this website is governed by the rules as stated in the preceding paragraphs. Non-compliance may restrict your access to this website and its services.
+        In addition to the <a href="{{ url('/support/terms-of-service') }}">Terms of Service</a> laid down by <a href="{{ route('home') }}">ServerLister</a>, your access to this website is governed by the rules as stated. Non-compliance may restrict your access to this website and its services.
     </p>
 
     <h2>1. Listing servers on our website</h2>
