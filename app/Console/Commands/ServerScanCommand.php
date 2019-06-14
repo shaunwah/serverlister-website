@@ -50,11 +50,6 @@ class ServerScanCommand extends Command
             return $server->count() > 1;
         });
 
-        $this->info('Checking for cracked servers...');
-        $this->info('Finished scanning servers!');
-        $this->info('');
-        $this->info('--------------- Results ---------------');
-
         if ($grouped2->count() > 0)
         {
             foreach ($grouped2->all() as $ipAddress => $serversDuplicate)
@@ -66,6 +61,7 @@ class ServerScanCommand extends Command
             }
         }
 
+        $this->info('Checking for cracked servers...');
         foreach ($servers as $server)
         {
             if (strpos($server->name, 'crack') == true || strpos($server->description, 'crack') == true)
@@ -74,5 +70,6 @@ class ServerScanCommand extends Command
             }
         }
 
+        $this->info('Finished scanning servers!');
     }
 }
