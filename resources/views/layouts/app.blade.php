@@ -66,6 +66,10 @@
                                         <a class="dropdown-item" href="{{ route('dashboard') }}"><i class="fal fa-columns fa-fw"></i> {{ __('Dashboard') }}</a>
                                         <a class="dropdown-item" href="{{ url('user/settings/account') }}"><i class="fal fa-cogs fa-fw"></i> {{ __('Settings') }}</a>
                                         <div class="dropdown-divider"></div>
+                                        @if (auth()->id() == 1)
+                                        <a class="dropdown-item" href="{{ route('acp.dashboard') }}"><i class="fal fa-cogs fa-fw"></i> {{ __('ACP') }}</a>
+                                        <div class="dropdown-divider"></div>
+                                        @endif
                                         <a class="dropdown-item" href="{{ route('logout') }}" onClick="event.preventDefault(); document.getElementById('logout-form').submit();"><i class="fal fa-sign-out-alt fa-fw"></i> {{ __('Logout') }}</a>
                                     </div>
                                 </li>

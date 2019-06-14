@@ -30,7 +30,7 @@ class ReportPolicy
      */
     public function view(User $user, Report $report)
     {
-        return $user->id == $report->user_id || $user->id == 1;
+        return $user->id == 1;
     }
 
     /**

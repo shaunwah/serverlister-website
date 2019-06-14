@@ -16,6 +16,7 @@ Auth::routes();
 
 // Admin Control Panel
 Route::get('/acp', 'AdminControlPanelController@index')->name('acp.dashboard');
+Route::get('/acp/users', 'AdminControlPanelController@indexUsers')->name('acp.dashboard');
 
 // Servers
 Route::resource('/servers', 'ServerController');
