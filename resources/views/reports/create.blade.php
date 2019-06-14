@@ -23,7 +23,7 @@
                 <div class="card mb-3">
                     <div class="card-body">
                         <p>
-                            You are reporting <span class="font-weight-bold">{{ request()->entity_name }}</span> for abuse of ServerLister's Terms of Service.
+                            You are reporting <span class="font-weight-bold">{{ request()->entity_name }}</span> for abuse of ServerLister's <a href="{{ url('/support/terms-of-service') }}">Terms of Service</a> and/or <a href="{{ url('/support/rules') }}">Rules</a>.
                         </p>
                         @if (request()->entity == 'server')
                             <p>
