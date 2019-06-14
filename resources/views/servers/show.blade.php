@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('meta_description', __(':server_name is a :server_version :server_type-based Minecraft server located in :server_country. Join other players in :server_name via :server_ip_address.', ['server_name' => $server->name, 'server_version' => $server->version->name, 'server_type' => $server->type->name, 'server_country' => $server->country->name, 'server_ip_address' => $server->host . ($server->port != 25565 ? ':' . $server->port : '')]))
+@section('meta_description', __(':server_name is a v:server_version :server_type-based Minecraft server located in :server_country. Join other players in :server_name via :server_ip_address.', ['server_name' => $server->name, 'server_version' => $server->version->name, 'server_type' => $server->type->name, 'server_country' => $server->country->name, 'server_ip_address' => $server->host . ($server->port != 25565 ? ':' . $server->port : '')]))
 @section('header')
 <meta name="og:image" content="{{ asset($server->favicon) }}">
 @endsection
