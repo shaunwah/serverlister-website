@@ -101,6 +101,8 @@ class UserSettingsController extends Controller
         $user = auth()->user();
         $attributes = $this->validateUser($user);
         $user->update($attributes);
+
+        session()->flash('alert_colour', 'success');
         session()->flash('alert', 'Successfully updated your account!');
 
         return back();
