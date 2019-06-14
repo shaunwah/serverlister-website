@@ -14,7 +14,7 @@
     <meta name="og:title" content="@yield('title', 'Page')">
     <meta name="og:url" content="{{ url()->current() }}">
 
-    @yield('header')
+    @yield('head')
 
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
