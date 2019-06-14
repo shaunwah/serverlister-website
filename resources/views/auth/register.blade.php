@@ -1,13 +1,21 @@
 @extends('layouts.app')
 @section('meta_robots', 'nofollow')
+@section('head')
+{{-- ReCaptcha --}}
+<script src="https://www.google.com/recaptcha/api.js?render={{ env('GOOGLE_RECAPTCHA_SITE') }}"></script>
+@endsection
 @section('title', __('Register'))
 @section('content')
+@component('partials.alert')
+@endcomponent
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <h1 class="font-weight-bold">{{ __('User Registration') }}</h1>
             <form method="post" action="{{ route('register') }}">
                 @csrf
+                @captcha
+                @endcaptcha
                 <div class="card">
                     <div class="card-body">
                         <div class="form-group row">
@@ -48,4 +56,15 @@
         </div>
     </div>
 </div>
+@endsection
+@section('scripts')
+<script>
+    grecaptcha.ready(function() {
+        grecaptcha.execute('{{ env('GOOGLE_RECAPTCHA_SITE') }}', {action: 'create_user'}).then(function (response) {
+            if (response) {
+                document.getElementsByName('g-recaptcha-response')[0].value = response;
+            }
+        });
+    });
+</script>
 @endsection

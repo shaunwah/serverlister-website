@@ -63,10 +63,19 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
-            'username' => $data['username'],
-            'email' => $data['email'],
-            'password' => Hash::make($data['password']),
-        ]);
+        if (GoogleReCaptcha::validateResponse())
+        {
+            return User::create([
+                'username' => $data['username'],
+                'email' => $data['email'],
+                'password' => Hash::make($data['password']),
+            ]);
+        }
+        else
+        {
+            session()->flash('alert_colour', 'danger');
+            session()->flash('alert', 'Your device failed reCAPTCHA validation. Please try again.');
+            return back();
+        }
     }
 }

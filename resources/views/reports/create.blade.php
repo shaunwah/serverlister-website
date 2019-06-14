@@ -6,6 +6,8 @@
 @endsection
 @section('title', __('Create - Reports'))
 @section('content')
+@component('partials.alert')
+@endcomponent
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-12">
