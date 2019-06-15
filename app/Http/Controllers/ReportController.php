@@ -6,6 +6,7 @@ use App\User;
 use App\Server;
 use App\Report;
 use App\Reportable;
+use App\Utilities\GoogleReCaptcha;
 use App\Http\Requests\StoreReport;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
