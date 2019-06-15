@@ -33,7 +33,7 @@ class CreateServersTable extends Migration
             $table->timestamps();
             $table->softDeletes();
 
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('country_id')->references('id')->on('countries');
             $table->foreign('version_id')->references('id')->on('versions');
             $table->foreign('type_id')->references('id')->on('server_types');
