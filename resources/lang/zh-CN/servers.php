@@ -103,7 +103,7 @@ return [
             'voting_service_token' => '您的令牌可以在 \'config.yml\' 的 NuVotifier 夹里找到。',
         ],
 
-        'description_empty' => '没有描述集 :(',
+        'description_empty' => '没有描述集。 :(',
         'status_last_pinged_at' => '最后查询于',
         'status_last_retrieved_at' => '服务器查询在 :carbon',
     ],

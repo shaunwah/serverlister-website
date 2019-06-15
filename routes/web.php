@@ -11,6 +11,9 @@
 |
 */
 
+// Locale
+app()->setLocale(str_replace('_', '-', app()->getLocale()));
+
 // Auth
 Auth::routes();
 
