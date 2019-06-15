@@ -45,6 +45,7 @@ return [
     'user' => [
         'headers' => [
             'login' => 'Login',
+            'logout' => 'Logout',
             'register' => 'Register',
             'register_alt' => 'Register Account',
             'dashboard' => 'Dashboard',

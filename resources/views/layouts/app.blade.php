@@ -70,7 +70,7 @@
                                             <a class="dropdown-item" href="{{ route('console.dashboard') }}"><i class="fal fa-terminal fa-fw"></i> {{ __('text.user.headers.console') }}</a>
                                             <div class="dropdown-divider"></div>
                                         @endif
-                                        <a class="dropdown-item" href="{{ route('logout') }}" onClick="event.preventDefault(); document.getElementById('logout-form').submit();"><i class="fal fa-sign-out-alt fa-fw"></i> {{ __('Logout') }}</a>
+                                        <a class="dropdown-item" href="{{ route('logout') }}" onClick="event.preventDefault(); document.getElementById('logout-form').submit();"><i class="fal fa-sign-out-alt fa-fw"></i> {{ __('text.user.headers.logout') }}</a>
                                     </div>
                                 </li>
                                 <form id="logout-form" method="post" action="{{ route('logout') }}" style="display:none;">
