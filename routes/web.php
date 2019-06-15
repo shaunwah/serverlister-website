@@ -11,11 +11,11 @@
 |
 */
 
-// Locale
-app()->setLocale(str_replace('_', '-', request()->server('HTTP-ACCEPT-LANGUAGE')));
-
 // Auth
 Auth::routes();
+
+// Localisation
+Route::get('/locale/{locale}', 'LocalisationController@index');
 
 // Console
 Route::get('/console', 'ConsoleController@index')->name('console.dashboard');

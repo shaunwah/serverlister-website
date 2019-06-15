@@ -117,12 +117,26 @@
                         </ul>
                     </div>
                 </div>
-                <div>
-                    <ul class="list-inline text-white-50">
-                        <li class="list-inline-item"><a href="{{ url('/support/privacy-policy') }}" class="text-reset">{{ __('support.text.headers.privacy_policy') }}</a></li>
-                        <li class="list-inline-item"><a href="{{ url('/support/terms-of-service') }}" class="text-reset">{{ __('support.text.headers.terms_of_service') }}</a></li>
-                        <li class="list-inline-item"><a href="{{ url('/support/rules') }}" class="text-reset">{{ __('support.text.headers.rules') }}</a></li>
-                    </ul>
+                <div class="row align-items-center">
+                    <div class="col-auto mr-auto">
+                        <ul class="list-inline mb-0 text-white-50">
+                            <li class="list-inline-item"><a href="{{ url('/support/privacy-policy') }}" class="text-reset">{{ __('support.text.headers.privacy_policy') }}</a></li>
+                            <li class="list-inline-item"><a href="{{ url('/support/terms-of-service') }}" class="text-reset">{{ __('support.text.headers.terms_of_service') }}</a></li>
+                            <li class="list-inline-item"><a href="{{ url('/support/rules') }}" class="text-reset">{{ __('support.text.headers.rules') }}</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-auto">
+                        <div class="dropup">
+                            <button class="btn btn-secondary dropdown-toggle" type="button" id="languageSelectButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                {{ __('support.text.headers.language') }}
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="languageSelectMenuButton">
+                                <a class="dropdown-item" href="/locale/en">English</a>
+                                <a class="dropdown-item" href="/locale/zh-cn">中文 (简体)</a>
+                                <a class="dropdown-item" href="/locale/zh-tw">中文 (繁體)</a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </footer>
