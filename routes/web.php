@@ -26,10 +26,6 @@ Route::get('/servers/versions/{version}', 'VersionController@index');
 Route::get('/servers/countries/{country}', 'CountryController@index');
 
 // Reports
-Route::get('/reports/create', function () {
-    session()->flash('alert', 'Use the \'Report\' button to make a report.');
-    return redirect('/dashboard');
-})->middleware('auth');
 Route::post('/reports/create', 'ReportController@create')->name('reports.create');
 Route::resource('/reports', 'ReportController')->except('create');
 
@@ -44,10 +40,11 @@ Route::patch('/user/settings/account', 'UserSettingsController@updateAccount');
 Route::patch('/user/settings/security', 'UserSettingsController@updateSecurity');
 Route::get('/user/dashboard', 'HomeController@indexDashboard')->name('user.dashboard'); // To be updated
 
-// Etc
+// Home
 Route::get('/', 'HomeController@index')->name('home');
 
-Route::get('/support', function () { return view('support.index'); });
-Route::get('/support/privacy-policy', function () { return view('support.privacy_policy'); });
-Route::get('/support/terms-of-service', function () { return view('support.terms_of_service'); });
-Route::get('/support/rules', function () { return view('support.rules'); });
+// Support
+Route::get('/support', 'SupportController@index');
+Route::get('/support/privacy-policy', 'SupportController@showPrivacyPolicy');
+Route::get('/support/terms-of-service', 'SupportController@showTermsOfService');
+Route::get('/support/rules', 'SupportController@showRules');
