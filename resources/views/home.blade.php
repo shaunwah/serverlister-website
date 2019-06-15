@@ -44,7 +44,7 @@
 </div>
 
 {{-- Statistics Section --}}
-<div class="container">
+<div class="container mb-3">
     <h2 class="font-weight-bold">{{ __('home.text.headers.statistics') }}</h2>
     <div class="card-deck">
         <div class="card">
@@ -67,55 +67,57 @@
         </div>
     </div>
 </div>
-<hr>
 
-{{-- FAQs Section --}}
+{{-- Features Section --}}
+<div class="container mb-3">
+    <h2 class="font-weight-bold">Features</h2>
+    <div class="card-deck">
+        <div class="card">
+            <div class="card-body">
+                <span class="fa-stack fa-2x">
+                    <i class="fas fa-circle fa-stack-2x text-dark"></i>
+                    <i class="fal fa-chart-line fa-stack-1x fa-inverse"></i>
+                </span>
+                <h3 class="font-weight-bold">Server Console</h3>
+                <p class="lead">
+                    Select and view multiple server datasets<sup>1</sup>, including player trend
+                    and vote tracking.
+                </p>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-body">
+                <span class="fa-stack fa-2x">
+                    <i class="fas fa-circle fa-stack-2x text-dark"></i>
+                    <i class="fal fa-arrow-down fa-stack-1x fa-inverse"></i>
+                </span>
+                <h3 class="font-weight-bold">Downtime Alerts</h3>
+                <p class="lead">
+                    Get updates via email<sup>1</sup> if your server goes offline for a
+                    period of time.
+                </p>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-body">
+                <span class="fa-stack fa-2x">
+                    <i class="fas fa-circle fa-stack-2x text-dark"></i>
+                    <i class="fal fa-lock fa-stack-1x fa-inverse"></i>
+                </span>
+                <h3 class="font-weight-bold">Secure</h3>
+                <p class="lead">
+                    Your user and server information are encrypted and stored in accordance
+                    to the best guidelines.
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
 <div class="container">
-    <h2 class="font-weight-bold">FAQs</h2>
-    <h3>What is ServerLister?</h3>
-    <p>
-        ServerLister is a Minecraft server list made to help you find the best Minecraft servers in the wild. We make use of multiple
-        factors to help you find a quality server, including having a server scoring system that determines a server's quality.
-    </p>
-
-    <h3>What is this server scoring system?</h3>
-    <p>
-        The server scoring system takes into account its uptime, player count, vote count, and other server trend datasets and churns out a number based on an algorithm.
-        The higher the score, the higher the determined quality of a server. This algorithm is calibrated regularly to help accurately identify quality servers.
-    </p>
-
-    <h3>What are votes?</h3>
-    <p>
-        Votes help indicate a server's popularity. The higher the votes a server has, the more popular a server is. Some servers have a voting rewards system in place,
-        granting you a reward in return for voting for the server.
-    </p>
-    <p>
-        If a server has a voting rewards system in place, it will usually be indicated in the server's vote page with text displaying <span class="font-italic">"You may receive a reward for voting."</span> to
-        let you know that you may receive a reward upon voting. You may have to log in to the server for the first time to receive it.
-    </p>
-
-    <h3>How do I list my server?</h3>
-    <p>
-        You can create a server by navigating to the <a href="{{ route('servers.index') }}">servers page</a> after <a href="{{ route('register') }}">creating a ServerLister account</a>. The creation process
-        takes less than five minutes so you can have your server listing up in no time!
-    </p>
-    <p>
-        Our system only supports NuVotifier version 2 tokens. Your tokens are encrypted using OpenSSL (AES-256) and stored securely in our databases.
-    </p>
-
-    <h3>What if my server has already been listed?</h3>
-    <p>
-        ServerLister occasionally lists noteworthy servers from other Minecraft server lists on its website. You may request for a server takeover through
-        our <a href="{{ url('//discordapp.com/invite/nzqRgUw') }}" target="_blank">Discord server</a>. We are working on an automated server takeover system at the moment
-        through MOTD verification.
-    </p>
-
-    <h3>Where can I provide feedback?</h3>
-    <p>
-        We are currently in development and would love to hear from you. You may provide your valuable feedback through our <a href="{{ url('//discordapp.com/invite/nzqRgUw') }}" target="_blank">Discord server</a>.
-    </p>
     <small class="text-muted">
         <ul class="list-unstyled">
+            <li><sup>1</sup> Server Console and Downtime Alerts to be activated in end-2019.</li>
+            <br>
             <li>ServerLister includes GeoLite2 data created by <a href="{{ url('//www.maxmind.com') }}" target="_blank">MaxMind</a>.</li>
             <li>ServerLister is protected by reCAPTCHA and the Google  <a href="https://policies.google.com/privacy" target="_blank">Privacy Policy</a> and <a href="https://policies.google.com/terms" target="_blank">Terms of Service</a> apply.</li>
             <li>ServerLister is not affiliated, associated, endorsed by, or in any way connected to Microsoft Corporation or any of its subsidaries or its affiliates.</li>
