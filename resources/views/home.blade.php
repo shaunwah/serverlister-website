@@ -62,14 +62,14 @@
                     <i class="fas fa-circle fa-stack-2x text-dark"></i>
                     <i class="fal fa-users fa-stack-1x fa-inverse"></i>
                 </span>
-                <h3 class="card-title d-inline-block mb-0 align-middle ">{{ number_format(App\ServerPing::pluck('players_current', 'server_id')->sum()) }}<small class="d-block text-muted">{{ __('servers.text.headers.players') }}</small></h3>
+                <h3 class="card-title d-inline-block mb-0 align-middle">{{ number_format(App\ServerPing::pluck('players_current', 'server_id')->sum()) }}<small class="d-block text-muted">{{ __('servers.text.headers.players') }}</small></h3>
             </div>
         </div>
     </div>
 </div>
 
 {{-- Features Section --}}
-<div class="container mb-3">
+{{-- <div class="container mb-3">
     <h2 class="font-weight-bold">Features</h2>
     <div class="card-deck">
         <div class="card">
@@ -112,12 +112,10 @@
             </div>
         </div>
     </div>
-</div>
+</div> --}}
 <div class="container">
     <small class="text-muted">
         <ul class="list-unstyled">
-            <li><sup>1</sup> Server Console and Downtime Alerts to be activated in end-2019.</li>
-            <br>
             <li>ServerLister includes GeoLite2 data created by <a href="{{ url('//www.maxmind.com') }}" target="_blank">MaxMind</a>.</li>
             <li>ServerLister is protected by reCAPTCHA and the Google  <a href="https://policies.google.com/privacy" target="_blank">Privacy Policy</a> and <a href="https://policies.google.com/terms" target="_blank">Terms of Service</a> apply.</li>
             <li>ServerLister is not affiliated, associated, endorsed by, or in any way connected to Microsoft Corporation or any of its subsidaries or its affiliates.</li>
