@@ -66,6 +66,7 @@ return [
             'about' => '关于',
             'information' => '选民',
             'players' => '玩家',
+            'voters' => '选民',
             'voting_service' => 'Votifier 投票制度',
             'create' => '创造服务器',
             'edit' => '编辑服务器',

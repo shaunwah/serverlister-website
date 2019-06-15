@@ -66,6 +66,7 @@ return [
             'about' => 'About',
             'information' => 'Information',
             'players' => 'Players',
+            'voters' => 'Voters',
             'voting_service' => 'Votifier',
             'create' => 'Create Server',
             'edit' => 'Edit Server',
