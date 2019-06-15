@@ -79,7 +79,7 @@
                     <i class="fal fa-chart-line fa-stack-1x fa-inverse"></i>
                 </span>
                 <h3 class="font-weight-bold">Server Console</h3>
-                <p class="lead">
+                <p class="lead mb-0">
                     Select and view multiple server datasets<sup>1</sup>, including player trend
                     and vote tracking.
                 </p>
@@ -92,7 +92,7 @@
                     <i class="fal fa-arrow-down fa-stack-1x fa-inverse"></i>
                 </span>
                 <h3 class="font-weight-bold">Downtime Alerts</h3>
-                <p class="lead">
+                <p class="lead mb-0">
                     Get updates via email<sup>1</sup> if your server goes offline for a
                     period of time.
                 </p>
@@ -105,7 +105,7 @@
                     <i class="fal fa-lock fa-stack-1x fa-inverse"></i>
                 </span>
                 <h3 class="font-weight-bold">Secure</h3>
-                <p class="lead">
+                <p class="lead mb-0">
                     Your user and server information are encrypted and stored in accordance
                     to the best guidelines.
                 </p>
