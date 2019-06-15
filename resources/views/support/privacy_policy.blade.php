@@ -1,8 +1,8 @@
 @extends('layouts.app')
-@section('title', __('Privacy Policy'))
+@section('title', __('support.text.headers.privacy_policy'))
 @section('content')
 <div class="container">
-    <h1 class="font-weight-bold">Privacy Policy</h1>
+    <h1 class="font-weight-bold">{{ __('support.text.headers.privacy_policy') }}</h1>
 
     <p>
         Your privacy is important to us.

@@ -1,8 +1,8 @@
 @extends('layouts.app')
-@section('title', __('Rules'))
+@section('title', __('support.text.headers.rules'))
 @section('content')
 <div class="container">
-    <h1 class="font-weight-bold">Rules</h1>
+    <h1 class="font-weight-bold">__('support.text.headers.rules')</h1>
 
     <p>
         In addition to the <a href="{{ url('/support/terms-of-service') }}">Terms of Service</a> laid down by <a href="{{ route('home') }}">ServerLister</a>, your access to this website is governed by the rules as stated. Non-compliance may restrict your access to this website and its services.

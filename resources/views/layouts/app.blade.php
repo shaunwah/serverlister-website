@@ -49,9 +49,9 @@
                     </button>
                     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                         <div class="navbar-nav mr-auto">
-                                <a class="nav-item nav-link" href="{{ route('home') }}">Home {{-- <span class="sr-only">(current)</span> --}}</a>
-                                <a class="nav-item nav-link" href="{{ route('servers.index') }}">Servers</a>
-                                <a class="nav-item nav-link" href="{{ url('/support') }}">Support</a>
+                                <a class="nav-item nav-link" href="{{ route('home') }}">{{ __('home.home') }} {{-- <span class="sr-only">(current)</span> --}}</a>
+                                <a class="nav-item nav-link" href="{{ route('servers.index') }}">{{ __('servers.servers') }}</a>
+                                <a class="nav-item nav-link" href="{{ url('/support') }}">{{ __('support.support') }}</a>
                         </div>
                         <div class="navbar-nav">
                             @guest
@@ -101,7 +101,7 @@
                         </p>
                     </div>
                     <div class="col-auto col-sm-2">
-                        <h5 class="font-weight-bold text-white-50">Popular Servers</h5>
+                        <h5 class="font-weight-bold text-white-50">{{ __('servers.text.headers.popular_servers') }}</h5>
                         <ul class="list-unstyled text-truncate">
                             @foreach(App\Server::orderBy('rank', 'asc')->take(5)->get() as $server)
                                 <li><a href="{{ route('servers.show', $server->id) }}" class="text-reset">{{ $server->name }}</a></li>
@@ -109,7 +109,7 @@
                         </ul>
                     </div>
                     <div class="col-auto col-sm-2">
-                        <h5 class="font-weight-bold text-white-50">New Servers</h5>
+                        <h5 class="font-weight-bold text-white-50">{{ __('servers.text.headers.new_servers') }}</h5>
                         <ul class="list-unstyled text-truncate">
                             @foreach(App\Server::orderBy('created_at', 'desc')->take(5)->get() as $server)
                                 <li><a href="{{ route('servers.show', $server->id) }}" class="text-reset">{{ $server->name }}</a></li>
@@ -119,9 +119,9 @@
                 </div>
                 <div>
                     <ul class="list-inline text-white-50">
-                        <li class="list-inline-item"><a href="{{ url('/support/privacy-policy') }}" class="text-reset">{{ __('Privacy Policy') }}</a></li>
-                        <li class="list-inline-item"><a href="{{ url('/support/terms-of-service') }}" class="text-reset">{{ __('Terms of Service') }}</a></li>
-                        <li class="list-inline-item"><a href="{{ url('/support/rules') }}" class="text-reset">{{ __('Rules') }}</a></li>
+                        <li class="list-inline-item"><a href="{{ url('/support/privacy-policy') }}" class="text-reset">{{ __('support.text.headers.privacy_policy') }}</a></li>
+                        <li class="list-inline-item"><a href="{{ url('/support/terms-of-service') }}" class="text-reset">{{ __('support.text.headers.terms_of_service') }}</a></li>
+                        <li class="list-inline-item"><a href="{{ url('/support/rules') }}" class="text-reset">{{ __('support.text.headers.rules') }}</a></li>
                     </ul>
                 </div>
             </div>

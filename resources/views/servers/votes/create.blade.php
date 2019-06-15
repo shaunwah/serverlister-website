@@ -4,7 +4,7 @@
 {{-- ReCaptcha --}}
 <script src="https://www.google.com/recaptcha/api.js?render={{ config('services.google_recaptcha.key') }}"></script>
 @endsection
-@section('title', $server->name . ' - ' . __('Vote'))
+@section('title', $server->name . ' - ' . __('servers.actions.votes.create'))
 @section('content')
 @component('partials.alert')
 @endcomponent
@@ -12,7 +12,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <a class="text-decoration-none" href="{{ route('servers.show', $server->id) }}"><i class="fal fa-chevron-left fa-fw"></i> {{ $server->name }}</a>
-            <h1 class="font-weight-bold">{{ __('Vote Server') }}</h1>
+            <h1 class="font-weight-bold">{{ __('servers.text.headers.votes.create') }}</h1>
             <form method="post" action="{{ route('servers.votes.store', $server->id) }}">
                 @csrf
                 @recaptcha
@@ -22,16 +22,16 @@
 
                         {{-- Username Input --}}
                         <div class="form-group">
-                            <label for="username">{{ __('Username') }}</label>
+                            <label for="username">{{ __('servers.attributes.votes.username') }}</label>
                             <input type="text" class="form-control @error('username') is-invalid @enderror" id="username" aria-describedby="usernameHelp" name="username" value="{{ old('username') }}" required autocomplete="username" autofocus>
                             @error('username')
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @else
-                                <small id="usernameHelp" class="form-text text-muted">{{ __('Your Minecraft username is cAsE-sEnSiTiVe.') }}</small>
+                                <small id="usernameHelp" class="form-text text-muted">{{ __('servers.text.help.username') }}</small>
                             @enderror
                         </div>
 
-                        <button type="submit" class="btn btn-success btn-block">{{ __('Vote for :server_name', ['server_name' => $server->name]) }}</button>
+                        <button type="submit" class="btn btn-success btn-block">{{ __('servers.text.input.votes.create_button', ['server_name' => $server->name]) }}</button>
                     </div>
                 </div>
             </form>

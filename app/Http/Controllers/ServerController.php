@@ -71,7 +71,7 @@ class ServerController extends Controller
             $server->create($validated);
 
             session()->flash('alert_colour', 'success');
-            session()->flash('alert', request()->name . ' has been successfully added to ServerLister.');
+            session()->flash('alert', __('servers.text.alerts.create_success', ['server_name' => request()->name]));
 
             return redirect('/servers');
         }
@@ -150,7 +150,7 @@ class ServerController extends Controller
         $validated['voting_service_token'] = encrypt($validated['voting_service_token']);
 
         session()->flash('alert_colour', 'success');
-        session()->flash('alert', 'The server has been successfully updated.');
+        session()->flash('alert', __('servers.text.alerts.edit_success'));
 
         $server->update($validated);
 

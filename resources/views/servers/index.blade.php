@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('meta_description', isset($filters) ? __('A list of the best Minecraft servers related to :filtered_name.', ['filtered_name' => $filtered->name]) : __('A list of the best Minecraft servers.'))
-@section('title', isset($filters) ? $filtered->name . ' - ' .  __('Servers') : __('Servers'))
+@section('title', isset($filters) ? $filtered->name . ' - ' .  __('servers.servers') : __('servers.servers'))
 @section('content')
 @component('partials.alert')
 @endcomponent
@@ -8,25 +8,25 @@
     <div class="row justify-content-center">
         <div class="col-md-12">
             @isset($filters)
-                <a class="text-decoration-none" href="{{ route('servers.index') }}"><i class="fal fa-chevron-left fa-fw"></i> Servers</a>
+                <a class="text-decoration-none" href="{{ route('servers.index') }}"><i class="fal fa-chevron-left fa-fw"></i> {{ __('servers.servers') }}</a>
             @endisset
             <div class="row mb-2 align-items-center">
                 <div class="col-auto mr-auto">
-                    <h1 class="mb-0 font-weight-bold">{{ __('Servers') }} @isset($filters)<small class="text-muted">{{ __('in') . ' ' . $filtered->name }}</small>@endisset</h1>
+                    <h1 class="mb-0 font-weight-bold">{{ __('servers.servers') }} @isset($filters)<small class="text-muted">{{$filtered->name }}</small>@endisset</h1>
                 </div>
                 <div class="col-auto">
                     <div class="dropdown d-inline-block">
                         <a class="btn btn-secondary btn-sm dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            {{ __('Filter by') }}
+                            {{ __('servers.actions.filter') }}
                         </a>
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuLink">
-                            <a class="dropdown-item" href="{{ url('/servers/versions/1_14_2') }}">{{ __('Version') }}</a>
-                            <a class="dropdown-item" href="{{ url('/servers/types/survival') }}">{{ __('Type') }}</a>
-                            <a class="dropdown-item" href="{{ url('/servers/countries/united-states') }}">{{ __('Country') }}</a>
+                            <a class="dropdown-item" href="{{ url('/servers/versions/1_14_2') }}">{{ __('servers.attributes.version') }}</a>
+                            <a class="dropdown-item" href="{{ url('/servers/types/survival') }}">{{ __('servers.attributes.type') }}</a>
+                            <a class="dropdown-item" href="{{ url('/servers/countries/united-states') }}">{{ __('servers.attributes.country') }}</a>
                         </div>
                     </div>
 {{--                     @auth --}}
-                        <a class="btn btn-success btn-sm" href="{{ route('servers.create') }}" role="button"><i class="fal fa-plus fa-fw"></i> {{ __('Create') }}</a>
+                        <a class="btn btn-success btn-sm" href="{{ route('servers.create') }}" role="button"><i class="fal fa-plus fa-fw"></i> {{ __('servers.actions.create') }}</a>
 {{--                     @endauth --}}
                 </div>
             </div>

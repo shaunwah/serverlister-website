@@ -53,12 +53,12 @@ class ServerVoteController extends Controller
                 $server->addVote($validated);
 
                 session()->flash('alert_colour', 'success');
-                session()->flash('alert', 'Thank you for your vote.');
+                session()->flash('alert', __('servers.text.alerts.votes.create_success'));
             }
             else
             {
                 session()->flash('alert_colour', 'danger');
-                session()->flash('alert', 'You have already voted for this server today.');
+                session()->flash('alert', __('servers.text.alerts.votes.create_failure'));
             }
 
             return redirect('/servers/' . $server->id);
