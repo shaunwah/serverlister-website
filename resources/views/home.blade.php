@@ -37,7 +37,7 @@
             </div>
 
             <small class="text-white-50">
-                {{ __('servers.text.status_last_retrieved_at', ['carbon' => Carbon\Carbon::parse($servers->sortBy('rank')->first()->pings->last()->created_at)->locale(str_replace('_', '-', app()->getLocale()))->diffForHumans()]) }}
+                {{ __('servers.text.status_last_retrieved_at', ['carbon' => Carbon\Carbon::parse($servers->sortBy('rank')->first()->pings->last()->created_at)->locale(app()->getLocale())->diffForHumans()]) }}
             </small>
         </div>
     </div>

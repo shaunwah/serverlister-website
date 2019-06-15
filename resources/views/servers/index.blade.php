@@ -12,7 +12,7 @@
             @endisset
             <div class="row mb-2 align-items-center">
                 <div class="col-auto mr-auto">
-                    <h1 class="mb-0 font-weight-bold">{{ __('servers.servers') }} @isset($filters)<small class="text-muted">{{$filtered->name }}</small>@endisset</h1>
+                    <h1 class="mb-0 font-weight-bold">{{ __('servers.servers') }} @isset($filters)<small class="text-muted">{{ $filtered->name }}</small>@endisset</h1>
                 </div>
                 <div class="col-auto">
                     <div class="dropdown d-inline-block">
