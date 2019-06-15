@@ -1,12 +1,12 @@
 <?php
 
 return [
-    'support' => "帮助中心 （英语）",
+    'support' => '帮助中心',
     'text' => [
         'headers' => [
-            'privacy_policy' => '找到服务器 （英语）',
-            'terms_of_service' => '服务条款 （英语）',
-            'rules' => '规则 （英语）',
+            'privacy_policy' => '隐私政策',
+            'terms_of_service' => '服务条款',
+            'rules' => '规则',
         ],
     ],
 ];

@@ -64,7 +64,7 @@ return [
             'popular_servers' => '顶级服务器',
             'new_servers' => '新服务器',
             'about' => '关于',
-            'information' => '选民',
+            'information' => '信息',
             'players' => '玩家',
             'voters' => '选民',
             'voting_service' => 'Votifier 投票制度',
@@ -89,7 +89,7 @@ return [
             'name_placeholder' => '我的我的世界服务器',
             'create_button' => '创造服务器',
             'edit_button' => '编辑服务器',
-            'find_button' => '找到服务器',
+            'find_button' => '搜索服务器',
             'votes' => [
                 'create_button' => '投票给 :server_name',
             ],

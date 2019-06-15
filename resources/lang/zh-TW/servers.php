@@ -64,7 +64,7 @@ return [
             'popular_servers' => '頂級服務器',
             'new_servers' => '新服務器',
             'about' => '關於',
-            'information' => '選民',
+            'information' => '信息',
             'players' => '玩家',
             'voters' => '選民',
             'voting_service' => 'Votifier 投票制度',
@@ -89,7 +89,7 @@ return [
             'name_placeholder' => '我的我的世界服務器',
             'create_button' => '創造服務器',
             'edit_button' => '編輯服務器',
-            'find_button' => '找到服務器',
+            'find_button' => '搜索服務器',
             'votes' => [
                 'create_button' => '投票給 :server_name',
             ],
