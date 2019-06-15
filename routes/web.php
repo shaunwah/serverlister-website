@@ -12,7 +12,7 @@
 */
 
 // Locale
-app()->setLocale(str_replace('_', '-', app()->getLocale()));
+app()->setLocale(str_replace('_', '-', request()->server('HTTP-ACCEPT-LANGUAGE')));
 
 // Auth
 Auth::routes();
