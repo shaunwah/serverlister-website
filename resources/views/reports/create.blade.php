@@ -2,7 +2,7 @@
 @section('meta_robots', 'noindex, nofollow')
 @section('head')
 {{-- ReCaptcha --}}
-<script src="https://www.google.com/recaptcha/api.js?render={{ env('GOOGLE_RECAPTCHA_SITE') }}"></script>
+<script src="https://www.google.com/recaptcha/api.js?render={{ config('services.google_recaptcha.key') }}"></script>
 @endsection
 @section('title', __('Create - Reports'))
 @section('content')
@@ -66,7 +66,7 @@
 @section('scripts')
 <script>
     grecaptcha.ready(function() {
-        grecaptcha.execute('{{ env('GOOGLE_RECAPTCHA_SITE') }}', {action: 'create_report'}).then(function (response) {
+        grecaptcha.execute('{{ config('services.google_recaptcha.key') }}', {action: 'create_report'}).then(function (response) {
             if (response) {
                 document.getElementsByName('g-recaptcha-response')[0].value = response;
             }

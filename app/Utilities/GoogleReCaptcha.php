@@ -9,7 +9,7 @@ class GoogleReCaptcha
         $url = "https://www.recaptcha.net/recaptcha/api/siteverify";
 
         $data = [
-            'secret' => env('GOOGLE_RECAPTCHA_SECRET'),
+            'secret' => config('services.google_recaptcha.secret'),
             'response' => request('g-recaptcha-response'),
             'remoteip' => request()->ip(),
         ];

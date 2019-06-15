@@ -2,7 +2,7 @@
 @section('meta_description', __('Vote for :server_name, a :server_version :server_type-based Minecraft server (:server_ip_address) located in :server_country.', ['server_name' => $server->name, 'server_version' => $server->version->name, 'server_type' => $server->type->name, 'server_country' => $server->country->name, 'server_ip_address' => $server->host . ($server->port != 25565 ? ':' . $server->port : '')]))
 @section('head')
 {{-- ReCaptcha --}}
-<script src="https://www.google.com/recaptcha/api.js?render={{ env('GOOGLE_RECAPTCHA_SITE') }}"></script>
+<script src="https://www.google.com/recaptcha/api.js?render={{ config('services.google_recaptcha.key') }}"></script>
 @endsection
 @section('title', $server->name . ' - ' . __('Vote'))
 @section('content')
@@ -42,7 +42,7 @@
 @section('scripts')
 <script>
     grecaptcha.ready(function() {
-        grecaptcha.execute('{{ env('GOOGLE_RECAPTCHA_SITE') }}', {action: 'create_server_vote'}).then(function (response) {
+        grecaptcha.execute('{{ config('services.google_recaptcha.key') }}', {action: 'create_server_vote'}).then(function (response) {
             if (response) {
                 document.getElementsByName('g-recaptcha-response')[0].value = response;
             }

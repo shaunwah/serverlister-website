@@ -1,9 +1,5 @@
 @extends('layouts.app')
 @section('meta_robots', 'nofollow')
-@section('head')
-{{-- ReCaptcha --}}
-<script src="https://www.google.com/recaptcha/api.js?render={{ env('GOOGLE_RECAPTCHA_SITE') }}"></script>
-@endsection
 @section('title', __('Register'))
 @section('content')
 @component('partials.alert')
@@ -56,15 +52,4 @@
         </div>
     </div>
 </div>
-@endsection
-@section('scripts')
-<script>
-    grecaptcha.ready(function() {
-        grecaptcha.execute('{{ env('GOOGLE_RECAPTCHA_SITE') }}', {action: 'create_user'}).then(function (response) {
-            if (response) {
-                document.getElementsByName('g-recaptcha-response')[0].value = response;
-            }
-        });
-    });
-</script>
 @endsection
