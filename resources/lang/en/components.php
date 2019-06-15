@@ -1,0 +1,107 @@
+<?php
+
+return [
+    // Generic Components
+    'buttons' => [
+        'create' => 'Create',
+        'edit' => 'Edit',
+        'delete' => 'Delete',
+        'filter' => 'Filter',
+        'report' => 'Report',
+        'ping' => 'Ping',
+        'vote' => 'Vote',
+    ],
+
+    'headers' => [
+        'user' => 'User',
+        'users' => 'Users',
+        'home' => 'Home',
+        'reports' => 'Reports',
+        'servers' => 'Servers',
+        'vote' => 'Vote',
+        'support' => 'Support',
+        'statistics' => 'Statistics',
+        'features' => 'Features',
+        'about' => 'About',
+        'information' => 'Information',
+    ],
+
+    // Context-Specific Components
+    'app' => [
+        'content' => [
+            'author' => 'Crafted with love in Singapore',
+            'copyright' => 'Copyright &copy; Zodurus Labs',
+        ],
+    ],
+
+    'home' => [
+        'content' => [
+            'call_to_action' => 'Tracking Minecraft servers worldwide, 24/7.',
+            'call_to_action_button' => 'Find Servers',
+            'last_pinged_at' => 'Server information last retrieved at :time_difference',
+        ],
+    ],
+
+    'user' => [
+        'headers' => [
+            'login' => 'Login',
+            'register' => 'Register',
+            'register_alt' => 'Register Account',
+            'dashboard' => 'Dashboard',
+            'settings' => 'Settings',
+            'account' => 'Account',
+            'security' => 'Security',
+            'console' => 'Console',
+            'statistics' => 'Your Statistics',
+            'servers' => 'Your Servers',
+        ],
+        'content' => [
+            'welcome' => 'Welcome back, :username.',
+            'forgot_password' => 'Forgot Password?',
+        ],
+    ],
+
+    'reports' => [
+        'headers' => [
+            'create' => 'Create Report',
+            'view' => 'Report',
+            'edit' => 'Edit Report',
+        ],
+        'content' => [
+            'information' => 'You are reporting :entity_name for abuse of ServerLister\'s terms of service and/or rules.',
+            'disclaimer_server' => 'ServerLister and its staff cannot resolve issues regarding internal server matters. In such cases, you are advised to communicate directly with the server staff to resolve your issues.',
+        ],
+    ],
+
+    'servers' => [
+        'headers' => [
+            'create' => 'Create Server',
+            'edit' => 'Edit Server',
+            'top' => 'Top Servers',
+            'new' => 'New Servers',
+            'voters' => 'Voters',
+            'voting_service' => 'Votifier',
+        ],
+        'content' => [
+            'empty_server' => 'No servers. Create one?',
+            'empty_description' => 'No description set. :(',
+            'last_pinged_at' => 'Last pinged at',
+        ],
+    ],
+
+    'server_votes' => [
+        'headers' => [
+            'create' => 'Vote Server',
+            'new' => 'New Servers',
+            'voters' => 'Voters',
+        ],
+    ],
+
+    'support' => [
+        'headers' => [
+            'privacy_policy' => 'Privacy Policy',
+            'terms_of_service' => 'Terms of Service',
+            'rules' => 'Rules',
+        ],
+    ],
+];

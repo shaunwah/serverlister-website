@@ -53,12 +53,12 @@ class ServerVoteController extends Controller
                 $server->addVote($validated);
 
                 session()->flash('alert_colour', 'success');
-                session()->flash('alert', __('servers.text.alerts.votes.create_success'));
+                session()->flash('alert', __('alerts.server_votes.create.success'));
             }
             else
             {
                 session()->flash('alert_colour', 'danger');
-                session()->flash('alert', __('servers.text.alerts.votes.create_failure'));
+                session()->flash('alert', __('alerts.server_votes.create.failure'));
             }
 
             return redirect('/servers/' . $server->id);
@@ -66,7 +66,7 @@ class ServerVoteController extends Controller
         else
         {
             session()->flash('alert_colour', 'danger');
-            session()->flash('alert', 'Your device failed reCAPTCHA validation. Please try again.');
+            session()->flash('alert', __('alerts.services.recaptcha.failure'));
             return back();
         }
     }

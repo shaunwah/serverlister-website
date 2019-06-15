@@ -71,14 +71,14 @@ class ServerController extends Controller
             $server->create($validated);
 
             session()->flash('alert_colour', 'success');
-            session()->flash('alert', __('servers.text.alerts.create_success', ['server_name' => request()->name]));
+            session()->flash('alert', __('alerts.servers.create.success', ['server_name' => request()->name]));
 
             return redirect('/servers');
         }
         else
         {
             session()->flash('alert_colour', 'danger');
-            session()->flash('alert', 'Your device failed reCAPTCHA validation. Please try again.');
+            session()->flash('alert', __('alerts.services.recaptcha.failure'));
             return back();
         }
     }
@@ -150,7 +150,7 @@ class ServerController extends Controller
         $validated['voting_service_token'] = encrypt($validated['voting_service_token']);
 
         session()->flash('alert_colour', 'success');
-        session()->flash('alert', __('servers.text.alerts.edit_success'));
+        session()->flash('alert', __('alerts.servers.edit.success'));
 
         $server->update($validated);
 
@@ -167,7 +167,7 @@ class ServerController extends Controller
     {
         $this->authorize('delete', $server);
         session()->flash('alert_colour', 'success');
-        session()->flash('alert', 'The server has been successfully deleted.');
+        session()->flash('alert', 'alerts.servers.delete.success.');
 
         return redirect('/servers');
     }

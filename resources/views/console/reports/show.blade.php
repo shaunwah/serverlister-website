@@ -4,22 +4,22 @@
 @section('content')
 <div class="container">
     <h1 class="font-weight-bold">
-        {{ __('Report') }}
+        {{ __('components.reports.headers.view') }}
     </h1>
     <div class="row">
         <div class="col-md-8">
-            <h3>{{ __('Issue') }}</h3>
+            <h3>{{ __('attributes.reports.issue') }}</h3>
             <p>
                 {{ $report->issue }}
             </p>
 
-            <h3>{{ __('Description') }}</h3>
+            <h3>{{ __('attributes.reports.description') }}</h3>
             <p>
                 {{ $report->description }}
             </p>
         </div>
         <div class="col-md-4">
-            <h3>{{ __('Information') }}</h3>
+            <h3>{{ __('components.headers.information') }}</h3>
             <dl class="row">
                 <dt class="col-sm-3">{{ __('Entity') }}</dt>
                 <dd class="col-sm-9"><a href="{{ route('servers.show', $entity->id) }}">{{ $entity->name }}</a></dd>

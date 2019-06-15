@@ -1,8 +1,8 @@
 @extends('layouts.app')
-@section('title', __('support.text.headers.terms_of_service'))
+@section('title', __('components.support.headers.terms_of_service'))
 @section('content')
 <div class="container">
-    <h1 class="font-weight-bold">{{ __('support.text.headers.terms_of_service') }}</h1>
+    <h1 class="font-weight-bold">{{ __('components.support.headers.terms_of_service') }}</h1>
 
     <h2>1. Terms</h2>
 

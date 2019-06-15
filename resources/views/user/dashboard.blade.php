@@ -1,13 +1,13 @@
 @extends('layouts.app')
 @section('meta_robots', 'noindex, nofollow')
-@section('title', __('Dashboard'))
+@section('title', __('components.user.headers.dashboard'))
 @section('content')
 <div class="mt-n4 mb-3 bg-secondary text-white">
     <div class="container py-4">
         <h1 class="font-weight-bold">
-            Dashboard
+            {{ __('components.user.headers.dashboard') }}
         </h1>
-        <h3>Welcome back, {{ auth()->user()->username }}.</h3>
+        <h3>{{ __('components.user.content.welcome', ['username' => auth()->user()->username]) }}</h3>
     </div>
 </div>
 @component('partials.alert')
@@ -15,7 +15,7 @@
 
 {{-- Statistics Section --}}
 <div class="container mb-3">
-    <h2 class="font-weight-bold">Your Statistics</h2>
+    <h2 class="font-weight-bold">{{ __('components.user.headers.statistics') }}</h2>
     <div class="card-deck">
         <div class="card">
             <div class="card-body">
@@ -23,7 +23,7 @@
                     <i class="fas fa-circle fa-stack-2x text-dark"></i>
                     <i class="fal fa-server fa-stack-1x fa-inverse"></i>
                 </span>
-                <h3 class="card-title d-inline-block mb-0 align-middle">{{ number_format(App\Server::where('user_id', auth()->id())->count()) }}<small class="d-block text-muted">Servers</small></h3>
+                <h3 class="card-title d-inline-block mb-0 align-middle">{{ number_format(App\Server::where('user_id', auth()->id())->count()) }}<small class="d-block text-muted">{{ __('components.headers.servers') }}</small></h3>
             </div>
         </div>
     </div>
@@ -33,10 +33,10 @@
 <div class="container">
     <div class="row mb-2 align-items-center">
         <div class="col-auto mr-auto">
-            <h2 class="mb-0 font-weight-bold">{{ __('Your Servers') }}</h2>
+            <h2 class="mb-0 font-weight-bold">{{ __('components.user.headers.dashboard') }}</h2>
         </div>
         <div class="col-auto">
-            <a class="btn btn-success btn-sm" href="{{ route('servers.create') }}" role="button"><i class="fal fa-plus fa-fw"></i> {{ __('Create') }}</a>
+            <a class="btn btn-success btn-sm" href="{{ route('servers.create') }}" role="button"><i class="fal fa-plus fa-fw"></i> {{ __('components.buttons.create') }}</a>
         </div>
     </div>
     @if ($servers->count() > 0)
@@ -49,7 +49,7 @@
         <div class="card bg-transparent border shadow-none">
             <div class="card-body text-muted text-center" id="card-no-data">
                 <h5 class="card-title font-weight-bold mb-0 ">Empty :(</h5>
-                No servers. Create one?
+                {{ __('components.servers.content.empty_server')}}
             </div>
         </div>
     @endif

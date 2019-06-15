@@ -20,23 +20,23 @@
                 <small class="d-block text-white-50">{{ $server->host . ($server->port != 25565 ? ':' . $server->port : '') }}</small>
             </h1>
             <ul class="list-inline">
-                <li class="list-inline-item"><span class="font-weight-bold">{{ __('servers.attributes.rank') }}</span>&nbsp;
+                <li class="list-inline-item"><span class="font-weight-bold">{{ __('attributes.servers.rank') }}</span>&nbsp;
                     {{ number_format($server->rank) }}
                 </li>
                 @if (@$server->pings->last()->status)
                     <li class="list-inline-item">
-                        <span class="font-weight-bold">{{ __('servers.attributes.player_count') }}</span>&nbsp;
+                        <span class="font-weight-bold">{{ __('attributes.server_pings.players') }}</span>&nbsp;
                         {{ number_format(@$server->pings->last()->players_current) }}
                         <span class="text-white-50">/</span>
                         {{ number_format(@$server->pings->last()->players_total) }}
                     </li>
                 @endif
-                <li class="list-inline-item"><span class="font-weight-bold">{{ __('servers.attributes.vote_count') }}</span>&nbsp;
+                <li class="list-inline-item"><span class="font-weight-bold">{{ __('attributes.servers.votes') }}</span>&nbsp;
                     {{ number_format($voteCountThisMonth) }}
                 </li>
             </ul>
             @isset($server->link_website)
-                <a href="{{ $server->link_website }}" target="_blank" class="badge badge-pill badge-light">{{ __('servers.attributes.link_website') }}</a>
+                <a href="{{ $server->link_website }}" target="_blank" class="badge badge-pill badge-light">{{ __('attributes.servers.link_website') }}</a>
             @endisset
         </div>
     </div>
@@ -51,14 +51,14 @@
             <div class="row mb-2 align-items-center">
                 {{-- About Section --}}
                 <div class="col-auto mr-auto">
-                    <h3 class="mb-0">{{ __('servers.text.headers.about') }}</h3>
+                    <h3 class="mb-0">{{ __('components.headers.about') }}</h3>
                 </div>
                 <div class="col-auto">
-                    <a class="btn btn-primary btn-sm" href="{{ route('servers.votes.create', $server->id) }}" role="button"><i class="fal fa-vote-yea fa-fw"></i> {{ __('servers.actions.votes.create') }}</a>
-                    <a class="btn btn-warning btn-sm" href="{{ route('reports.create') }}" onClick="event.preventDefault(); document.getElementById('report-form').submit();" role="button"><i class="fal fa-exclamation-triangle fa-fw"></i> {{ __('servers.actions.reports.create') }}</a>
+                    <a class="btn btn-primary btn-sm" href="{{ route('servers.votes.create', $server->id) }}" role="button"><i class="fal fa-vote-yea fa-fw"></i> {{ __('components.buttons.vote') }}</a>
+                    <a class="btn btn-warning btn-sm" href="{{ route('reports.create') }}" onClick="event.preventDefault(); document.getElementById('report-form').submit();" role="button"><i class="fal fa-exclamation-triangle fa-fw"></i> {{ __('components.buttons.report') }}</a>
                     @can('update', $server)
 {{--                         <a class="btn btn-secondary btn-sm" href="{{ route('servers.show.panel', $server->id) }}" role="button"><i class="fal fa-chart-line fa-fw"></i> Panel</a> --}}
-                        <a class="btn btn-secondary btn-sm" href="{{ route('servers.edit', $server->id) }}" role="button"><i class="fal fa-edit fa-fw"></i> {{ __('servers.actions.edit') }}</a>
+                        <a class="btn btn-secondary btn-sm" href="{{ route('servers.edit', $server->id) }}" role="button"><i class="fal fa-edit fa-fw"></i> {{ __('components.buttons.edit') }}</a>
                     @endcan
                 </div>
             </div>
@@ -67,31 +67,33 @@
                     {!! $parsedown->text($server->description) !!}
                 </div>
             @else
-                <p><span class="text-muted">{{ __('servers.text.description_empty') }}</span></p>
+                <p><span class="text-muted">{{ __('components.servers.content.empty_description') }}</span></p>
             @endempty
         </div>
         <div class="col-md-4">
             {{-- Information Section --}}
-            <h3>{{ __('servers.text.headers.information') }}</h3>
+            <h3>{{ __('components.headers.information') }}</h3>
             <dl class="row">
-                <dt class="col-sm-3">{{ __('servers.attributes.game') }}</dt>
+                <dt class="col-sm-3">{{ __('attributes.servers.game') }}</dt>
                 <dd class="col-sm-9">Minecraft: Java Edition</dd>
-                <dt class="col-sm-3">{{ __('servers.attributes.version') }}</dt>
+                <dt class="col-sm-3">{{ __('attributes.servers.version') }}</dt>
                 <dd class="col-sm-9"><a href="{{ url('/servers/versions/' . $server->version->slug) }}">{{ $server->version->name }}</a></dd>
-                <dt class="col-sm-3">{{ __('servers.attributes.type') }}</dt>
+                <dt class="col-sm-3">{{ __('attributes.servers.type') }}</dt>
                 <dd class="col-sm-9"><a href="{{ url('/servers/types/' . $server->type->slug) }}">{{ $server->type->name }}</a></dd>
-                <dt class="col-sm-3">{{ __('servers.attributes.country') }}</dt>
+                <dt class="col-sm-3">{{ __('attributes.servers.country') }}</dt>
                 <dd class="col-sm-9"><a href="{{ url('/servers/countries/' . $server->country->slug) }}">{{ $server->country->name }}</a></dd>
             </dl>
-{{--             <hr>
-            <dl class="row">
-                <dt class="col-sm-3">Creator</dt>
-                <dd class="col-sm-9">{{ $server->user->username }}</dd>
-            </dl> --}}
+            @if ($server->user_id != 1)
+                <hr>
+                <dl class="row">
+                    <dt class="col-sm-3">Creator</dt>
+                    <dd class="col-sm-9">{{ $server->user->username }}</dd>
+                </dl>
+            @endif
 
             {{-- Votes Section --}}
             @if ($server->votes->count() > 0)
-                <h3>{{ __('servers.text.headers.players') }} <small class="text-muted">{{ __('servers.text.headers.voters') }}</small></h3>
+                <h3 class="text-muted">{{ __('components.servers.headers.voters') }}</h3>
                 @foreach ($server->votes->sortByDesc('id')->pluck('username')->countBy()->keys() as $key => $val)
                     @if ($val != null)
                         <img src="{{ url('https://minotar.net/avatar/' . $val. '/24') }}" class="img-fluid rounded" data-toggle="tooltip" data-placement="top" title="{{ $val }}">
@@ -119,7 +121,7 @@
 
 {{-- Infomation Bar --}}
 <div class="container">
-    <small class="text-muted" data-toggle="tooltip" data-placement="top" title="{{ __('servers.text.status_last_pinged_at') }}">
+    <small class="text-muted" data-toggle="tooltip" data-placement="top" title="{{ __('components.servers.content.last_pinged_at') }}">
         <i class="fas {{ @$server->pings->last()->status == 1 ? 'fa-check-circle text-success' : 'fa-times-circle text-danger' }} fa-fw"></i> {{ Carbon\Carbon::parse(@$server->pings->last()->created_at)->locale(app()->getLocale())->diffForHumans() }}
     </small>
 </div>

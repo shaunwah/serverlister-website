@@ -4,7 +4,7 @@
 {{-- ReCaptcha --}}
 <script src="https://www.google.com/recaptcha/api.js?render={{ config('services.google_recaptcha.key') }}"></script>
 @endsection
-@section('title', __('Create - Reports'))
+@section('title', __('components.reports.headers.create'))
 @section('content')
 @component('partials.alert')
 @endcomponent
@@ -12,7 +12,7 @@
     <div class="row justify-content-center">
         <div class="col-md-12">
             <a class="text-decoration-none" href="{{ route(Illuminate\Support\Str::plural(request()->entity) . '.show', request()->entity_id) }}"><i class="fal fa-chevron-left fa-fw"></i> {{ request()->entity_name }}</a>
-            <h1 class="font-weight-bold">{{ __('Report ' . ucwords(request()->entity)) }}</h1>
+            <h1 class="font-weight-bold">{{ __('components.reports.headers.create') }}</h1>
             <form method="post" action="{{ route('reports.store') }}">
                 @csrf
                 @recaptcha
@@ -23,39 +23,33 @@
                 <div class="card mb-3">
                     <div class="card-body">
                         <p>
-                            You are reporting <span class="font-weight-bold">{{ request()->entity_name }}</span> for abuse of ServerLister's <a href="{{ url('/support/terms-of-service') }}">Terms of Service</a> and/or <a href="{{ url('/support/rules') }}">Rules</a>.
+                            {{ __('components.reports.content.information', ['entity_name' => request()->entity_name]) }}
                         </p>
                         @if (request()->entity == 'server')
                             <p>
-                                ServerLister and its staff cannot resolve issues regarding internal server matters.
-                                In such cases, you are advised to communicate directly with the server staff to resolve your
-                                issues.
-
-                                <span class="text-muted">
-                                    Automated server takeover/verification will be available soon.
-                                </span>
+                                {{ __('components.reports.content.disclaimer_server') }}
                             </p>
                         @endif
 
                         {{-- Issue Input --}}
                         <div class="form-group">
-                            <label for="issue">{{ __('Issue') }}</label>
+                            <label for="issue">{{ __('attributes.reports.issue') }}</label>
                             <input type="text" class="form-control @error('issue') is-invalid @enderror" id="issue" name="issue" value="{{ old('issue') }}" minlength="3" required autofocus>
                             @error('issue')<div class="invalid-feedback">{{ $message }}</div>@enderror
                         </div>
 
                         {{-- Description Input --}}
                         <div class="form-group">
-                            <label for="description">{{ __('Description') }}</label>
+                            <label for="description">{{ __('attributes.reports.description') }}</label>
                             <textarea class="form-control @error('description') is-invalid @enderror" id="description" aria-describedby="descriptionHelp" name="description" rows="9" required>{{ old('description') }}</textarea>
                             @error('description')
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @else
-                                <small id="descriptionHelp" class="form-text text-muted">Describing the issue in detail helps us resolve the issue as fast as possible.</small>
+                                <small id="descriptionHelp" class="form-text text-muted">{{ __('forms.reports.help.description') }}</small>
                             @enderror
                         </div>
 
-                        <button type="submit" class="btn btn-primary btn-block">{{ __('Send Report') }}</button>
+                        <button type="submit" class="btn btn-primary btn-block">{{ __('forms.reports.buttons.create') }}</button>
                     </div>
                 </div>
             </form>

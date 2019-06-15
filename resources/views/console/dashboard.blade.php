@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('meta_robots', 'noindex, nofollow')
-@section('title', __('Console'))
+@section('title', __('components.user.headers.console'))
 @section('content')
 <div class="mt-n4 mb-3 bg-secondary text-white">
     <div class="container py-4">
@@ -15,7 +15,7 @@
 
 {{-- Statistics Section --}}
 <div class="container mb-3">
-    <h2 class="font-weight-bold">Statistics</h2>
+    <h2 class="font-weight-bold">{{ __('components.headers.statistics') }}</h2>
     <div class="card-deck">
         <div class="card">
             <div class="card-body">
@@ -23,7 +23,7 @@
                     <i class="fas fa-circle fa-stack-2x text-dark"></i>
                     <i class="fal fa-users fa-stack-1x fa-inverse"></i>
                 </span>
-                <h3 class="card-title d-inline-block mb-0 align-middle">{{ number_format($users->count()) }}<small class="d-block text-muted">{{ __('Users') }}</small></h3>
+                <h3 class="card-title d-inline-block mb-0 align-middle">{{ number_format($users->count()) }}<small class="d-block text-muted">{{ __('components.headers.users') }}</small></h3>
             </div>
         </div>
         <div class="card">
@@ -32,7 +32,7 @@
                     <i class="fas fa-circle fa-stack-2x text-dark"></i>
                     <i class="fal fa-server fa-stack-1x fa-inverse"></i>
                 </span>
-                <h3 class="card-title d-inline-block mb-0 align-middle">{{ number_format($servers->count()) }}<small class="d-block text-muted">{{ __('Servers') }}</small></h3>
+                <h3 class="card-title d-inline-block mb-0 align-middle">{{ number_format($servers->count()) }}<small class="d-block text-muted">{{ __('components.headers.servers') }}</small></h3>
             </div>
         </div>
         <div class="card">
@@ -41,7 +41,7 @@
                     <i class="fas fa-circle fa-stack-2x text-dark"></i>
                     <i class="fal fa-flag-alt fa-stack-1x fa-inverse"></i>
                 </span>
-                <h3 class="card-title d-inline-block mb-0 align-middle">{{ number_format($reports->count()) }}<small class="d-block text-muted">{{ __('Reports') }}</small></h3>
+                <h3 class="card-title d-inline-block mb-0 align-middle">{{ number_format($reports->count()) }}<small class="d-block text-muted">{{ __('components.headers.reports') }}</small></h3>
             </div>
         </div>
     </div>
@@ -49,7 +49,7 @@
 
 {{-- Reports Section --}}
 <div class="container">
-    <h2 class="font-weight-bold">Reports</h2>
+    <h2 class="font-weight-bold">{{ __('components.headers.reports') }}</h2>
     <table class="table">
         <thead>
             <tr>

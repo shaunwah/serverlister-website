@@ -49,25 +49,25 @@
                     </button>
                     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                         <div class="navbar-nav mr-auto">
-                                <a class="nav-item nav-link" href="{{ route('home') }}">{{ __('home.home') }} {{-- <span class="sr-only">(current)</span> --}}</a>
-                                <a class="nav-item nav-link" href="{{ route('servers.index') }}">{{ __('servers.servers') }}</a>
-                                <a class="nav-item nav-link" href="{{ url('/support') }}">{{ __('support.support') }}</a>
+                                <a class="nav-item nav-link" href="{{ route('home') }}">{{ __('components.headers.home') }} {{-- <span class="sr-only">(current)</span> --}}</a>
+                                <a class="nav-item nav-link" href="{{ route('servers.index') }}">{{ __('components.headers.servers') }}</a>
+                                <a class="nav-item nav-link" href="{{ url('/support') }}">{{ __('components.headers.support') }}</a>
                         </div>
                         <div class="navbar-nav">
                             @guest
-                                <a class="nav-item nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                                <a class="nav-item nav-link" href="{{ route('login') }}">{{ __('components.user.headers.login') }}</a>
                                 @if (Route::has('register'))
-                                    <a class="nav-item nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                    <a class="nav-item nav-link" href="{{ route('register') }}">{{ __('components.user.headers.register') }}</a>
                                 @endif
                             @else
                                 <li class="nav-item dropdown">
                                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{ Auth::user()->username }}</a>
                                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-                                        <a class="dropdown-item" href="{{ route('user.dashboard') }}"><i class="fal fa-columns fa-fw"></i> {{ __('Dashboard') }}</a>
-                                        <a class="dropdown-item" href="{{ url('user/settings/account') }}"><i class="fal fa-cogs fa-fw"></i> {{ __('Settings') }}</a>
+                                        <a class="dropdown-item" href="{{ route('user.dashboard') }}"><i class="fal fa-columns fa-fw"></i> {{ __('components.user.headers.dashboard') }}</a>
+                                        <a class="dropdown-item" href="{{ url('user/settings/account') }}"><i class="fal fa-cogs fa-fw"></i> {{ __('components.user.headers.settings') }}</a>
                                         <div class="dropdown-divider"></div>
                                         @if (auth()->id() == 1)
-                                            <a class="dropdown-item" href="{{ route('console.dashboard') }}"><i class="fal fa-terminal fa-fw"></i> {{ __('Console') }}</a>
+                                            <a class="dropdown-item" href="{{ route('console.dashboard') }}"><i class="fal fa-terminal fa-fw"></i> {{ __('components.user.headers.console') }}</a>
                                             <div class="dropdown-divider"></div>
                                         @endif
                                         <a class="dropdown-item" href="{{ route('logout') }}" onClick="event.preventDefault(); document.getElementById('logout-form').submit();"><i class="fal fa-sign-out-alt fa-fw"></i> {{ __('Logout') }}</a>
@@ -96,12 +96,12 @@
                     <div class="col-12 col-sm-auto mr-auto">
                         <h3>ServerLister</h3>
                         <p class="text-white-50">
-                            Crafted with love in Singapore<br>
-                            Copyright &copy; Zodurus Labs
+                            {{ __('components.app.content.author') }}<br>
+                            {!! __('components.app.content.copyright') !!}
                         </p>
                     </div>
                     <div class="col-auto col-sm-2">
-                        <h5 class="font-weight-bold text-white-50">{{ __('servers.text.headers.popular_servers') }}</h5>
+                        <h5 class="font-weight-bold text-white-50">{{ __('components.servers.headers.top') }}</h5>
                         <ul class="list-unstyled text-truncate">
                             @foreach(App\Server::orderBy('rank', 'asc')->take(5)->get() as $server)
                                 <li><a href="{{ route('servers.show', $server->id) }}" class="text-reset">{{ $server->name }}</a></li>
@@ -109,7 +109,7 @@
                         </ul>
                     </div>
                     <div class="col-auto col-sm-2">
-                        <h5 class="font-weight-bold text-white-50">{{ __('servers.text.headers.new_servers') }}</h5>
+                        <h5 class="font-weight-bold text-white-50">{{ __('components.servers.headers.new') }}</h5>
                         <ul class="list-unstyled text-truncate">
                             @foreach(App\Server::orderBy('created_at', 'desc')->take(5)->get() as $server)
                                 <li><a href="{{ route('servers.show', $server->id) }}" class="text-reset">{{ $server->name }}</a></li>
@@ -117,26 +117,12 @@
                         </ul>
                     </div>
                 </div>
-                <div class="row align-items-center">
-                    <div class="col-auto mr-auto">
-                        <ul class="list-inline mb-0 text-white-50">
-                            <li class="list-inline-item"><a href="{{ url('/support/privacy-policy') }}" class="text-reset">{{ __('support.text.headers.privacy_policy') }}</a></li>
-                            <li class="list-inline-item"><a href="{{ url('/support/terms-of-service') }}" class="text-reset">{{ __('support.text.headers.terms_of_service') }}</a></li>
-                            <li class="list-inline-item"><a href="{{ url('/support/rules') }}" class="text-reset">{{ __('support.text.headers.rules') }}</a></li>
-                        </ul>
-                    </div>
-                    <div class="col-auto">
-                        <div class="dropup">
-                            <button class="btn btn-secondary dropdown-toggle" type="button" id="languageSelectButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                {{ __('support.text.headers.language') }}
-                            </button>
-                            <div class="dropdown-menu" aria-labelledby="languageSelectMenuButton">
-                                <a class="dropdown-item" href="/locale/en">English</a>
-                                <a class="dropdown-item" href="/locale/zh-cn">中文 (简体)</a>
-                                <a class="dropdown-item" href="/locale/zh-tw">中文 (繁體)</a>
-                            </div>
-                        </div>
-                    </div>
+                <div>
+                    <ul class="list-inline mb-0 text-white-50">
+                        <li class="list-inline-item"><a href="{{ url('/support/privacy-policy') }}" class="text-reset">{{ __('components.support.headers.privacy_policy') }}</a></li>
+                        <li class="list-inline-item"><a href="{{ url('/support/terms-of-service') }}" class="text-reset">{{ __('components.support.headers.terms_of_service') }}</a></li>
+                        <li class="list-inline-item"><a href="{{ url('/support/rules') }}" class="text-reset">{{ __('components.support.headers.rules') }}</a></li>
+                    </ul>
                 </div>
             </div>
         </footer>

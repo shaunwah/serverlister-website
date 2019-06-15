@@ -65,21 +65,21 @@ class ReportController extends Controller
             }
             else
             {
-                session()->flash('alert_colour', 'warning');
-                session()->flash('alert', 'You encounted an error while submitting a report.');
+                session()->flash('alert_colour', 'danger');
+                session()->flash('alert', __('alerts.reports.create.failure'));
 
-                return redirect('/dashboard');
+                return redirect('/user/dashboard');
             }
 
             session()->flash('alert_colour', 'success');
-            session()->flash('alert', 'You have successfully submitted a report.');
+            session()->flash('alert', __('alerts.reports.create.success'));
 
-            return redirect('/dashboard');
+            return redirect('/user/dashboard');
         }
         else
         {
             session()->flash('alert_colour', 'danger');
-            session()->flash('alert', 'Your device failed reCAPTCHA validation. Please try again.');
+            session()->flash('alert', __('alerts.services.recaptcha.failure'));
             return back();
         }
     }
