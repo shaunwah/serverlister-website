@@ -1,13 +1,13 @@
 @extends('layouts.app')
 @section('meta_robots', 'nofollow')
-@section('title', __('components.user.headers.register_alt'))
+@section('title', __('text.user.headers.register_alt'))
 @section('content')
 @component('partials.alert')
 @endcomponent
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <h1 class="font-weight-bold">{{ __('components.user.headers.register_alt') }}</h1>
+            <h1 class="font-weight-bold">{{ __('text.user.headers.register_alt') }}</h1>
             <form method="post" action="{{ route('register') }}">
                 @csrf
                 @recaptcha

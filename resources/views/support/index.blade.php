@@ -1,8 +1,8 @@
 @extends('layouts.app')
-@section('title', __('components.headers.support'))
+@section('title', __('text.headers.support'))
 @section('content')
 <div class="container">
-    <h1 class="font-weight-bold">{{ __('components.headers.support') }}</h1>
+    <h1 class="font-weight-bold">{{ __('text.headers.support') }}</h1>
     <h3>What is ServerLister?</h3>
     <p>
         ServerLister is a Minecraft server list made to help you find the best Minecraft servers in the wild. We make use of multiple

@@ -1,12 +1,12 @@
 @extends('layouts.app')
 @section('meta_robots', 'noindex, nofollow')
-@section('title', __('components.servers.headers.edit'))
+@section('title', __('text.servers.headers.edit'))
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-12">
             <a class="text-decoration-none" href="{{ route('servers.update', $server->id) }}"><i class="fal fa-chevron-left fa-fw"></i> {{ $server->name }}</a>
-            <h1 class="font-weight-bold">{{ __('components.servers.headers.edit') }}</h1>
+            <h1 class="font-weight-bold">{{ __('text.servers.headers.edit') }}</h1>
             <form method="post" action="{{ route('servers.update', $server->id) }}">
                 @method('patch')
                 @csrf
@@ -95,7 +95,7 @@
                 </div>
                 <div class="card">
                     <div class="card-body">
-                        <h5 class="card-title">{{ __('components.servers.headers.voting_service') }}</h5>
+                        <h5 class="card-title">{{ __('text.servers.headers.voting_service') }}</h5>
 
                         {{-- Voting Service Enabled Input --}}
                         <div class="custom-control custom-switch mb-3">

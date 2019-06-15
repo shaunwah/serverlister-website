@@ -4,7 +4,7 @@
 {{-- ReCaptcha --}}
 <script src="https://www.google.com/recaptcha/api.js?render={{ config('services.google_recaptcha.key') }}"></script>
 @endsection
-@section('title', __('components.reports.headers.create'))
+@section('title', __('text.reports.headers.create'))
 @section('content')
 @component('partials.alert')
 @endcomponent
@@ -12,7 +12,7 @@
     <div class="row justify-content-center">
         <div class="col-md-12">
             <a class="text-decoration-none" href="{{ route(Illuminate\Support\Str::plural(request()->entity) . '.show', request()->entity_id) }}"><i class="fal fa-chevron-left fa-fw"></i> {{ request()->entity_name }}</a>
-            <h1 class="font-weight-bold">{{ __('components.reports.headers.create') }}</h1>
+            <h1 class="font-weight-bold">{{ __('text.reports.headers.create') }}</h1>
             <form method="post" action="{{ route('reports.store') }}">
                 @csrf
                 @recaptcha
@@ -23,11 +23,11 @@
                 <div class="card mb-3">
                     <div class="card-body">
                         <p>
-                            {{ __('components.reports.content.information', ['entity_name' => request()->entity_name]) }}
+                            {{ __('text.reports.content.information', ['entity_name' => request()->entity_name]) }}
                         </p>
                         @if (request()->entity == 'server')
                             <p>
-                                {{ __('components.reports.content.disclaimer_server') }}
+                                {{ __('text.reports.content.disclaimer_server') }}
                             </p>
                         @endif
 

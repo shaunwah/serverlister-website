@@ -4,7 +4,7 @@
 {{-- ReCaptcha --}}
 <script src="https://www.google.com/recaptcha/api.js?render={{ config('services.google_recaptcha.key') }}"></script>
 @endsection
-@section('title', $server->name . ' - ' . __('components.headers.vote'))
+@section('title', $server->name . ' - ' . __('text.headers.vote'))
 @section('content')
 @component('partials.alert')
 @endcomponent
@@ -12,7 +12,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <a class="text-decoration-none" href="{{ route('servers.show', $server->id) }}"><i class="fal fa-chevron-left fa-fw"></i> {{ $server->name }}</a>
-            <h1 class="font-weight-bold">{{ __('components.server_votes.headers.create') }}</h1>
+            <h1 class="font-weight-bold">{{ __('text.server_votes.headers.create') }}</h1>
             <form method="post" action="{{ route('servers.votes.store', $server->id) }}">
                 @csrf
                 @recaptcha

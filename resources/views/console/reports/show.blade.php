@@ -4,7 +4,7 @@
 @section('content')
 <div class="container">
     <h1 class="font-weight-bold">
-        {{ __('components.reports.headers.view') }}
+        {{ __('text.reports.headers.view') }}
     </h1>
     <div class="row">
         <div class="col-md-8">
@@ -19,7 +19,7 @@
             </p>
         </div>
         <div class="col-md-4">
-            <h3>{{ __('components.headers.information') }}</h3>
+            <h3>{{ __('text.headers.information') }}</h3>
             <dl class="row">
                 <dt class="col-sm-3">{{ __('Entity') }}</dt>
                 <dd class="col-sm-9"><a href="{{ route('servers.show', $entity->id) }}">{{ $entity->name }}</a></dd>

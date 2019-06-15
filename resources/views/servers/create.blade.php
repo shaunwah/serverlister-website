@@ -4,15 +4,15 @@
 {{-- ReCaptcha --}}
 <script src="https://www.google.com/recaptcha/api.js?render={{ config('services.google_recaptcha.key') }}"></script>
 @endsection
-@section('title', __('components.servers.headers.create'))
+@section('title', __('text.servers.headers.create'))
 @section('content')
 @component('partials.alert')
 @endcomponent
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-12">
-            <a class="text-decoration-none" href="{{ route('servers.index') }}"><i class="fal fa-chevron-left fa-fw"></i> {{ __('components.headers.servers') }}</a>
-            <h1 class="font-weight-bold">{{ __('components.servers.headers.create') }}</h1>
+            <a class="text-decoration-none" href="{{ route('servers.index') }}"><i class="fal fa-chevron-left fa-fw"></i> {{ __('text.headers.servers') }}</a>
+            <h1 class="font-weight-bold">{{ __('text.servers.headers.create') }}</h1>
             <form method="post" action="{{ route('servers.store') }}">
                 @csrf
                 @recaptcha
@@ -102,7 +102,7 @@
                 </div>
                 <div class="card">
                     <div class="card-body">
-                        <h5 class="card-title">{{ __('components.servers.headers.voting_service') }}</h5>
+                        <h5 class="card-title">{{ __('text.servers.headers.voting_service') }}</h5>
 
                         {{-- Voting Service Enabled Input --}}
                         <div class="custom-control custom-switch mb-3">

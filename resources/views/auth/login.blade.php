@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('meta_robots', 'nofollow')
-@section('title', __('components.user.headers.login'))
+@section('title', __('text.user.headers.login'))
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
@@ -9,7 +9,7 @@
                 @csrf
                 <div class="card">
                     <div class="card-body">
-                        <h1 class="card-title font-weight-bold">{{ __('components.user.headers.login') }}</h1>
+                        <h1 class="card-title font-weight-bold">{{ __('text.user.headers.login') }}</h1>
                         <div class="form-group row">
                             <label for="email" class="col-sm-2 col-form-label">{{ __('attributes.users.email') }}</label>
                             <div class="col-sm-10">
@@ -37,7 +37,7 @@
                         <div class="form-group row mb-0 align-items-center">
                             @if (Route::has('password.request'))
                             <div class="col-auto mr-auto">
-                                <a href="{{ route('password.request') }}">{{ __('components.user.content.forgot_password') }}</a>
+                                <a href="{{ route('password.request') }}">{{ __('text.user.content.forgot_password') }}</a>
                             </div>
                             @endif
                             <div class="col-auto ml-auto">

@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('meta_description', isset($filters) ? __('A list of the best Minecraft servers related to :filtered_name.', ['filtered_name' => $filtered->name]) : __('A list of the best Minecraft servers.'))
-@section('title', isset($filters) ? $filtered->name . ' - ' .  __('components.headers.servers') : __('components.headers.servers'))
+@section('title', isset($filters) ? $filtered->name . ' - ' .  __('text.headers.servers') : __('text.headers.servers'))
 @section('content')
 @component('partials.alert')
 @endcomponent
@@ -8,16 +8,16 @@
     <div class="row justify-content-center">
         <div class="col-md-12">
             @isset($filters)
-                <a class="text-decoration-none" href="{{ route('servers.index') }}"><i class="fal fa-chevron-left fa-fw"></i> {{ __('components.headers.servers') }}</a>
+                <a class="text-decoration-none" href="{{ route('servers.index') }}"><i class="fal fa-chevron-left fa-fw"></i> {{ __('text.headers.servers') }}</a>
             @endisset
             <div class="row mb-2 align-items-center">
                 <div class="col-auto mr-auto">
-                    <h1 class="mb-0 font-weight-bold">{{ __('components.headers.servers') }} @isset($filters)<small class="text-muted">{{ $filtered->name }}</small>@endisset</h1>
+                    <h1 class="mb-0 font-weight-bold">{{ __('text.headers.servers') }} @isset($filters)<small class="text-muted">{{ $filtered->name }}</small>@endisset</h1>
                 </div>
                 <div class="col-auto">
                     <div class="dropdown d-inline-block">
                         <a class="btn btn-secondary btn-sm dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            {{ __('components.buttons.filter') }}
+                            {{ __('text.buttons.filter') }}
                         </a>
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuLink">
                             <a class="dropdown-item" href="{{ url('/servers/countries/united-states') }}">{{ __('attributes.servers.country') }}</a>
@@ -25,7 +25,7 @@
                             <a class="dropdown-item" href="{{ url('/servers/types/survival') }}">{{ __('attributes.servers.type') }}</a>
                         </div>
                     </div>
-                    <a class="btn btn-success btn-sm" href="{{ route('servers.create') }}" role="button"><i class="fal fa-plus fa-fw"></i> {{ __('components.buttons.create') }}</a>
+                    <a class="btn btn-success btn-sm" href="{{ route('servers.create') }}" role="button"><i class="fal fa-plus fa-fw"></i> {{ __('text.buttons.create') }}</a>
                 </div>
             </div>
 
@@ -49,7 +49,7 @@
                 <div class="card bg-transparent border shadow-none">
                     <div class="card-body text-muted text-center" id="card-no-data">
                         <h5 class="card-title font-weight-bold mb-0 ">Empty :(</h5>
-                        {{ __('components.servers.content.empty_server')}}
+                        {{ __('text.servers.content.empty_server')}}
                     </div>
                 </div>
             @endif

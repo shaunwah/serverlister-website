@@ -51,14 +51,14 @@
             <div class="row mb-2 align-items-center">
                 {{-- About Section --}}
                 <div class="col-auto mr-auto">
-                    <h3 class="mb-0">{{ __('components.headers.about') }}</h3>
+                    <h3 class="mb-0">{{ __('text.headers.about') }}</h3>
                 </div>
                 <div class="col-auto">
-                    <a class="btn btn-primary btn-sm" href="{{ route('servers.votes.create', $server->id) }}" role="button"><i class="fal fa-vote-yea fa-fw"></i> {{ __('components.buttons.vote') }}</a>
-                    <a class="btn btn-warning btn-sm" href="{{ route('reports.create') }}" onClick="event.preventDefault(); document.getElementById('report-form').submit();" role="button"><i class="fal fa-exclamation-triangle fa-fw"></i> {{ __('components.buttons.report') }}</a>
+                    <a class="btn btn-primary btn-sm" href="{{ route('servers.votes.create', $server->id) }}" role="button"><i class="fal fa-vote-yea fa-fw"></i> {{ __('text.buttons.vote') }}</a>
+                    <a class="btn btn-warning btn-sm" href="{{ route('reports.create') }}" onClick="event.preventDefault(); document.getElementById('report-form').submit();" role="button"><i class="fal fa-exclamation-triangle fa-fw"></i> {{ __('text.buttons.report') }}</a>
                     @can('update', $server)
 {{--                         <a class="btn btn-secondary btn-sm" href="{{ route('servers.show.panel', $server->id) }}" role="button"><i class="fal fa-chart-line fa-fw"></i> Panel</a> --}}
-                        <a class="btn btn-secondary btn-sm" href="{{ route('servers.edit', $server->id) }}" role="button"><i class="fal fa-edit fa-fw"></i> {{ __('components.buttons.edit') }}</a>
+                        <a class="btn btn-secondary btn-sm" href="{{ route('servers.edit', $server->id) }}" role="button"><i class="fal fa-edit fa-fw"></i> {{ __('text.buttons.edit') }}</a>
                     @endcan
                 </div>
             </div>
@@ -67,12 +67,12 @@
                     {!! $parsedown->text($server->description) !!}
                 </div>
             @else
-                <p><span class="text-muted">{{ __('components.servers.content.empty_description') }}</span></p>
+                <p><span class="text-muted">{{ __('text.servers.content.empty_description') }}</span></p>
             @endempty
         </div>
         <div class="col-md-4">
             {{-- Information Section --}}
-            <h3>{{ __('components.headers.information') }}</h3>
+            <h3>{{ __('text.headers.information') }}</h3>
             <dl class="row">
                 <dt class="col-sm-3">{{ __('attributes.servers.game') }}</dt>
                 <dd class="col-sm-9">Minecraft: Java Edition</dd>
@@ -93,7 +93,7 @@
 
             {{-- Votes Section --}}
             @if ($server->votes->count() > 0)
-                <h3 class="text-muted">{{ __('components.servers.headers.voters') }}</h3>
+                <h3 class="text-muted">{{ __('text.servers.headers.voters') }}</h3>
                 @foreach ($server->votes->sortByDesc('id')->pluck('username')->countBy()->keys() as $key => $val)
                     @if ($val != null)
                         <img src="{{ url('https://minotar.net/avatar/' . $val. '/24') }}" class="img-fluid rounded" data-toggle="tooltip" data-placement="top" title="{{ $val }}">
@@ -121,7 +121,7 @@
 
 {{-- Infomation Bar --}}
 <div class="container">
-    <small class="text-muted" data-toggle="tooltip" data-placement="top" title="{{ __('components.servers.content.last_pinged_at') }}">
+    <small class="text-muted" data-toggle="tooltip" data-placement="top" title="{{ __('text.servers.content.last_pinged_at') }}">
         <i class="fas {{ @$server->pings->last()->status == 1 ? 'fa-check-circle text-success' : 'fa-times-circle text-danger' }} fa-fw"></i> {{ Carbon\Carbon::parse(@$server->pings->last()->created_at)->locale(app()->getLocale())->diffForHumans() }}
     </small>
 </div>

@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('meta_description', 'ServerLister is a Minecraft server list that helps you find the best Minecraft servers in the wild.')
-@section('title', __('components.headers.home'))
+@section('title', __('text.headers.home'))
 @section('content')
 {{-- Hero --}}
 <div id="intro-hero-wrapper">
@@ -10,17 +10,17 @@
                 <div class="col-auto mr-auto">
                     <h1 class="font-weight-bold text-white">ServerLister</h1>
                     <p class="lead text-white">
-                        {{ __('components.home.content.call_to_action') }}
+                        {{ __('text.home.content.call_to_action') }}
                     </p>
                 </div>
                 <div class="col-auto">
-                    <a class="btn btn-outline-light btn-lg" href="{{ route('servers.index') }}" role="button">{{ __('components.home.content.call_to_action_button') }} <i class="fal fa-arrow-right fa-fw"></i></a>
+                    <a class="btn btn-outline-light btn-lg" href="{{ route('servers.index') }}" role="button">{{ __('text.home.content.call_to_action_button') }} <i class="fal fa-arrow-right fa-fw"></i></a>
                 </div>
             </div>
 
             {{-- Top Servers --}}
             <div>
-                <h2 class="text-white">{{ __('components.servers.headers.top') }}</h2>
+                <h2 class="text-white">{{ __('text.servers.headers.top') }}</h2>
                 @foreach ($servers->sortBy('rank')->take(3) as $server)
                     @component('partials.card_server', ['theme' => 'dark', 'loop' => $loop, 'server' => $server])
                     @endcomponent
@@ -29,7 +29,7 @@
 
             {{-- New Servers --}}
             <div class="mb-3">
-                <h2 class="mt-3 text-white">{{ __('components.servers.headers.new') }}</h2>
+                <h2 class="mt-3 text-white">{{ __('text.servers.headers.new') }}</h2>
                 @foreach ($servers->sortByDesc('created_at')->take(3) as $server)
                     @component('partials.card_server', ['theme' => 'dark', 'loop' => $loop, 'server' => $server])
                     @endcomponent
@@ -37,7 +37,7 @@
             </div>
 
             <small class="text-white-50">
-                {{ __('components.home.content.last_pinged_at', ['time_difference' => Carbon\Carbon::parse($servers->sortBy('rank')->first()->pings->last()->created_at)->locale(app()->getLocale())->diffForHumans()]) }}
+                {{ __('text.home.content.last_pinged_at', ['time_difference' => Carbon\Carbon::parse($servers->sortBy('rank')->first()->pings->last()->created_at)->locale(app()->getLocale())->diffForHumans()]) }}
             </small>
         </div>
     </div>
@@ -45,7 +45,7 @@
 
 {{-- Statistics Section --}}
 <div class="container mb-3">
-    <h2 class="font-weight-bold">{{ __('components.headers.statistics') }}</h2>
+    <h2 class="font-weight-bold">{{ __('text.headers.statistics') }}</h2>
     <div class="card-deck">
         <div class="card">
             <div class="card-body">
@@ -53,7 +53,7 @@
                     <i class="fas fa-circle fa-stack-2x text-dark"></i>
                     <i class="fal fa-server fa-stack-1x fa-inverse"></i>
                 </span>
-                <h3 class="card-title d-inline-block mb-0 align-middle">{{ number_format($servers->count()) }}<small class="d-block text-muted">{{ __('components.headers.servers') }}</small></h3>
+                <h3 class="card-title d-inline-block mb-0 align-middle">{{ number_format($servers->count()) }}<small class="d-block text-muted">{{ __('text.headers.servers') }}</small></h3>
             </div>
         </div>
         <div class="card">

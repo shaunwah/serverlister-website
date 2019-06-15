@@ -2,18 +2,18 @@
 @section('header')
 <meta name="robots" content="noindex, nofollow">
 @endsection
-@section('title', __('components.user.headers.settings'))
+@section('title', __('text.user.headers.settings'))
 @section('content')
 @component('partials.alert')
 @endcomponent
 <div class="container">
-    <h1 class="font-weight-bold">{{ __('components.user.headers.settings') }}</h1>
+    <h1 class="font-weight-bold">{{ __('text.user.headers.settings') }}</h1>
     <div class="row">
         <div class="col-md-3 mb-3 mb-md-0">
             <div class="card">
                 <ul class="list-group list-group-flush">
-                    <a href="/user/settings/account" class="list-group-item list-group-item-action active"><i class="fal fa-user fa-fw"></i> {{ __('components.user.headers.account') }}</a>
-                    <a href="/user/settings/security" class="list-group-item list-group-item-action"><i class="fal fa-lock fa-fw"></i> {{ __('components.user.headers.security') }}</a>
+                    <a href="/user/settings/account" class="list-group-item list-group-item-action active"><i class="fal fa-user fa-fw"></i> {{ __('text.user.headers.account') }}</a>
+                    <a href="/user/settings/security" class="list-group-item list-group-item-action"><i class="fal fa-lock fa-fw"></i> {{ __('text.user.headers.security') }}</a>
 {{--                     <a href="#" class="list-group-item list-group-item-action disabled"><i class="fal fa-receipt fa-fw"></i> Billing</a>
                     <a href="#" class="list-group-item list-group-item-action disabled"><i class="fal fa-envelope fa-fw"></i> Notifications</a> --}}
                 </ul>
@@ -25,7 +25,7 @@
                 @csrf
                 <div class="card">
                     <div class="card-body">
-                        <h5 class="card-title">{{ __('components.user.headers.account') }}</h5>
+                        <h5 class="card-title">{{ __('text.user.headers.account') }}</h5>
                         <div class="form-group row">
                             <label for="username" class="col-sm-2 col-form-label">{{ __('attributes.users.username') }}</label>
                             <div class="col-sm-10">
