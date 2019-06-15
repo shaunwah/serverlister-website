@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('meta_description', isset($filters) ? __('A list of the best Minecraft servers related to :filtered_name.', ['filtered_name' => $filtered->name]) : __('Displaying all Minecraft servers on ServerLister.'))
+@section('meta_description', isset($filters) ? __('A list of the best Minecraft servers related to :filtered_name.', ['filtered_name' => $filtered->name]) : __('A list of the best Minecraft servers.'))
 @section('title', isset($filters) ? $filtered->name . ' - ' .  __('Servers') : __('Servers'))
 @section('content')
 @component('partials.alert')
