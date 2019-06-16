@@ -38,12 +38,11 @@
         });
     </script>
 
-    <script src="https://kit.fontawesome.com/ef9f9fad9d.js"></script>
-
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     <link rel="stylesheet" href="{{ asset('css/flag-icon.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/all.css') }}">
 
+    <script src="https://kit.fontawesome.com/ef9f9fad9d.js"></script>
 </head>
 <body>
     <div id="app">
