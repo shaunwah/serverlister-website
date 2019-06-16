@@ -6,6 +6,7 @@ use App\Reports;
 use App\ServerPing;
 use App\ServerVote;
 use App\Events\ServerCreated;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Model;
@@ -65,7 +66,29 @@ class Server extends Model
         $this->votes()->create($vote);
     }
 
-    public function retrieveScores()
+    public function getPlayerStatistics()
+    {
+        $players = $this->pings->groupBy(function ($item) {
+            return Carbon::parse($item->created_at)->format('d');
+        });
+
+        $players = $players->map(function ($item) {
+            return round($item->max('players_current'));
+        });
+
+        $dateData = collect();
+        $playerData = collect();
+        for ($i = 1; $i <= 10; $i++)
+        {
+            // $dateData->prepend(Carbon::now()->subDays($i)->format('j M Y'));
+            $dateData->prepend(Carbon::now()->subDays($i)->format('j M'));
+            $playerData->prepend(isset($players[Carbon::now()->subDays($i)->format('d')]) ? (int)Carbon::now()->subDays($i)->format('d') : 0);
+        }
+
+        return ['dates' => $dateData, 'players' => $playerData];
+    }
+
+    public function retrieveScores() // to get
     {
         $votes = new ServerVote;
         $pings = new ServerPing;
@@ -86,7 +109,7 @@ class Server extends Model
         return collect($attributes);
     }
 
-    public function retrieveRanks()
+    public function retrieveRanks() // to get
     {
         DB::statement(DB::raw('set @rank = 0'));
 

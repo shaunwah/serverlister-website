@@ -46,7 +46,7 @@ class ServerController extends Controller
         $countries = Country::orderBy('name', 'asc')->get();
         $versions = Version::orderBy('id', 'desc')->get();
         $types = ServerType::orderBy('name', 'asc')->get();
-        return view('servers.create', compact(['countries', 'versions', 'types']));
+        return view('servers.create', compact('countries', 'versions', 'types'));
     }
 
     /**
@@ -93,21 +93,9 @@ class ServerController extends Controller
     {
         $parsedown = new Parsedown;
         $parsedown->setSafeMode(true);
-        $voteCountThisMonth = $vote->where('server_id', $server->id)->whereMonth('created_at', today()->format('m'))->count();
-        $datesPlayers = $server->pings->groupBy(function ($date) {
-            return Carbon::parse($date->created_at)->format('DDD');
-        });
+        $data = $server->getPlayerStatistics();
 
-        $playerDataLabels = $datesPlayers->map(function ($date) {
-            return Carbon::parse($date->first()->created_at)->isoFormat('D MMM G');
-        })->values()->take(10)->toJson();
-
-        $playerData = $datesPlayers->map(function ($date) {
-            return round($date->max('players_current'));
-        })->values()->take(10)->toJson();
-
-
-        return view('servers.show', compact('server', 'parsedown', 'voteCountThisMonth', 'playerDataLabels', 'playerData'));
+        return view('servers.show', compact('server', 'data', 'parsedown'));
     }
 
     public function showPanel(Server $server)
@@ -128,7 +116,7 @@ class ServerController extends Controller
         $countries = Country::orderBy('name', 'asc')->get();
         $versions = Version::orderBy('id', 'desc')->get();
         $types = ServerType::orderBy('name', 'asc')->get();
-        return view('servers.edit', compact(['server', 'countries', 'versions', 'types']));
+        return view('servers.edit', compact('server', 'countries', 'versions', 'types'));
     }
 
     /**

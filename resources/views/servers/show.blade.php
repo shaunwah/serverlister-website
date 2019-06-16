@@ -32,7 +32,7 @@
                     </li>
                 @endif
                 <li class="list-inline-item"><span class="font-weight-bold">{{ __('attributes.servers.votes') }}</span>&nbsp;
-                    {{ number_format($voteCountThisMonth) }}
+                    {{ number_format(App\ServerVote::whereMonth('created_at', today()->format('m'))->count()) }}
                 </li>
             </ul>
             @isset($server->link_website)
@@ -103,6 +103,14 @@
 
         </div>
     </div>
+    <div class="row">
+        <div class="col-md-8">
+            {{-- Statistics Section --}}
+            <h3>{{ __('text.headers.statistics') }}</h3>
+            <h3 class="text-muted">{{ __('attributes.server_pings.players') }}</h3>
+            <canvas id="player-stats"></canvas>
+        </div>
+    </div>
 </div>
 
 {{--     <h3>{{ __('Statistics') }}</h3>
@@ -127,21 +135,20 @@
 </div>
 @endsection
 @section('scripts')
-{{-- <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0/dist/Chart.min.js"></script> --}}
+<script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0/dist/Chart.min.js"></script>
 <script>
     $('#description img').addClass('img-fluid');
     $(function () {
       $('[data-toggle="tooltip"]').tooltip()
     })
-    {{-- Needs optimisation
     Chart.defaults.global.defaultFontFamily = 'Nunito';
-    var ctx = document.getElementById('canvas-player-history').getContext('2d');
-    var playerDataLabels = {!! $playerDataLabels !!};
-    var playerData = {!! $playerData !!};
+    var ctx = document.getElementById('player-stats').getContext('2d');
+    var dateLabels = {!! $data['dates']->toJson() !!};
+    var playerData = {!! $data['players']->toJson() !!};
     var myChart = new Chart(ctx, {
         type: 'line',
         data: {
-            labels: playerDataLabels,
+            labels: dateLabels,
             datasets: [{
                 label: 'Max Players',
                 data: playerData
@@ -156,6 +163,6 @@
                 }]
             }
         }
-    }); --}}
+    });
 </script>
 @endsection
