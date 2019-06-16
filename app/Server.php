@@ -82,7 +82,7 @@ class Server extends Model
         {
             // $dateData->prepend(Carbon::now()->subDays($i)->format('j M Y'));
             $dateData->prepend(Carbon::now()->subDays($i)->format('j M'));
-            $playerData->prepend(isset($players[Carbon::now()->subDays($i)->format('d')]) ? (int)Carbon::now()->subDays($i)->format('d') : 0);
+            $playerData->prepend(isset($players[Carbon::now()->subDays($i)->format('d')]) ? $players[Carbon::now()->subDays($i)->format('d')] : 0);
         }
 
         return ['dates' => $dateData, 'players' => $playerData];
