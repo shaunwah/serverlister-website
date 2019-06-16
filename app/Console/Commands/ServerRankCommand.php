@@ -50,7 +50,8 @@ class ServerRankCommand extends Command
             $playerCount = (isset($scoreData['player_count'][$server->id]) ? $scoreData['player_count'][$server->id] : 0);
             $uptimePercentage = $pingOnlineCount / $pingTotalCount;
 
-            $score = ((5/6) * ((0.025 * $playerCount) + (1.5 * $voteCount) + (3 * $uptimePercentage))) / 4;
+            // $score = ((5/6) * ((0.025 * $playerCount) + (1.5 * $voteCount) + (3 * $uptimePercentage))) / 4;
+            $score = ((5/6) * ((0.00025 * $playerCount) + (1.5 * $voteCount) + (3 * $uptimePercentage))) / 4;
 
             $attributes = [
                 'score' => $score,
