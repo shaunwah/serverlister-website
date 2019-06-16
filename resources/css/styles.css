@@ -41,11 +41,11 @@ body {
 
 
 /* Cards */
-.shift-server-card.pop {
+.card.pop {
     transition: all 0.3s ease-in-out;
 }
 
-.shift-server-card.pop:hover {
+.card.pop:hover {
     -webkit-transform: scale(1.005, 1.005);
     transform: scale(1.005, 1.005);
     box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .15);
