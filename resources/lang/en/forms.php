@@ -30,7 +30,7 @@ return [
 
     'servers' => [
         'help' => [
-            'description' => 'You may use <a href="https://guides.github.com/features/mastering-markdown/" target="_blank">Markdown</a> to beautify your description.',
+            'description' => 'You may use <a href="https://www.markdownguide.org/cheat-sheet/" target="_blank">Markdown</a> to beautify your description.',
             'voting_service_token' => 'Your token may be found in \'config.yml\' of your NuVotifier folder.'
         ],
         'buttons' => [
