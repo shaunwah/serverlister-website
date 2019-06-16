@@ -39,16 +39,27 @@ body {
     padding: 0.75rem 1.25rem 0.75rem 0.75rem;
 }
 
+
 /* Cards */
-.card.shift-server-card-online {
+.shift-server-card {
+    transition: all 0.3s ease-in-out;
+}
+
+.shift-server-card:hover {
+/*    -webkit-transform: scale(1.025, 1.025);
+    transform: scale(1.025, 1.025);*/
+    box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .15);
+}
+
+.shift-server-card.online {
     border-right: .25rem solid #28a745;
 }
 
-.card.shift-server-card-offline {
+.shift-server-card.offline {
     border-right: .25rem solid #dc3545;
 }
 
-.card.shift-server-card-unknown {
+.shift-server-card.unknown {
     border-right: .25rem solid #ffc107;
 }
 
