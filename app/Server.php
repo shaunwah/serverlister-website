@@ -73,7 +73,7 @@ class Server extends Model
         });
 
         $players = $players->map(function ($item) {
-            return round($item->max('players_current'));
+            return round($item->avg('players_current'));
         });
 
         $dateData = collect();

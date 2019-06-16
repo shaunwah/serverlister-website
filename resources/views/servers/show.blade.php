@@ -153,7 +153,7 @@
         data: {
             labels: dateLabels,
             datasets: [{
-                label: 'Max Players',
+                label: 'Average Players',
                 data: playerData
             }]
         },
