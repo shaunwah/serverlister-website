@@ -23,7 +23,7 @@
                             {{ __('text.reports.content.information', ['entity_name' => $server->name]) }}
                         </p>
                         <p>
-                            {{ __('text.reports.content.disclaimer_server') }}
+                            {{ __('text.reports.content.server_disclaimer') }}
                         </p>
 
                         {{-- Issue Input --}}

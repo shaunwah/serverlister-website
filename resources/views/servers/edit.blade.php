@@ -28,7 +28,7 @@
                             @error('description')
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @else
-                                <small id="descriptionHelp" class="form-text text-muted">{{ __('forms.servers.help.description', ['markdown' => 'Markdown']) }}</small>
+                                <small id="descriptionHelp" class="form-text text-muted">{!! __('forms.servers.help.description') !!}</small>
                             @enderror
                         </div>
 
@@ -96,6 +96,7 @@
                 <div class="card">
                     <div class="card-body">
                         <h5 class="card-title">{{ __('text.servers.headers.voting_service') }}</h5>
+                        <p>{!! __('text.servers.content.voting_service_information') !!}</p>
 
                         {{-- Voting Service Enabled Input --}}
                         <div class="custom-control custom-switch mb-3">

@@ -70,7 +70,7 @@ return [
         ],
         'content' => [
             'information' => 'You are reporting :entity_name for abuse of ServerLister\'s terms of service and/or rules.',
-            'disclaimer_server' => 'ServerLister and its staff cannot resolve issues regarding internal server matters. In such cases, you are advised to communicate directly with the server staff to resolve your issues.',
+            'server_disclaimer' => 'ServerLister and its staff cannot resolve issues regarding internal server matters. In such cases, you are advised to communicate directly with the server staff to resolve your issues.',
         ],
     ],
 
@@ -84,6 +84,7 @@ return [
             'voting_service' => 'Votifier',
         ],
         'content' => [
+            'voting_service_information' => 'The <a href="https://www.spigotmc.org/resources/nuvotifier.13449/" target="_blank">Votifier server plugin</a> lets you reward your players in-game in return for voting for your server. You are highly recommended to enable it.',
             'empty_server' => 'No servers. Create one?',
             'empty_description' => 'No description set. :(',
             'last_pinged_at' => 'Last pinged at',
