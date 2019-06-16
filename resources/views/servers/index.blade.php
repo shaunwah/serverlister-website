@@ -2,7 +2,7 @@
 @section('meta_description', isset($filters) ? __('A list of the best Minecraft servers related to :filtered_name.', ['filtered_name' => $filtered->name]) : __('A list of the best Minecraft servers.'))
 @section('title', isset($filters) ? $filtered->name . ' - ' .  __('text.headers.servers') : __('text.headers.servers'))
 @section('content')
-@component('partials.alert')
+@component('partials.components.alert')
 @endcomponent
 <div class="container">
     <div class="row justify-content-center">
@@ -41,7 +41,7 @@
 
             @if ($servers->count() > 0)
                 @foreach ($servers as $server)
-                    @component('partials.card_server', ['loop' => $loop, 'server' => $server])
+                    @component('partials.components.card_server', ['loop' => $loop, 'server' => $server])
                     @endcomponent
                 @endforeach
                 {{ $servers->links() }}

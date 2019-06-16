@@ -6,7 +6,7 @@
 @endsection
 @section('title', __('text.server_votes.headers.create_alt', ['server_name' => $server->name]))
 @section('content')
-@component('partials.alert')
+@component('partials.components.alert')
 @endcomponent
 <div class="container">
     <div class="row justify-content-center">

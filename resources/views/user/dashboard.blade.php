@@ -10,7 +10,7 @@
         <h3>{{ __('text.user.content.welcome', ['username' => auth()->user()->username]) }}</h3>
     </div>
 </div>
-@component('partials.alert')
+@component('partials.components.alert')
 @endcomponent
 
 {{-- Statistics Section --}}
@@ -41,7 +41,7 @@
     </div>
     @if ($servers->count() > 0)
         @foreach ($servers as $server)
-            @component('partials.card_server', ['loop' => $loop, 'server' => $server])
+            @component('partials.components.card_server', ['loop' => $loop, 'server' => $server])
             @endcomponent
         @endforeach
         {{ $servers->links() }}

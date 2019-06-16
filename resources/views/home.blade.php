@@ -22,7 +22,7 @@
             <div>
                 <h2 class="text-white">{{ __('text.servers.headers.top') }}</h2>
                 @foreach ($servers->sortBy('rank')->take(3) as $server)
-                    @component('partials.card_server', ['theme' => 'dark', 'loop' => $loop, 'server' => $server])
+                    @component('partials.components.card_server', ['theme' => 'dark', 'loop' => $loop, 'server' => $server])
                     @endcomponent
                 @endforeach
             </div>
@@ -31,7 +31,7 @@
             <div class="mb-3">
                 <h2 class="mt-3 text-white">{{ __('text.servers.headers.new') }}</h2>
                 @foreach ($servers->sortByDesc('created_at')->take(3) as $server)
-                    @component('partials.card_server', ['theme' => 'dark', 'loop' => $loop, 'server' => $server])
+                    @component('partials.components.card_server', ['theme' => 'dark', 'loop' => $loop, 'server' => $server])
                     @endcomponent
                 @endforeach
             </div>

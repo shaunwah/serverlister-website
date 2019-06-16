@@ -43,7 +43,7 @@
 </div>
 
 {{-- Content --}}
-@component('partials.alert')
+@component('partials.components.alert')
 @endcomponent
 <div class="container">
     <div class="row">

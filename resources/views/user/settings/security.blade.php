@@ -4,7 +4,7 @@
 @endsection
 @section('title', __('text.user.headers.settings'))
 @section('content')
-@component('partials.alert')
+@component('partials.components.alert')
 @endcomponent
 <div class="container">
     <h1 class="font-weight-bold">{{ __('text.user.headers.settings') }}</h1>

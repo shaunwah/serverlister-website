@@ -2,7 +2,7 @@
 @section('meta_robots', 'nofollow')
 @section('title', __('text.user.headers.register_alt'))
 @section('content')
-@component('partials.alert')
+@component('partials.components.alert')
 @endcomponent
 <div class="container">
     <div class="row justify-content-center">

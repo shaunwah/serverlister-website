@@ -14,9 +14,6 @@
 // Auth
 Auth::routes();
 
-// Localisation
-Route::get('/locale/{locale}', 'LocalisationController@index');
-
 // Console
 Route::get('/console', 'ConsoleController@index')->name('console.dashboard');
 Route::get('/console/reports/{report}', 'ConsoleController@showReport')->name('console.reports.show');
@@ -30,7 +27,7 @@ Route::get('/servers/countries/{country}', 'CountryController@index');
 
 // Reports
 Route::get('/servers/{server}/reports/create', 'ReportServerController@create')->name('servers.reports.create');
-Route::post('/servers/{server}/reports/', 'ReportServerController@store')->name('servers.reports.store');
+Route::post('/servers/{server}/reports', 'ReportServerController@store')->name('servers.reports.store');
 
 // ServerVotes (does not follow naming conventions)
 Route::get('/servers/{server}/vote', 'ServerVoteController@create')->name('servers.votes.create');

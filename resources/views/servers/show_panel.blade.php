@@ -2,7 +2,7 @@
 @section('meta_robots', 'noindex, nofollow')
 @section('title', $server->name)
 @section('content')
-@component('partials.alert')
+@component('partials.components.alert')
 @endcomponent
 <div class="container">
     <a class="text-decoration-none" href="{{ route('servers.update', $server->id) }}"><i class="fal fa-chevron-left fa-fw"></i> {{ $server->name }}</a>

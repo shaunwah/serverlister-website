@@ -10,7 +10,7 @@
         <h3>Welcome to the Console, {{ auth()->user()->username }}.</h3>
     </div>
 </div>
-@component('partials.alert')
+@component('partials.components.alert')
 @endcomponent
 
 {{-- Statistics Section --}}
