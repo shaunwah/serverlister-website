@@ -29,12 +29,12 @@ Route::get('/servers/versions/{version}', 'VersionController@index');
 Route::get('/servers/countries/{country}', 'CountryController@index');
 
 // Reports
-Route::post('/reports/create', 'ReportController@create')->name('reports.create');
-Route::resource('/reports', 'ReportController')->except('create');
+Route::get('/servers/{server}/reports/create', 'ReportServerController@create')->name('servers.reports.create');
+Route::post('/servers/{server}/reports/', 'ReportServerController@store')->name('servers.reports.store');
 
-// ServerVotes
-Route::post('/servers/{server}/votes', 'ServerVoteController@store')->name('servers.votes.store');
+// ServerVotes (does not follow naming conventions)
 Route::get('/servers/{server}/vote', 'ServerVoteController@create')->name('servers.votes.create');
+Route::post('/servers/{server}/votes', 'ServerVoteController@store')->name('servers.votes.store');
 
 // Users
 Route::get('/user/settings/account', 'UserSettingsController@editAccount');
