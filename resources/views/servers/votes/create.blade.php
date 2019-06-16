@@ -4,7 +4,7 @@
 {{-- ReCaptcha --}}
 <script src="https://www.google.com/recaptcha/api.js?render={{ config('services.google_recaptcha.key') }}"></script>
 @endsection
-@section('title', __('text.headers.vote_alt', ['server_name' => $server->name]))
+@section('title', __('text.server_votes.headers.create_alt', ['server_name' => $server->name]))
 @section('content')
 @component('partials.alert')
 @endcomponent
