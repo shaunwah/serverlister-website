@@ -1,5 +1,5 @@
 {{-- Server Card (requires loop and $server) --}}
-<div class="card shift-server-card {{ (!$loop->last ? 'mb-3' : '') }} {{ (@$server->pings->last()->status == true ? 'online' : 'offline') }} {{ (isset($theme) ? 'bg-dark text-white shadow-none' : '' ) }}">
+<div class="card shift-server-card pop {{ (!$loop->last ? 'mb-3' : '') }} {{ (@$server->pings->last()->status == true ? 'online' : 'offline') }} {{ (isset($theme) ? 'bg-dark text-white shadow-none' : '' ) }}">
     <div class="card-body px-3 py-1">
         <div class="row no-gutters align-items-center">
             <div class="d-none d-sm-block col-sm-1 text-left">
