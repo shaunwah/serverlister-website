@@ -32,7 +32,7 @@
                     </li>
                 @endif
                 <li class="list-inline-item"><span class="font-weight-bold">{{ __('attributes.servers.votes') }}</span>&nbsp;
-                    {{ number_format(App\ServerVote::whereMonth('created_at', today()->format('m'))->count()) }}
+                    {{ number_format(App\ServerVote::where('server_id', $server->id)->whereMonth('created_at', today()->format('m'))->count()) }}
                 </li>
             </ul>
             @isset($server->link_website)
