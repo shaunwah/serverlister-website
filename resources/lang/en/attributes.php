@@ -20,6 +20,8 @@ return [
         'description' => 'Description',
         'status' => 'Status',
         'created_by' => 'Reporter',
+        'created_at' => 'Created',
+        'updated_at' => 'Updated',
     ],
 
     'servers' => [
@@ -41,6 +43,8 @@ return [
         'pings' => 'Pings',
         'votes' => 'Votes',
         'created_by' => 'Creator',
+        'created_at' => 'Created',
+        'updated_at' => 'Updated',
     ],
 
     'server_pings' => [

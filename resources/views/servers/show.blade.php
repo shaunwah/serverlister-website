@@ -83,13 +83,16 @@
                 <dt class="col-sm-3">{{ __('attributes.servers.country') }}</dt>
                 <dd class="col-sm-9"><a href="{{ url('/servers/countries/' . $server->country->slug) }}">{{ $server->country->name }}</a></dd>
             </dl>
+            <hr>
+            <dl class="row">
             @if ($server->user_id != 1)
-                <hr>
-                <dl class="row">
-                    <dt class="col-sm-3">Creator</dt>
-                    <dd class="col-sm-9">{{ $server->user->username }}</dd>
-                </dl>
+                <dt class="col-sm-3">{{ __('attributes.servers.created_by') }}</dt>
+                <dd class="col-sm-9">{{ $server->user->username }}</dd>
             @endif
+                <dt class="col-sm-3">{{ __('attributes.servers.created_at') }}</dt>
+                <dd class="col-sm-9">{{ Carbon\Carbon::parse($server->created_at)->format('j M Y') }}</dd>
+            </dl>
+
 
             {{-- Votes Section --}}
             @if ($server->votes->count() > 0)
