@@ -46,8 +46,8 @@ body {
 }
 
 .shift-server-card:hover {
-/*    -webkit-transform: scale(1.025, 1.025);
-    transform: scale(1.025, 1.025);*/
+    -webkit-transform: scale(1.005, 1.005);
+    transform: scale(1.005, 1.005);
     box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .15);
 }
 
