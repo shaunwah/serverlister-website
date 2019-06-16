@@ -102,7 +102,7 @@
             <div class="container py-4 text-white">
                 <div class="row align-items-top mb-3">
                     <div class="col-12 col-sm-auto mr-auto">
-                        <h3>ServerLister</h3>
+                        <h3>ServerLister <sup class="text-white-50"><small>Alpha</small></sup></h3>
                         <p class="text-white-50">
                             {{ __('text.app.content.author') }}<br>
                             {!! __('text.app.content.copyright') !!}
