@@ -103,7 +103,7 @@ class UserSettingsController extends Controller
         $user->update($attributes);
 
         session()->flash('alert_colour', 'success');
-        session()->flash('alert', __('alerts.user.update.success'));
+        session()->flash('alert', __('alerts.user.edit.success'));
 
         return back();
     }
@@ -117,12 +117,12 @@ class UserSettingsController extends Controller
             $attributes['password'] = Hash::make($attributes['password']);
             $user->update($attributes);
             session()->flash('alert_colour', 'success');
-            session()->flash('alert', __('alerts.user.update.success'));
+            session()->flash('alert', __('alerts.user.edit.success'));
         }
         else
         {
             session()->flash('alert_colour', 'danger');
-            session()->flash('alert', __('alerts.user.update.failure'));
+            session()->flash('alert', __('alerts.user.edit.failure'));
         }
 
         return back();
