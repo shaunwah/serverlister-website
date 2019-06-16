@@ -38,7 +38,7 @@ return [
         'content' => [
             'call_to_action' => 'Tracking Minecraft servers worldwide, 24/7.',
             'call_to_action_button' => 'Find Servers',
-            'last_pinged_at' => 'Server information last retrieved at :time_difference',
+            'last_pinged_at' => 'Server information last retrieved :time_difference',
         ],
     ],
 
