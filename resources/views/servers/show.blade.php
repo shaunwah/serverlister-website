@@ -156,15 +156,6 @@
                 label: 'Average Players',
                 data: playerData
             }]
-        },
-        options: {
-            scales: {
-                yAxes: [{
-                    ticks: {
-                        beginAtZero: true
-                    }
-                }]
-            }
         }
     });
 </script>
