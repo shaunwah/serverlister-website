@@ -47,7 +47,7 @@
 <div class="container mb-3">
     <h2 class="font-weight-bold">{{ __('text.headers.statistics') }}</h2>
     <div class="card-deck">
-        <div class="card">
+        <div class="card pop">
             <div class="card-body">
                 <span class="fa-stack fa-2x align-middle">
                     <i class="fas fa-circle fa-stack-2x text-dark"></i>
@@ -56,7 +56,7 @@
                 <h3 class="card-title d-inline-block mb-0 align-middle">{{ number_format($servers->count()) }}<small class="d-block text-muted">{{ __('text.headers.servers') }}</small></h3>
             </div>
         </div>
-        <div class="card">
+        <div class="card pop">
             <div class="card-body">
                 <span class="fa-stack fa-2x align-middle">
                     <i class="fas fa-circle fa-stack-2x text-dark"></i>
