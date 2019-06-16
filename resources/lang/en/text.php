@@ -93,6 +93,7 @@ return [
     'server_votes' => [
         'headers' => [
             'create' => 'Vote Server',
+            'create_alt' => 'Vote for :server_name',
             'new' => 'New Servers',
             'voters' => 'Voters',
         ],
