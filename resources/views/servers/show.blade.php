@@ -127,31 +127,31 @@
 @section('scripts')
 <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0/dist/Chart.min.js"></script>
 <script>
-    $('#description img').addClass('img-fluid');
-    $(function () {
-      $('[data-toggle="tooltip"]').tooltip()
-    })
-    Chart.defaults.global.defaultFontFamily = 'Nunito';
-    var playerStats = document.getElementById('player-stats').getContext('2d');
-    var dateLabels = {!! $data['dates']->toJson() !!};
-    var playerDataMax = {!! $data['players']['max']->toJson() !!};
-    var playerDataAvg = {!! $data['players']['avg']->toJson() !!};
-    var myChart = new Chart(playerStats, {
-        type: 'line',
-        data: {
-            labels: dateLabels,
-            datasets: [{
-                label: ['Max'],
-                data: playerDataMax,
-                backgroundColor: 'rgba(40,167,69,0.25)',
-                borderColor: "rgba(40,167,69,0.5)"
-            }, {
-                label: ['Average'],
-                data: playerDataAvg,
-                backgroundColor: 'rgba(0,123,255,0.25)',
-                borderColor: "rgba(0,123,255,0.5)"
-            }]
-        }
-    });
+$('#description img').addClass('img-fluid');
+$(function () {
+  $('[data-toggle="tooltip"]').tooltip()
+})
+Chart.defaults.global.defaultFontFamily = 'Nunito';
+var playerStats = document.getElementById('player-stats').getContext('2d');
+var dateLabels = {!! $data['dates']->toJson() !!};
+var playerDataMax = {!! $data['players']['max']->toJson() !!};
+var playerDataAvg = {!! $data['players']['avg']->toJson() !!};
+var myChart = new Chart(playerStats, {
+    type: 'line',
+    data: {
+        labels: dateLabels,
+        datasets: [{
+            label: ['Max'],
+            data: playerDataMax,
+            backgroundColor: 'rgba(40,167,69,0.25)',
+            borderColor: "rgba(40,167,69,0.5)"
+        }, {
+            label: ['Average'],
+            data: playerDataAvg,
+            backgroundColor: 'rgba(0,123,255,0.25)',
+            borderColor: "rgba(0,123,255,0.5)"
+        }]
+    }
+});
 </script>
 @endsection
