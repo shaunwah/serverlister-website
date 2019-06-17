@@ -141,12 +141,12 @@
         data: {
             labels: dateLabels,
             datasets: [{
-                label: ['Max Players'],
+                label: ['Max'],
                 data: playerDataMax,
                 backgroundColor: 'rgba(40,167,69,0.25)',
                 borderColor: "rgba(40,167,69,0.5)"
             }, {
-                label: ['Average Players'],
+                label: ['Average'],
                 data: playerDataAvg,
                 backgroundColor: 'rgba(0,123,255,0.25)',
                 borderColor: "rgba(0,123,255,0.5)"
