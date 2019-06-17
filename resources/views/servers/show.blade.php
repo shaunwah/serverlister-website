@@ -70,7 +70,7 @@
                 <p><span class="text-muted">{{ __('text.servers.content.empty_description') }}</span></p>
             @endempty
         </div>
-        <div class="col-md-4">
+        <div class="col-md-4 order-1 order-md-0">
             {{-- Information Section --}}
             <h3>{{ __('text.headers.information') }}</h3>
             <dl class="row">
@@ -92,28 +92,15 @@
                 <dt class="col-sm-3">{{ __('attributes.servers.created_at') }}</dt>
                 <dd class="col-sm-9">{{ Carbon\Carbon::parse($server->created_at)->format('j M Y') }}</dd>
             </dl>
-
-
-            {{-- Votes Section --}}
-            @if ($server->votes->count() > 0)
-                <h3 class="text-muted">{{ __('text.servers.headers.voters') }}</h3>
-                @foreach ($server->votes->sortByDesc('id')->pluck('username')->countBy()->keys() as $key => $val)
-                    @if ($val != null)
-                        <img src="{{ url('https://minotar.net/avatar/' . $val. '/24') }}" class="img-fluid rounded" data-toggle="tooltip" data-placement="top" title="{{ $val }}">
-                    @endif
-                @endforeach
-            @endif
-
         </div>
-    </div>
-    <div class="row">
-        <div class="col-md-8">
+        <div class="col-md-8 order-0 order-md-1">
             {{-- Statistics Section --}}
             <h3>{{ __('text.headers.statistics') }}</h3>
             <h3 class="text-muted">{{ __('attributes.server_pings.players') }}</h3>
             <canvas id="player-stats"></canvas>
         </div>
     </div>
+
 </div>
 
 {{--     <h3>{{ __('Statistics') }}</h3>
