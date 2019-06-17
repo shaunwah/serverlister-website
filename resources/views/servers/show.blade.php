@@ -132,24 +132,24 @@
       $('[data-toggle="tooltip"]').tooltip()
     })
     Chart.defaults.global.defaultFontFamily = 'Nunito';
-    var ctx = document.getElementById('player-stats').getContext('2d');
+    var playerStats = document.getElementById('player-stats').getContext('2d');
     var dateLabels = {!! $data['dates']->toJson() !!};
-    var playerDataAvg = {!! $data['players']['avg']->toJson() !!};
     var playerDataMax = {!! $data['players']['max']->toJson() !!};
-    var myChart = new Chart(ctx, {
+    var playerDataAvg = {!! $data['players']['avg']->toJson() !!};
+    var myChart = new Chart(playerStats, {
         type: 'line',
         data: {
             labels: dateLabels,
             datasets: [{
-                label: ['Average Players'],
-                data: playerDataAvg,
-                backgroundColor: 'rgba(0,123,255,0.25)',
-                borderColor: "rgba(0,123,255,0.5)"
-            }, {
                 label: ['Max Players'],
                 data: playerDataMax,
                 backgroundColor: 'rgba(40,167,69,0.25)',
                 borderColor: "rgba(40,167,69,0.5)"
+            }, {
+                label: ['Average Players'],
+                data: playerDataAvg,
+                backgroundColor: 'rgba(0,123,255,0.25)',
+                borderColor: "rgba(0,123,255,0.5)"
             }]
         }
     });
