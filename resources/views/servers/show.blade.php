@@ -116,7 +116,7 @@ $('#description img').addClass('img-fluid');
 $(function () {
   $('[data-toggle="tooltip"]').tooltip()
 })
-Chart.defaults.global.defaultFontFamily = 'Nunito';
+Chart.defaults.global.defaultFontFamily = ['Nunito', 'Noto Sans TC'];
 var playerStats = document.getElementById('player-stats').getContext('2d');
 var dateLabels = {!! $data['dates']->toJson() !!};
 var playerDataMax = {!! $data['players']['max']->toJson() !!};
@@ -126,12 +126,12 @@ var myChart = new Chart(playerStats, {
     data: {
         labels: dateLabels,
         datasets: [{
-            label: ['Max'],
+            label: ['{{ __('text.servers.headers.statistics.max_players') }}'],
             data: playerDataMax,
             backgroundColor: 'rgba(40,167,69,0.25)',
             borderColor: "rgba(40,167,69,0.5)"
         }, {
-            label: ['Average'],
+            label: ['{{ __('text.servers.headers.statistics.average_players') }}'],
             data: playerDataAvg,
             backgroundColor: 'rgba(0,123,255,0.25)',
             borderColor: "rgba(0,123,255,0.5)"

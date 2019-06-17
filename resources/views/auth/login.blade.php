@@ -41,7 +41,7 @@
                             </div>
                             @endif
                             <div class="col-auto ml-auto">
-                                <button type="submit" class="btn btn-primary"><i class="fal fa-unlock fa-fw"></i> {{ __('forms.user.buttons.login') }}</button>
+                                <button type="submit" class="btn btn-primary"><i class="fal fa-sign-in fa-fw"></i> {{ __('forms.user.buttons.login') }}</button>
                             </div>
                         </div>
                     </div>

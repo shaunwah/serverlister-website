@@ -33,7 +33,7 @@
 <div class="container">
     <div class="row mb-2 align-items-center">
         <div class="col-auto mr-auto">
-            <h2 class="mb-0 font-weight-bold">{{ __('text.user.headers.dashboard') }}</h2>
+            <h2 class="mb-0 font-weight-bold">{{ __('text.user.headers.servers') }}</h2>
         </div>
         <div class="col-auto">
             <a class="btn btn-success btn-sm" href="{{ route('servers.create') }}" role="button"><i class="fal fa-plus fa-fw"></i> {{ __('text.buttons.create') }}</a>

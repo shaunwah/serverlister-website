@@ -82,6 +82,10 @@ return [
             'new' => 'New Servers',
             'voters' => 'Voters',
             'voting_service' => 'Votifier',
+            'statistics' => [
+                'max_players' => 'Max',
+                'average_players' => 'Average',
+            ],
         ],
         'content' => [
             'voting_service_information' => 'The <a href="https://www.spigotmc.org/resources/nuvotifier.13449/" target="_blank">Votifier server plugin</a> lets you reward your players in-game in return for voting for your server. You are highly recommended to enable it.',
