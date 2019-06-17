@@ -13,7 +13,6 @@ class ServerVote extends Model
         'created' => ServerVoteCreated::class,
     ];
 
-
     public function user()
     {
         return $this->belongsTo(Server::class);

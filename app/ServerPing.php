@@ -11,11 +11,6 @@ class ServerPing extends Model
 {
     protected $guarded = [];
 
-    public function server()
-    {
-        return $this->belongsTo(Server::class);
-    }
-
     public function queryServer($host, $port) // To be set to protected
     {
         try
@@ -63,5 +58,10 @@ class ServerPing extends Model
         }
 
         $server->addPing($attributes);
+    }
+
+    public function server()
+    {
+        return $this->belongsTo(Server::class);
     }
 }
