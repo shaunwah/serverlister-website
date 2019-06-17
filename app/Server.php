@@ -72,20 +72,33 @@ class Server extends Model
             return Carbon::parse($item->created_at)->format('d');
         });
 
-        $players = $players->map(function ($item) {
+        $playersAvg = $players->map(function ($item) {
             return round($item->avg('players_current'));
         });
 
+        $playersMax = $players->map(function ($item) {
+            return round($item->max('players_current'));
+        });
+
         $dateData = collect();
-        $playerData = collect();
-        for ($i = 1; $i <= 10; $i++)
+        $playerDataMax = collect();
+        $playerDataAvg = collect();
+        for ($i = 1; $i <= 7; $i++)
         {
-            // $dateData->prepend(Carbon::now()->subDays($i)->format('j M Y'));
             $dateData->prepend(Carbon::now()->subDays($i)->format('j M'));
-            $playerData->prepend(isset($players[Carbon::now()->subDays($i)->format('d')]) ? $players[Carbon::now()->subDays($i)->format('d')] : 0);
+            $playerDataMax->prepend(isset($playersMax[Carbon::now()->subDays($i)->format('d')]) ? $playersMax[Carbon::now()->subDays($i)->format('d')] : 0);
+            $playerDataAvg->prepend(isset($playersAvg[Carbon::now()->subDays($i)->format('d')]) ? $playersAvg[Carbon::now()->subDays($i)->format('d')] : 0);
         }
 
-        return ['dates' => $dateData, 'players' => $playerData];
+        $statistics = [
+            'dates' => $dateData,
+            'players' => [
+                'max' => $playerDataMax,
+                'avg' => $playerDataAvg,
+            ],
+        ];
+
+        return $statistics;
     }
 
     public function retrieveScores() // to get
