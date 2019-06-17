@@ -28,6 +28,9 @@ return [
         'name' => 'Name',
         'slug' => 'Slug',
         'game' => 'Game',
+        'games' => [
+            'minecraft_java' => 'Minecraft: Java Edition',
+        ],
         'favicon' => 'Favicon',
         'description' => 'Description',
         'rank' => 'Rank',

@@ -75,7 +75,7 @@
             <h3>{{ __('text.headers.information') }}</h3>
             <dl class="row">
                 <dt class="col-sm-3">{{ __('attributes.servers.game') }}</dt>
-                <dd class="col-sm-9">Minecraft: Java Edition</dd>
+                <dd class="col-sm-9">{{ __('attributes.servers.games.minecraft_java') }}</dd>
                 <dt class="col-sm-3">{{ __('attributes.servers.version') }}</dt>
                 <dd class="col-sm-9"><a href="{{ url('/servers/versions/' . $server->version->slug) }}">{{ $server->version->name }}</a></dd>
                 <dt class="col-sm-3">{{ __('attributes.servers.type') }}</dt>
@@ -100,22 +100,7 @@
             <canvas id="player-stats"></canvas>
         </div>
     </div>
-
 </div>
-
-{{--     <h3>{{ __('Statistics') }}</h3>
-    <div class="row">
-        <div class="col-md-12">
-            <h4 class="text-muted">{{ __('Players') }}</h4>
-            <canvas id="canvas-player-history" height="128px"></canvas>
-        </div>
-        <div class="col-md-6">
-            <h4 class="text-muted">{{ __('Votes') }}</h4>
-            <canvas id="canvas-vote-history"></canvas>
-        </div>
-    </div> --}}
-
-<h3></h3>
 
 {{-- Infomation Bar --}}
 <div class="container">
@@ -151,6 +136,12 @@ var myChart = new Chart(playerStats, {
             backgroundColor: 'rgba(0,123,255,0.25)',
             borderColor: "rgba(0,123,255,0.5)"
         }]
+    },
+    options: {
+        tooltips: {
+            mode: 'index',
+            intersect: false
+        }
     }
 });
 </script>

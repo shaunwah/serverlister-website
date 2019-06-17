@@ -21,63 +21,18 @@ class Server extends Model
         'created' => ServerCreated::class,
     ];
 
-    public function user()
-    {
-        return $this->belongsTo(User::class);
-    }
-
-    public function reports()
-    {
-        return $this->morphToMany('App\Report', 'reportable');
-    }
-
-    public function country()
-    {
-        return $this->belongsTo(Country::class);
-    }
-
-    public function version()
-    {
-        return $this->belongsTo(Version::class);
-    }
-
-    public function type()
-    {
-        return $this->belongsTo(ServerType::class);
-    }
-
-    public function pings()
-    {
-        return $this->hasMany(ServerPing::class);
-    }
-
-    public function votes()
-    {
-        return $this->hasMany(ServerVote::class);
-    }
-
-    public function addPing($ping)
-    {
-        $this->pings()->create($ping);
-    }
-
-    public function addVote($vote)
-    {
-        $this->votes()->create($vote);
-    }
-
     public function getPlayerStatistics()
     {
         $players = $this->pings->groupBy(function ($item) {
             return Carbon::parse($item->created_at)->format('d');
         });
 
-        $playersAvg = $players->map(function ($item) {
-            return round($item->avg('players_current'));
+        $playersMax = $players->map(function ($item) {
+            return $item->max('players_current');
         });
 
-        $playersMax = $players->map(function ($item) {
-            return round($item->max('players_current'));
+        $playersAvg = $players->map(function ($item) {
+            return round($item->avg('players_current'));
         });
 
         $dateData = collect();
@@ -140,5 +95,50 @@ class Server extends Model
                 });
 
         return $result->doesntExist();
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    public function reports()
+    {
+        return $this->morphToMany('App\Report', 'reportable');
+    }
+
+    public function country()
+    {
+        return $this->belongsTo(Country::class);
+    }
+
+    public function version()
+    {
+        return $this->belongsTo(Version::class);
+    }
+
+    public function type()
+    {
+        return $this->belongsTo(ServerType::class);
+    }
+
+    public function pings()
+    {
+        return $this->hasMany(ServerPing::class);
+    }
+
+    public function votes()
+    {
+        return $this->hasMany(ServerVote::class);
+    }
+
+    public function addPing($ping)
+    {
+        $this->pings()->create($ping);
+    }
+
+    public function addVote($vote)
+    {
+        $this->votes()->create($vote);
     }
 }
