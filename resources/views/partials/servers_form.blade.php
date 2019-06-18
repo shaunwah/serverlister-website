@@ -30,7 +30,7 @@
             </div>
             <div class="form-group col-md-3">
                 <label for="port">{{ __('attributes.servers.port') }}</label>
-                <input type="text" class="form-control @error('port') is-invalid @enderror" id="port" name="port" value="{{ old('port', $server->port) }}" placeholder="25565" required>
+                <input type="text" class="form-control @error('port') is-invalid @enderror" id="port" name="port" value="{{ old('port', isset($server->port) ? $server->port : 25565) }}" placeholder="25565" required>
                 @error('port')<div class="invalid-feedback">{{ $message }}</div>@enderror
             </div>
         </div>
@@ -102,7 +102,7 @@
             </div>
             <div class="form-group col-md-3">
                 <label for="voting_service_port">{{ __('attributes.servers.port') }} <small class="text-muted">{{ __('forms.labels.optional') }}</small></label>
-                <input type="text" class="form-control @error('voting_service_port') is-invalid @enderror" id="voting_service_port" name="voting_service_port" value="{{ old('voting_service_port', $server->voting_service_port) }}" placeholder="8192">
+                <input type="text" class="form-control @error('voting_service_port') is-invalid @enderror" id="voting_service_port" name="voting_service_port" value="{{ old('voting_service_port', isset($server->voting_service_port) ? $server->voting_service_port : 8192) }}" placeholder="8192">
                 @error('voting_service_port')<div class="invalid-feedback">{{ $message }}</div>@enderror
             </div>
         </div>
