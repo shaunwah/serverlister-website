@@ -3,8 +3,8 @@
 return [
     'user' => [
         'edit' => [
-            'success' => '您的服務器已經創造。',
-            'failure' => '您的服務器未能創造。 請再試一次。',
+            'success' => '您的賬戶已經創造。',
+            'failure' => '您的賬戶未能創造。 請再試一次。',
         ],
     ],
     'reports' => [
@@ -49,8 +49,8 @@ return [
 
     'services' => [
         'recaptcha' => [
-            'success' => '您的 reCAPTCHA 請求已經通過',
-            'failure' => '您的 reCAPTCHA 請求未能通過',
+            'success' => '您的 reCAPTCHA 請求已經通過。',
+            'failure' => '您的 reCAPTCHA 請求未能通過。',
         ],
     ],
 ];

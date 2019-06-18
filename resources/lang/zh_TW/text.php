@@ -70,7 +70,7 @@ return [
         ],
         'content' => [
             'information' => '你現在報告 :entity_name 濫用 ServerLister 的服務條款和/或規則。',
-            'server_disclaimer' => 'ServerLister和員工無法解決您的內部問題。 建議您聯繫服務器工作人員以獲得進一步的幫助。',
+            'server_disclaimer' => 'ServerLister 和員工無法解決您的內部問題。 建議您聯繫服務器工作人員以獲得進一步的幫助。',
         ],
     ],
 
