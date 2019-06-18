@@ -3,7 +3,9 @@
 @section('content')
 <div class="container">
     <h1 class="font-weight-bold">{{ __('text.support.headers.privacy_policy') }}</h1>
-
+    @if (app()->getLocale() != 'en')
+        <p class="text-muted font-italic">Only available in English</p>
+    @endif
     <p>
         Your privacy is important to us.
         It is Zodurus Labs' policy to respect your privacy regarding any information we may collect from you across <a href="{{ route('home') }}">our website</a> and other sites we own and operate.

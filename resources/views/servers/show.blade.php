@@ -90,7 +90,7 @@
                 <dd class="col-sm-9">{{ $server->user->username }}</dd>
             @endif
                 <dt class="col-sm-3">{{ __('attributes.servers.created_at') }}</dt>
-                <dd class="col-sm-9">{{ Carbon\Carbon::parse($server->created_at)->format('j M Y') }}</dd>
+                <dd class="col-sm-9">{{ Carbon\Carbon::parse($server->created_at)->locale(app()->getLocale())->isoFormat('ll') }}</dd>
             </dl>
         </div>
         <div class="col-md-8 order-0 order-md-1">

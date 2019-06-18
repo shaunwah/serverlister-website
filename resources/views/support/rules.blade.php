@@ -3,7 +3,9 @@
 @section('content')
 <div class="container">
     <h1 class="font-weight-bold">{{ __('text.support.headers.rules') }}</h1>
-
+    @if (app()->getLocale() != 'en')
+        <p class="text-muted font-italic">Only available in English</p>
+    @endif
     <p>
         In addition to the <a href="{{ url('/support/terms-of-service') }}">Terms of Service</a> laid down by <a href="{{ route('home') }}">ServerLister</a>, your access to this website is governed by the rules as stated. Non-compliance may restrict your access to this website and its services.
     </p>

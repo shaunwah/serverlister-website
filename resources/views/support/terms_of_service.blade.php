@@ -3,7 +3,9 @@
 @section('content')
 <div class="container">
     <h1 class="font-weight-bold">{{ __('text.support.headers.terms_of_service') }}</h1>
-
+    @if (app()->getLocale() != 'en')
+        <p class="text-muted font-italic">Only available in English</p>
+    @endif
     <h2>1. Terms</h2>
 
     <p>

@@ -3,6 +3,9 @@
 @section('content')
 <div class="container">
     <h1 class="font-weight-bold">{{ __('text.headers.support') }}</h1>
+    @if (app()->getLocale() != 'en')
+        <p class="text-muted font-italic">Only available in English</p>
+    @endif
     <h3>What is ServerLister?</h3>
     <p>
         ServerLister is a Minecraft server list made to help you find the best Minecraft servers in the wild. We make use of multiple

@@ -40,7 +40,7 @@ class Server extends Model
         $playerDataAvg = collect();
         for ($i = 1; $i <= 7; $i++)
         {
-            $dateData->prepend(Carbon::now()->subDays($i)->format('j M'));
+            $dateData->prepend(Carbon::now()->locale(app()->getLocale())->subDays($i)->isoFormat('Do'));
             $playerDataMax->prepend(isset($playersMax[Carbon::now()->subDays($i)->format('d')]) ? $playersMax[Carbon::now()->subDays($i)->format('d')] : 0);
             $playerDataAvg->prepend(isset($playersAvg[Carbon::now()->subDays($i)->format('d')]) ? $playersAvg[Carbon::now()->subDays($i)->format('d')] : 0);
         }
