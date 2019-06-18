@@ -59,7 +59,7 @@
                         <option {{ old('version_id', $server->version_id) == $version->id ? 'selected' : '' }} value="{{ $version->id }}">{{ $version->name }}</option>
                     @endforeach
                 </select>
-                @error('country_id')<div class="invalid-feedback">{{ $message }}</div>@enderror
+                @error('version_id')<div class="invalid-feedback">{{ $message }}</div>@enderror
             </div>
             <div class="form-group col-md-6">
                 <label for="type">{{ __('attributes.servers.type') }}</label>
@@ -69,7 +69,7 @@
                         <option {{ old('type_id', $server->type_id) == $type->id ? 'selected' : '' }} value="{{ $type->id }}">{{ $type->name }}</option>
                     @endforeach
                 </select>
-                @error('country_id')<div class="invalid-feedback">{{ $message }}</div>@enderror
+                @error('type_id')<div class="invalid-feedback">{{ $message }}</div>@enderror
             </div>
         </div>
         <hr>
