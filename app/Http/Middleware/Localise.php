@@ -15,7 +15,7 @@ class Localise
      */
     public function handle($request, Closure $next)
     {
-        app()->setLocale($request->getPreferredLanguage(config('app.languages')));
+        app()->setLocale($request->getPreferredLanguage(config('app.locale')));
         return $next($request);
     }
 }
