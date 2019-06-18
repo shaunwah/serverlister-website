@@ -46,7 +46,6 @@ body {
 }
 
 .card.pop:hover {
-    -ms-transform: scale(1.005, 1.005);
     -webkit-transform: scale(1.005, 1.005);
     transform: scale(1.005, 1.005);
     box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .15);
