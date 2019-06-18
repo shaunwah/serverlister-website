@@ -23,7 +23,7 @@
                     <i class="fas fa-circle fa-stack-2x text-dark"></i>
                     <i class="fal fa-server fa-stack-1x fa-inverse"></i>
                 </span>
-                <h3 class="card-title d-inline-block mb-0 align-middle">{{ number_format(App\Server::where('user_id', auth()->id())->count()) }}<small class="d-block text-muted">{{ __('text.headers.servers') }}</small></h3>
+                <h3 class="card-title d-inline-block mb-0 align-middle">{{ number_format(auth()->user()->servers->count()) }}<small class="d-block text-muted">{{ __('text.headers.servers') }}</small></h3>
             </div>
         </div>
     </div>

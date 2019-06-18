@@ -117,11 +117,11 @@ $(function () {
   $('[data-toggle="tooltip"]').tooltip()
 })
 Chart.defaults.global.defaultFontFamily = ['Nunito', 'Noto Sans TC'];
-var playerStats = document.getElementById('player-stats').getContext('2d');
+var playerStatsCtx = document.getElementById('player-stats').getContext('2d');
 var dateLabels = {!! $data['dates']->toJson() !!};
 var playerDataMax = {!! $data['players']['max']->toJson() !!};
 var playerDataAvg = {!! $data['players']['avg']->toJson() !!};
-var myChart = new Chart(playerStats, {
+var myChart = new Chart(playerStatsCtx, {
     type: 'line',
     data: {
         labels: dateLabels,
