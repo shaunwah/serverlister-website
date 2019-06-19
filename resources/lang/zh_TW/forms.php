@@ -51,6 +51,6 @@ return [
         ],
         'buttons' => [
             'create' => '投票給 :server_name',
-        ]
+        ],
     ],
 ];
