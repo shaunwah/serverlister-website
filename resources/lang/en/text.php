@@ -84,9 +84,8 @@ return [
             'voting_service' => 'Votifier',
             'statistics' => [
                 'max_players' => 'Max',
-                'max_players_alt' => 'Players',
                 'average_players' => 'Average',
-                'total_votes' => 'Votes',
+                'total_votes' => 'Total',
             ],
         ],
         'content' => [
