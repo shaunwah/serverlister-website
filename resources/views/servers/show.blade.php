@@ -157,10 +157,16 @@ var myChart = new Chart(voteStatsCtx, {
             data: votesData,
             backgroundColor: 'rgba(40,167,69,0.25)',
             borderColor: "rgba(40,167,69,0.5)"
+        }, {
+            label: ['{{ __('text.servers.headers.statistics.max_players_alt') }}'],
+            data: playersDataMax,
+            backgroundColor: 'rgba(0,123,255,0.25)',
+            borderColor: "rgba(0,123,255,0.5)"
         }]
     },
     options: {
         tooltips: {
+            mode: 'index',
             intersect: false
         }
     }
