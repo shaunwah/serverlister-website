@@ -10,6 +10,11 @@ use Illuminate\Http\Request;
 
 class ReportServerController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -51,12 +56,9 @@ class ReportServerController extends Controller
 
             return redirect('/servers/' . $server->id);
         }
-        else
-        {
-            session()->flash('alert_colour', 'danger');
-            session()->flash('alert', __('alerts.services.recaptcha.failure'));
-            return back();
-        }
+        session()->flash('alert_colour', 'danger');
+        session()->flash('alert', __('alerts.services.recaptcha.failure'));
+        return back();
     }
 
     /**

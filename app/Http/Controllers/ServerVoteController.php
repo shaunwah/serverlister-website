@@ -63,12 +63,9 @@ class ServerVoteController extends Controller
 
             return redirect('/servers/' . $server->id);
         }
-        else
-        {
-            session()->flash('alert_colour', 'danger');
-            session()->flash('alert', __('alerts.services.recaptcha.failure'));
-            return back();
-        }
+        session()->flash('alert_colour', 'danger');
+        session()->flash('alert', __('alerts.services.recaptcha.failure'));
+        return back();
     }
 
     /**
