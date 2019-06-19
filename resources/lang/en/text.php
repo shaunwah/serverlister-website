@@ -85,6 +85,7 @@ return [
             'statistics' => [
                 'max_players' => 'Max',
                 'average_players' => 'Average',
+                'total_votes' => 'Total',
             ],
         ],
         'content' => [

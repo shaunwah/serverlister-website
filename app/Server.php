@@ -21,39 +21,67 @@ class Server extends Model
         'created' => ServerCreated::class,
     ];
 
-    public function getPlayerStatistics()
+    public function getStatistics($days = 7)
     {
-        $players = $this->pings->groupBy(function ($item) {
+        $dates = $this->getDateLabels($days);
+        $players = $this->getPlayerStatistics($days);
+        $votes = $this->getVoteStatistics($days);
+
+        return compact('dates', 'players', 'votes');
+    }
+
+    protected function getDateLabels($days = 7)
+    {
+        $dateLabels = array();
+        for ($i = ($days - 1); $i >= 0; $i--)
+        {
+            $dateLabels[] = now()->subDays($i + 1)->isoFormat('Do');
+        }
+        return $dateLabels;
+    }
+
+    protected function getPlayerStatistics($days = 7)
+    {
+        $pings = $this->pings->sortBy('created_at')->groupBy(function ($item) {
             return Carbon::parse($item->created_at)->format('d');
         });
 
-        $playersMax = $players->map(function ($item) {
+        $playersMax = $pings->map(function ($item) {
             return $item->max('players_current');
         });
 
-        $playersAvg = $players->map(function ($item) {
+        $playersAvg = $pings->map(function ($item) {
             return round($item->avg('players_current'));
         });
 
-        $dateData = collect();
-        $playerDataMax = collect();
-        $playerDataAvg = collect();
-        for ($i = 1; $i <= 7; $i++)
+        $playersMaxData = array();
+        $playersAvgData = array();
+        for ($i = now()->subDays($days)->format('d'); $i <= now()->yesterday()->format('d'); $i++)
         {
-            $dateData->prepend(Carbon::now()->locale(app()->getLocale())->subDays($i)->isoFormat('Do'));
-            $playerDataMax->prepend(isset($playersMax[Carbon::now()->subDays($i)->format('d')]) ? $playersMax[Carbon::now()->subDays($i)->format('d')] : 0);
-            $playerDataAvg->prepend(isset($playersAvg[Carbon::now()->subDays($i)->format('d')]) ? $playersAvg[Carbon::now()->subDays($i)->format('d')] : 0);
+            $playersMaxData[] = @(int)$playersMax[$i];
+            $playersAvgData[] = @(int)$playersAvg[$i];
         }
 
-        $statistics = [
-            'dates' => $dateData,
-            'players' => [
-                'max' => $playerDataMax,
-                'avg' => $playerDataAvg,
-            ],
-        ];
+        return compact('playersMaxData', 'playersAvgData');
+    }
 
-        return $statistics;
+    protected function getVoteStatistics($days = 7)
+    {
+        $votes = $this->votes->groupBy(function ($item) {
+            return Carbon::parse($item->created_at)->format('d');
+        });
+
+        $votes = $votes->map(function ($item) {
+            return $item->count();
+        });
+
+        $votesData = array();
+        for ($i = now()->subDays($days)->format('d'); $i <= now()->yesterday()->format('d'); $i++)
+        {
+            $votesData[] = @(int)$votes[$i];
+        }
+
+        return $votesData;
     }
 
     public function retrieveScores() // to get

@@ -98,6 +98,8 @@
             <h3>{{ __('text.headers.statistics') }}</h3>
             <h3 class="text-muted">{{ __('attributes.server_pings.players') }}</h3>
             <canvas id="player-stats"></canvas>
+            <h3 class="text-muted">{{ __('attributes.servers.votes') }}</h3>
+            <canvas id="vote-stats"></canvas>
         </div>
     </div>
 </div>
@@ -118,23 +120,43 @@ $(function () {
 })
 Chart.defaults.global.defaultFontFamily = ['Nunito', 'Noto Sans TC'];
 var playerStatsCtx = document.getElementById('player-stats').getContext('2d');
-var dateLabels = {!! $data['dates']->toJson() !!};
-var playerDataMax = {!! $data['players']['max']->toJson() !!};
-var playerDataAvg = {!! $data['players']['avg']->toJson() !!};
+var voteStatsCtx = document.getElementById('vote-stats').getContext('2d');
+var dateLabels = {!! json_encode($data['dates']) !!};
+var playersDataMax = {!! json_encode($data['players']['playersMaxData']) !!};
+var playersDataAvg = {!! json_encode($data['players']['playersMaxData']) !!};
+var votesData = {!! json_encode($data['votes']) !!};
 var myChart = new Chart(playerStatsCtx, {
     type: 'line',
     data: {
         labels: dateLabels,
         datasets: [{
             label: ['{{ __('text.servers.headers.statistics.max_players') }}'],
-            data: playerDataMax,
+            data: playersDataMax,
             backgroundColor: 'rgba(40,167,69,0.25)',
             borderColor: "rgba(40,167,69,0.5)"
         }, {
             label: ['{{ __('text.servers.headers.statistics.average_players') }}'],
-            data: playerDataAvg,
+            data: playersDataAvg,
             backgroundColor: 'rgba(0,123,255,0.25)',
             borderColor: "rgba(0,123,255,0.5)"
+        }]
+    },
+    options: {
+        tooltips: {
+            mode: 'index',
+            intersect: false
+        }
+    }
+});
+var myChart = new Chart(voteStatsCtx, {
+    type: 'line',
+    data: {
+        labels: dateLabels,
+        datasets: [{
+            label: ['{{ __('text.servers.headers.statistics.total_votes') }}'],
+            data: votesData,
+            backgroundColor: 'rgba(40,167,69,0.25)',
+            borderColor: "rgba(40,167,69,0.5)"
         }]
     },
     options: {

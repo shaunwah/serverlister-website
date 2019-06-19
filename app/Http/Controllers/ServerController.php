@@ -90,7 +90,7 @@ class ServerController extends Controller
     {
         $parsedown = new Parsedown;
         $parsedown->setSafeMode(true);
-        $data = $server->getPlayerStatistics();
+        $data = $server->getStatistics();
 
         return view('servers.show', compact('server', 'data', 'parsedown'));
     }
