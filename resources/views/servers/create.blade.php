@@ -14,6 +14,8 @@
             <a class="text-decoration-none" href="{{ route('servers.index') }}"><i class="fal fa-chevron-left fa-fw"></i> {{ __('text.headers.servers') }}</a>
             <h1 class="font-weight-bold">{{ __('text.servers.headers.create') }}</h1>
             <form method="post" action="{{ route('servers.store') }}">
+                @recaptcha
+                @endrecaptcha
                 @include('partials.servers_form', ['server' => new App\Server, 'submitButtonColour' => 'success', 'submitButtonText' => __('forms.servers.buttons.create')])
             </form>
         </div>
