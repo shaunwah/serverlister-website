@@ -161,7 +161,6 @@ var myChart = new Chart(voteStatsCtx, {
     },
     options: {
         tooltips: {
-            mode: 'index',
             intersect: false
         }
     }
