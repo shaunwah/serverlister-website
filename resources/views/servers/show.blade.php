@@ -123,7 +123,7 @@ var playerStatsCtx = document.getElementById('player-stats').getContext('2d');
 var voteStatsCtx = document.getElementById('vote-stats').getContext('2d');
 var dateLabels = {!! json_encode($data['dates']) !!};
 var playersDataMax = {!! json_encode($data['players']['playersMaxData']) !!};
-var playersDataAvg = {!! json_encode($data['players']['playersMaxData']) !!};
+var playersDataAvg = {!! json_encode($data['players']['playersAvgData']) !!};
 var votesData = {!! json_encode($data['votes']) !!};
 var myChart = new Chart(playerStatsCtx, {
     type: 'line',
