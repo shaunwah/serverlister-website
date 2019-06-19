@@ -33,6 +33,13 @@ return [
         ],
     ],
 
+    'server_verifications' => [
+        'create' => [
+            'success' => 'The server has been verified successfully.',
+            'failure' => 'The server failed to be verified. Please try again.',
+        ],
+    ],
+
     'server_pings' => [
         'create' => [
             'success' => 'Your server has been pinged successfully.',

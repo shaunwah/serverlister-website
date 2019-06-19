@@ -25,7 +25,11 @@ Route::get('/servers/types/{type}', 'ServerTypeController@index');
 Route::get('/servers/versions/{version}', 'VersionController@index');
 Route::get('/servers/countries/{country}', 'CountryController@index');
 
-// Reports
+// ServerVerifications
+Route::get('/servers/{server}/verifications/create', 'ServerVerificationController@create')->name('servers.verifications.create');
+Route::post('/servers/{server}/verifications', 'ServerVerificationController@store')->name('servers.verifications.store');
+
+// ServerReports
 Route::get('/servers/{server}/reports/create', 'ReportServerController@create')->name('servers.reports.create');
 Route::post('/servers/{server}/reports', 'ReportServerController@store')->name('servers.reports.store');
 

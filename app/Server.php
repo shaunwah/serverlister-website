@@ -84,6 +84,19 @@ class Server extends Model
         return $query = $this->selectRaw('id, @rank := @rank + 1 as rank')->orderBy('score', 'desc')->get();
     }
 
+    public function checkIfServerMotdMatches()
+    {
+        $ping = new ServerPing;
+        $phrase = hash('sha256', $this->id . '-' . $this->host . ':' . $this->port);
+        $data = $ping->queryServer($this->host, $this->port);
+
+        if (@$data['description']['text'] != $phrase)
+        {
+            return false;
+        }
+        return true;
+    }
+
     public function checkIfVotedToday()
     {
         $votes = new ServerVote;
@@ -105,6 +118,23 @@ class Server extends Model
     public function reports()
     {
         return $this->morphToMany('App\Report', 'reportable');
+    }
+
+    public function verifications()
+    {
+        return $this->belongsToMany('App\User', 'server_verifications')
+            ->withPivot(['before', 'after'])
+            ->withTimeStamps();
+    }
+
+    public function getDiff()
+    {
+        $changed = $this->getDirty();
+
+        $before = json_encode(array_intersect_key($this->fresh()->toArray(), $changed));
+        $after = json_encode($changed);
+
+        return compact(['before', 'after']);
     }
 
     public function country()

@@ -95,6 +95,12 @@ return [
         ],
     ],
 
+    'server_verifications' => [
+        'headers' => [
+            'create' => 'Verify Server',
+        ],
+    ],
+
     'server_votes' => [
         'headers' => [
             'create' => 'Vote Server',

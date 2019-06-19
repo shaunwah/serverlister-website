@@ -25,6 +25,9 @@
                         <p>
                             {{ __('text.reports.content.server_disclaimer') }}
                         </p>
+                        <p class="text-muted">
+                            To verify and take ownership of a server, visit the <a href="{{ route('servers.verifications.create', $server->id) }}">Server Verification page</a>.
+                        </p>
 
                         {{-- Issue Input --}}
                         <div class="form-group">

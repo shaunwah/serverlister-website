@@ -45,6 +45,12 @@ class User extends Authenticatable
         return $this->morphToMany('App\Report', 'reportable');
     }
 
+    public function verifications()
+    {
+        return $this->morphToMany('App\Report', 'verifications');
+    }
+
+
     public function servers()
     {
         return $this->hasMany(Server::class);

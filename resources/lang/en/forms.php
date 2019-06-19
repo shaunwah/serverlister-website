@@ -45,12 +45,18 @@ return [
         ],
     ],
 
+    'server_verifications' => [
+        'buttons' => [
+            'create' => 'Verify Server',
+        ],
+    ],
+
     'server_votes' => [
         'help' => [
             'username' => 'Your Minecraft username is cAsE-sEnSiTiVe.',
         ],
         'buttons' => [
             'create' => 'Vote for :server_name',
-        ]
+        ],
     ],
 ];
