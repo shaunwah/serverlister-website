@@ -31,7 +31,7 @@
                     </p>
                     <h5 class="card-title">Step 3</h5>
                     <p>
-                        Once your server has been marked as verified, you may remove the verification phrase.
+                        You may remove the verification phrase after successful verification.
                     </p>
                     <form method="post" action="{{ route('servers.verifications.store', $server->id) }}">
                         @csrf
