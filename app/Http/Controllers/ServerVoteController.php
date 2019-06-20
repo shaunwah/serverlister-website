@@ -45,7 +45,7 @@ class ServerVoteController extends Controller
     {
         if (GoogleReCaptcha::validateResponse())
         {
-            if ($server->checkIfVotedToday())
+            if ($server->hasUserVotedToday())
             {
                 $validated = $request->validated();
                 $validated['user_id'] = auth()->id();
@@ -55,11 +55,8 @@ class ServerVoteController extends Controller
                 session()->flash('alert_colour', 'success');
                 session()->flash('alert', __('alerts.server_votes.create.success'));
             }
-            else
-            {
-                session()->flash('alert_colour', 'danger');
-                session()->flash('alert', __('alerts.server_votes.create.failure'));
-            }
+            session()->flash('alert_colour', 'danger');
+            session()->flash('alert', __('alerts.server_votes.create.failure'));
 
             return redirect('/servers/' . $server->id);
         }

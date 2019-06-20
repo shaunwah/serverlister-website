@@ -84,32 +84,59 @@ class Server extends Model
         return $votesData;
     }
 
-    public function retrieveScores() // to get
+    public function getAllStatistics()
     {
-        $votes = new ServerVote;
-        $pings = new ServerPing;
-        $voteCount = $votes->whereMonth('created_at', today()->format('m'))->pluck('server_id')->countBy();
-        $pingTotalCount = $pings->pluck('server_id')->countBy();
-        $pingOnlineCount = $pings->where('status', 1)->pluck('server_id')->countBy();
-        $playersCurrentCount = $pings->pluck('players_current', 'server_id');
+        $servers = Server::all();
 
-        $attributes = [
-            'vote_count' => $voteCount,
-            'ping_count' => [
-                'total' => $pingTotalCount,
-                'online' => $pingOnlineCount,
-            ],
-            'player_count' => $playersCurrentCount,
-        ];
+        $data = $servers->mapWithKeys(function ($server) {
+            return [
+                $server->id => [
+                    'players_current' => $server->pings->last()->players_current,
+                    'votes' => $server->votes->count(),
+                    'pings' => [
+                        'total' => $server->pings->count(),
+                        'successful' => $server->pings->where('status', true)->count(),
+                    ],
+                ],
+            ];
+        });
 
-        return collect($attributes);
+        return $data;
     }
 
-    public function retrieveRanks() // to get
+    public function calculateAllScores($data)
     {
-        DB::statement(DB::raw('set @rank = 0'));
+        $attributes = $data->mapWithKeys(function ($item, $key) {
+            return [
+                $key => [
+                    'players_current' => 0.025 * $item['players_current'],
+                    'votes' => 1.5 * $item['votes'],
+                    'uptime' => 3 * ($item['pings']['total'] == 0 ? 0 : $item['pings']['successful']/$item['pings']['total']),
+                ],
+            ];
+        });
 
-        return $query = $this->selectRaw('id, @rank := @rank + 1 as rank')->orderBy('score', 'desc')->get();
+        $scores = $attributes->mapWithKeys(function ($item, $key) {
+            return [
+                $key => 5/6 * $item['players_current'] + $item['votes'] + $item['uptime'] / 4,
+            ];
+        });
+
+        return $scores;
+    }
+
+    public function calculateAllRanks($scores) // to get
+    {
+        $data = $scores->sort()->reverse();
+
+        $i = 1;
+        $ranks = array();
+        foreach ($data as $id => $val)
+        {
+            $ranks[$id] = $i++;
+        }
+
+        return $ranks;
     }
 
     public function checkIfServerMotdMatches()
@@ -125,15 +152,15 @@ class Server extends Model
         return true;
     }
 
-    public function checkIfVotedToday()
+    public function hasUserVotedToday()
     {
         $votes = new ServerVote;
         $result = $votes->where('server_id', $this->id)
-                ->whereDate('created_at', today()->format('Y-m-d'))
-                ->where(function ($query) {
-                    $query->orWhere('username', request()->user)
-                    ->orWhere('ip_address', request()->ip());
-                });
+            ->whereDate('created_at', today()->format('Y-m-d'))
+            ->where(function ($query) {
+                $query->orWhere('username', request()->user)
+                ->orWhere('ip_address', request()->ip());
+            });
 
         return $result->doesntExist();
     }

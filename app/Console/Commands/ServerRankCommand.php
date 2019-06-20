@@ -39,29 +39,25 @@ class ServerRankCommand extends Command
     public function handle(Server $server)
     {
         $this->info('Starting to rank servers...');
-        $scoreData = $server->retrieveScores();
-        $rankData = $server->retrieveRanks();
-        $servers = Server::orderBy('rank', 'asc')->get();
-        foreach ($servers as $server)
+
+        $server = new Server;
+        $data = $server->getAllStatistics();
+        $scores = $server->calculateAllScores($data);
+        $ranks = $server->calculateAllRanks($scores);
+
+        foreach ($scores as $id => $score)
         {
-            $voteCount = (isset($scoreData['vote_count'][$server->id]) ? $scoreData['vote_count'][$server->id] : 0);
-            $pingTotalCount = (isset($scoreData['ping_count']['total'][$server->id]) ? $scoreData['ping_count']['total'][$server->id] : 0);
-            $pingOnlineCount = (isset($scoreData['ping_count']['online'][$server->id]) ? $scoreData['ping_count']['online'][$server->id] : 0);
-            $playerCount = (isset($scoreData['player_count'][$server->id]) ? $scoreData['player_count'][$server->id] : 0);
-            $uptimePercentage = $pingOnlineCount / $pingTotalCount;
-
-            // $score = ((5/6) * ((0.025 * $playerCount) + (1.5 * $voteCount) + (3 * $uptimePercentage))) / 4;
-            $score = ((5/6) * ((0.00025 * $playerCount) + (1.5 * $voteCount) + (3 * $uptimePercentage))) / 4;
-
-            $attributes = [
+            $data = [
+                'rank' => $ranks[$id],
                 'score' => $score,
-                'rank' => $rankData->find($server->id)->rank,
             ];
 
-            $this->info('Ranked ' . $server->name . '! (Uptime: ' . $uptimePercentage * 100 . '%, Players: ' . $playerCount . ', Votes: ' . $voteCount . ')');
-
-            $server->update($attributes);
+            if ($server->find($id)->update($data))
+            {
+                $this->info("Updated rank and score for server ID {$id}!");
+            }
         }
+
         $this->info('Finished ranking servers!');
     }
 }
