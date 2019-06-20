@@ -110,11 +110,11 @@ class Server extends Model
             return [
                 $serverId => [
                     'popularity' => [
-                        'weight' => 2.5,
+                        'weight' => 1,
                         'value' => ($item['players_current'] == 0 ? 0 : $item['votes']/$item['players_current']),
                     ],
                     'uptime' => [
-                        'weight' => 3,
+                        'weight' => 1.5,
                         'value' => ($item['pings']['total'] == 0 ? 0 : $item['pings']['successful']/$item['pings']['total']),
                     ],
                 ],
@@ -123,7 +123,7 @@ class Server extends Model
 
         $scores = $attributes->mapWithKeys(function ($item, $serverId) {
             return [
-                $serverId => 5/6 * ($item['popularity']['weight'] * $item['popularity']['value']) + ($item['uptime']['weight'] * $item['uptime']['value']) / 4,
+                $serverId => 5/7 * ($item['popularity']['weight'] * $item['popularity']['value']) + ($item['uptime']['weight'] * $item['uptime']['value']) / 3,
             ];
         });
 
