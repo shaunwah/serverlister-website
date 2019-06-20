@@ -92,7 +92,7 @@ class Server extends Model
         $data = $servers->mapWithKeys(function ($server) {
             return [
                 $server->id => [
-                    'players_current' => $server->pings->whereBetween('created_at', [now()->subDays(1), now()])->avg(),
+                    'players_current' => $server->pings->last()->players_current,
                     'votes' => $server->votes->whereBetween('created_at', [now()->subDays(1), now()])->count(),
                     'pings' => [
                         'total' => $server->pings->count(),
