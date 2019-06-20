@@ -20,7 +20,7 @@
                 <div class="card">
                     <div class="card-body">
                         @if ($server->voting_service_enabled)
-                            <p class="text-muted">
+                            <p>
                                 {{ __('text.server_votes.content.receive_rewards') }}
                             </p>
                         @endif
