@@ -109,6 +109,9 @@ return [
             'new' => 'New Servers',
             'voters' => 'Voters',
         ],
+        'content' => [
+            'receive_rewards' => 'You may receive a reward for voting.',
+        ],
     ],
 
     'support' => [

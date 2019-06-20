@@ -24,7 +24,7 @@
         granting you a reward in return for voting for the server.
     </p>
     <p>
-        If a server has a voting rewards system in place, it will usually be indicated in the server's vote page with text displaying <span class="font-italic">"You may receive a reward for voting."</span> to
+        If a server has a voting rewards system in place, it will usually be indicated in the server's vote page with text displaying <span class="font-italic">'You may receive a reward for voting.'</span> to
         let you know that you may receive a reward upon voting. You may have to log in to the server for the first time to receive it.
     </p>
 
@@ -34,14 +34,14 @@
         takes less than five minutes so you can have your server listing up in no time!
     </p>
     <p>
-        Our system only supports NuVotifier version 2 tokens. Your tokens are encrypted using OpenSSL (AES-256) and stored securely in our databases.
+        Our system only supports NuVotifier v2 tokens. NuVotifier v1 keys are not supported.
+        Your tokens are encrypted using OpenSSL (AES-256) and stored securely in our databases.
     </p>
 
     <h3>What if my server has already been listed?</h3>
     <p>
-        ServerLister occasionally lists noteworthy servers from other Minecraft server lists on its website. You may request for a server takeover through
-        our <a href="{{ url('//discordapp.com/invite/nzqRgUw') }}" target="_blank">Discord server</a>. We are working on an automated server takeover system at the moment
-        through MOTD verification.
+        ServerLister occasionally lists noteworthy servers from other Minecraft server lists on its website.
+        You may take ownership of a server by clicking the 'Report' button on a server page.
     </p>
 
     <h3>Where can I provide feedback?</h3>
