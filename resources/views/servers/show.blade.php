@@ -32,7 +32,9 @@
                     </li>
                 @endif
                 <li class="list-inline-item"><span class="font-weight-bold">{{ __('attributes.servers.votes') }}</span>&nbsp;
-                    {{ number_format($server->votes->whereBetween('created_at', [now()->subMonths(1), now()])->count()) }}
+                    <span data-toggle="tooltip" data-placement="top" title="{{ number_format($server->votes->whereBetween('created_at', [now()->subDays(1), now()])->count()) . ' votes today' }}">
+                        {{ number_format($server->votes->whereBetween('created_at', [now()->subMonths(1), now()])->count()) }}
+                    </span>
                 </li>
             </ul>
             @isset($server->link_website)
