@@ -88,11 +88,12 @@ class Server extends Model
     {
         $servers = Server::all();
 
+
         $data = $servers->mapWithKeys(function ($server) {
             return [
                 $server->id => [
-                    'players_current' => $server->pings->last()->players_current,
-                    'votes' => $server->votes->count(),
+                    'players_current' => $server->pings->whereBetween('created_at', [now()->subDays(1), now()])->avg(),
+                    'votes' => $server->votes->whereBetween('created_at', [now()->subDays(1), now()])->count(),
                     'pings' => [
                         'total' => $server->pings->count(),
                         'successful' => $server->pings->where('status', true)->count(),
