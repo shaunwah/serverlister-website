@@ -106,9 +106,9 @@ class Server extends Model
 
     public function calculateAllScores($data)
     {
-        $attributes = $data->mapWithKeys(function ($item, $key) {
+        $attributes = $data->mapWithKeys(function ($item, $serverId) {
             return [
-                $key => [
+                $serverId => [
                     'players_current' => 0.025 * $item['players_current'],
                     'votes' => 1.5 * $item['votes'],
                     'uptime' => 3 * ($item['pings']['total'] == 0 ? 0 : $item['pings']['successful']/$item['pings']['total']),
@@ -116,24 +116,24 @@ class Server extends Model
             ];
         });
 
-        $scores = $attributes->mapWithKeys(function ($item, $key) {
+        $scores = $attributes->mapWithKeys(function ($item, $serverId) {
             return [
-                $key => 5/6 * $item['players_current'] + $item['votes'] + $item['uptime'] / 4,
+                $serverId => 5/6 * $item['players_current'] + $item['votes'] + $item['uptime'] / 4,
             ];
         });
 
         return $scores;
     }
 
-    public function calculateAllRanks($scores) // to get
+    public function calculateAllRanks($scores)
     {
         $data = $scores->sort()->reverse();
 
         $i = 1;
         $ranks = array();
-        foreach ($data as $id => $val)
+        foreach ($data as $serverId => $val)
         {
-            $ranks[$id] = $i++;
+            $ranks[$serverId] = $i++;
         }
 
         return $ranks;
