@@ -202,7 +202,7 @@ class Server extends Model
 
         $payload = json_encode($data);
 
-        $curl = curl_init('https://discordapp.com/api/webhooks/591543472180428800/BBhrE-kk6raYQyGuXJQkKEzk4F-l3dgyZSJ6P_BzHEUXPM0ZI6VpE1NUDSCohVROgZxe');
+        $curl = curl_init($this->webhook_discord);
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($curl, CURLINFO_HEADER_OUT, true);
         curl_setopt($curl, CURLOPT_POST, true);

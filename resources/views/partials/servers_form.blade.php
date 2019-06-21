@@ -118,6 +118,20 @@
             @enderror
         </div>
 
+    </div>
+</div>
+<div class="card">
+    <div class="card-body">
+        <h5 class="card-title">{{ __('Notifications') }}</h5>
+        <p>{!! __('You can add webhooks to notify when a player votes for your server.') !!}</p>
+
+        {{-- Webhook Discord Input --}}
+        <div class="form-group">
+            <label for="webhook_discord">{{ __('Discord Webhook') }} <small class="text-muted">{{ __('forms.labels.optional') }}</small></label>
+            <input type="url" class="form-control @error('webhook_discord') is-invalid @enderror" id="webhook_discord" name="webhook_discord" value="{{ old('webhook_discord', $server->webhook_discord) }}">
+            @error('webhook_discord')<div class="invalid-feedback">{{ $message }}</div>@enderror
+        </div>
+
         <button type="submit" class="btn btn-{{ $submitButtonColour }} btn-block">{{ $submitButtonText }}</button>
     </div>
 </div>
