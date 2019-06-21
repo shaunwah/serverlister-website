@@ -65,6 +65,7 @@ class ServerController extends Controller
             $validated['description'] = strip_tags($validated['description']); //!!!
             $validated['host'] = strtolower($validated['host']); //!!!
             $validated['rank'] = $server->count() + 1;
+            $validated['webhook_discord'] = encrypt($validated['webhook_discord']);
             $validated['voting_service_enabled'] = request()->has('voting_service_enabled');
             $validated['voting_service_host'] = strtolower($validated['voting_service_host']); //!!!
             $validated['voting_service_token'] = encrypt($validated['voting_service_token']);
@@ -130,6 +131,7 @@ class ServerController extends Controller
 
         $validated['description'] = strip_tags($validated['description']); //!!!
         $validated['host'] = strtolower($validated['host']); //!!!
+        $validated['webhook_discord'] = encrypt($validated['webhook_discord']);
         $validated['voting_service_enabled'] = request()->has('voting_service_enabled');
         $validated['voting_service_host'] = strtolower($validated['voting_service_host']); //!!!
         $validated['voting_service_token'] = encrypt($validated['voting_service_token']);

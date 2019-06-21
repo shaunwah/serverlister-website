@@ -82,7 +82,7 @@
         </div>
     </div>
 </div>
-<div class="card">
+<div class="card mb-3">
     <div class="card-body">
         <h5 class="card-title">{{ __('text.servers.headers.voting_service') }}</h5>
         <p>{!! __('text.servers.content.voting_service_information') !!}</p>
@@ -128,7 +128,7 @@
         {{-- Webhook Discord Input --}}
         <div class="form-group">
             <label for="webhook_discord">{{ __('Discord Webhook') }} <small class="text-muted">{{ __('forms.labels.optional') }}</small></label>
-            <input type="url" class="form-control @error('webhook_discord') is-invalid @enderror" id="webhook_discord" name="webhook_discord" value="{{ old('webhook_discord', $server->webhook_discord) }}">
+            <input type="url" class="form-control @error('webhook_discord') is-invalid @enderror" id="webhook_discord" name="webhook_discord" value="{{ old('webhook_discord', isset($server->webhook_discord) ? decrypt($server->webhook_discord) : '') }}">
             @error('webhook_discord')<div class="invalid-feedback">{{ $message }}</div>@enderror
         </div>
 
