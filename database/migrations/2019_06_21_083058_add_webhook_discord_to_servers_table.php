@@ -26,7 +26,7 @@ class AddWebhookDiscordToServersTable extends Migration
     public function down()
     {
         Schema::table('servers', function (Blueprint $table) {
-            //
+            $table->dropColumn(['webhook_discord']);
         });
     }
 }
