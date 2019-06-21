@@ -1,5 +1,5 @@
 {{-- Server Card (requires loop and $server) --}}
-<div class="card shift-server-card pop {{ (!$loop->last ? 'mb-3' : '') }} {{ (@$server->pings->last()->status == true ? 'online' : 'offline') }} {{ (isset($theme) ? 'bg-dark text-white shadow-none' : '' ) }}">
+<div class="card shift-server-card pop {{ (!$loop->last ? 'mb-3' : '') }} {{ (@$server->pings->last()->status == true ? 'online' : 'offline') }} {{ (isset($theme) ? 'bg-dark text-white shadow-none' : '' ) }}" id="server-{{ $server->id }}">
     <div class="card-body px-3 py-1">
         <div class="row no-gutters align-items-center">
             <div class="d-none d-sm-block col-sm-1 text-left">
@@ -10,7 +10,7 @@
             </div>
             <div class="col-6 col-sm-7 col-md-8 text-left text-truncate">
                 <span class="flag-icon {{ 'flag-icon-' . strtolower($server->country->code) }}"></span>
-                <a class="font-weight-bold" href="{{ route('servers.show', $server->id) }}">{{ $server->name }}</a>
+                <span class="font-weight-bold">{{ $server->name }}</span>
                 <span class="d-none d-sm-inline {{ isset($theme) ? 'text-white-50' : 'text-muted' }}">{{ $server->version->name }}</span>
                 <span class="d-block">{{ $server->host . ($server->port != 25565 ? ':' . $server->port : '') }}</span>
             </div>
