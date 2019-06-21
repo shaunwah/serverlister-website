@@ -10,7 +10,7 @@
             </div>
             <div class="col-6 col-sm-7 col-md-8 text-left text-truncate">
                 <span class="flag-icon {{ 'flag-icon-' . strtolower($server->country->code) }}"></span>
-                <span class="font-weight-bold">{{ $server->name }}</span>
+                <a class="font-weight-bold text-decoration-none text-reset" href="{{ route('servers.show', $server->id) }}">{{ $server->name }}</a>
                 <span class="d-none d-sm-inline {{ isset($theme) ? 'text-white-50' : 'text-muted' }}">{{ $server->version->name }}</span>
                 <span class="d-block">{{ $server->host . ($server->port != 25565 ? ':' . $server->port : '') }}</span>
             </div>
