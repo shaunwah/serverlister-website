@@ -7,6 +7,8 @@ use App\ServerPing;
 use App\ServerVote;
 use App\Events\ServerCreated;
 use Carbon\Carbon;
+use GuzzleHttp\Client;
+use GuzzleHttp\Middleware;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Model;
 
@@ -180,56 +182,53 @@ class Server extends Model
         return compact(['before', 'after']);
     }
 
-    // public function sendDiscordNotification()
-    // {
-    //     $username = isset(request()->username) ? request()->username : 'someone';
+    public function sendDiscordNotification()
+    {
+        $username = isset(request()->username) ? request()->username : 'someone';
 
-    //     $data = [
-    //         'content' => $this->name . ' has received a vote from ' . $username .  '.',
-    //         'username' => 'serverlister.io',
-    //         'embeds' => [
-    //             [
-    //                 'title' => 'Vote for ' . $this->name,
-    //                 'description' => 'Support ' . $this->name . ' by voting',
-    //                 'url' => 'https://serverlister.io/servers/' . $this->id . '/vote',
-    //                 'thumbnail' => [
-    //                     'url' => asset($this->favicon),
-    //                 ],
-    //                 'fields' => [
-    //                     [
-    //                         'name' => 'Today\'s Votes',
-    //                         'value' => number_format($this->votes->whereBetween('created_at', [now()->subDays(1), now()])->count()),
-    //                     ],
-    //                     [
-    //                         'name' => 'Month\'s Votes',
-    //                         'value' => number_format($this->votes->whereBetween('created_at', [now()->subMonths(1), now()])->count()),
-    //                     ],
-    //                 ],
-    //             ],
-    //         ],
-    //     ];
+        $payload = [
+            'content' => "{$this->name} has received a vote from {$username}.",
+            'username' => 'serverlister.io',
+            'embeds' => [
+                [
+                    'title' => "Vote for {$this->name}",
+                    'description' => "Support {$this->name} by voting daily.",
+                    'url' => route('servers.votes.create', $this->id),
+                    'thumbnail' => [
+                        'url' => asset($this->favicon),
+                    ],
+                    'fields' => [
+                        [
+                            'name' => 'Today\'s Votes',
+                            'value' => number_format($this->votes->whereBetween('created_at', [today()->subDays(1), today()])->count()),
+                        ],
+                        [
+                            'name' => 'Month\'s Votes',
+                            'value' => number_format($this->votes->whereBetween('created_at', [today()->subMonths(1), today()])->count()),
+                        ],
+                    ],
+                ],
+            ],
+        ];
 
-    //     $payload = json_encode($data);
+        $client = new Client();
+        $clientHandler = $client->getConfig('handler');
+        $tapMiddleware = Middleware::tap(function ($request){
+            $request->getHeaderLine('Content-Type');
+            $request->getBody();
+        });
 
-    //     $curl = curl_init(decrypt($this->webhook_discord));
-    //     curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-    //     curl_setopt($curl, CURLINFO_HEADER_OUT, true);
-    //     curl_setopt($curl, CURLOPT_POST, true);
-    //     curl_setopt($curl, CURLOPT_POSTFIELDS, $payload);
+        $response = $client->request('POST', 'https://discordapp.com/api/webhooks/591625142203973642/cZ1L31E8NBZWVlp79pNUuTA-48yOMRT2r1Q1mj7LzqYfr4c10QPgED-qpD3glE_2VW8v', [
+            'json' => $payload,
+            'handler' => $tapMiddleware($clientHandler),
+        ]);
 
-    //     curl_setopt($curl, CURLOPT_HTTPHEADER, [
-    //         'Content-Type: application/json',
-    //         'Content-Length: ' . strlen($payload),
-    //     ]);
-
-    //     if (curl_exec($curl))
-    //     {
-    //         curl_close($curl);
-    //         return true;
-    //     }
-    //     curl_close($curl);
-    //     return false;
-    // }
+        if ($response)
+        {
+            return true;
+        }
+        return false;
+    }
 
     public function user()
     {
