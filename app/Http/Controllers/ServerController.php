@@ -32,7 +32,7 @@ class ServerController extends Controller
      */
     public function index(Server $server)
     {
-        $servers = Server::orderBy('rank', 'asc')->paginate(25);
+        $servers = Server::with(['country', 'version', 'pings'])->orderBy('rank', 'asc')->paginate(25);
         return view('servers.index', compact('servers'));
     }
 
