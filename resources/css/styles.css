@@ -52,6 +52,10 @@ body {
     box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .15);
 }
 
+.shift-server-card:hover {
+    cursor: pointer;
+}
+
 .shift-server-card.online {
     border-right: .25rem solid #28a745;
 }
