@@ -202,7 +202,7 @@ class Server extends Model
 
         $payload = json_encode($data);
 
-        $curl = curl_init($this->webhook_discord);
+        $curl = curl_init(decrypt($this->webhook_discord));
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($curl, CURLINFO_HEADER_OUT, true);
         curl_setopt($curl, CURLOPT_POST, true);
