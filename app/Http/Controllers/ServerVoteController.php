@@ -47,16 +47,18 @@ class ServerVoteController extends Controller
         {
             if ($server->hasUserVotedToday())
             {
-                $validated = $request->validated();
-                $validated['user_id'] = auth()->id();
-                $validated['ip_address'] = request()->ip();
-                $server->addVote($validated);
+                session()->flash('alert_colour', 'danger');
+                session()->flash('alert', __('alerts.server_votes.create.failure'));
 
-                session()->flash('alert_colour', 'success');
-                session()->flash('alert', __('alerts.server_votes.create.success'));
+                return redirect('/servers/' . $server->id);
             }
-            session()->flash('alert_colour', 'danger');
-            session()->flash('alert', __('alerts.server_votes.create.failure'));
+            $validated = $request->validated();
+            $validated['user_id'] = auth()->id();
+            $validated['ip_address'] = request()->ip();
+            $server->addVote($validated);
+
+            session()->flash('alert_colour', 'success');
+            session()->flash('alert', __('alerts.server_votes.create.success'));
 
             return redirect('/servers/' . $server->id);
         }

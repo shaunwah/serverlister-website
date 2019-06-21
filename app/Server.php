@@ -168,7 +168,7 @@ class Server extends Model
                 ->orWhere('ip_address', request()->ip());
             });
 
-        return $result->doesntExist();
+        return $result->exists();
     }
 
     public function user()
