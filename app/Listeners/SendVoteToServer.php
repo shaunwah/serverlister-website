@@ -29,8 +29,7 @@ class SendVoteToServer
      */
     public function handle(ServerVoteCreated $event)
     {
-        $servers = new Server;
-        $server = $servers->find($event->vote->server_id);
+        $server = Server::find($event->vote->server_id);
         if ($server->voting_service_enabled)
         {
             try
