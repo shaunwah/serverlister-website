@@ -43,28 +43,29 @@ class ServerVoteController extends Controller
      */
     public function store(StoreServerVote $request, Server $server, ServerVote $vote)
     {
-        if (GoogleReCaptcha::validateResponse())
+        if (!GoogleReCaptcha::validateResponse())
         {
-            if ($server->hasUserVotedToday())
-            {
-                session()->flash('alert_colour', 'danger');
-                session()->flash('alert', __('alerts.server_votes.create.failure'));
+            session()->flash('alert_colour', 'danger');
+            session()->flash('alert', __('alerts.services.recaptcha.failure'));
+            return back();
+        }
 
-                return redirect('/servers/' . $server->id);
-            }
-            $validated = $request->validated();
-            $validated['user_id'] = auth()->id();
-            $validated['ip_address'] = request()->ip();
-            $server->addVote($validated);
-
-            session()->flash('alert_colour', 'success');
-            session()->flash('alert', __('alerts.server_votes.create.success'));
+        if ($server->hasUserVotedToday())
+        {
+            session()->flash('alert_colour', 'danger');
+            session()->flash('alert', __('alerts.server_votes.create.failure'));
 
             return redirect('/servers/' . $server->id);
         }
-        session()->flash('alert_colour', 'danger');
-        session()->flash('alert', __('alerts.services.recaptcha.failure'));
-        return back();
+        $validated = $request->validated();
+        $validated['user_id'] = auth()->id();
+        $validated['ip_address'] = request()->ip();
+        $server->addVote($validated);
+
+        session()->flash('alert_colour', 'success');
+        session()->flash('alert', __('alerts.server_votes.create.success'));
+
+        return redirect('/servers/' . $server->id);
     }
 
     /**

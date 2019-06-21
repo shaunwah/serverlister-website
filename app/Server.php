@@ -7,7 +7,6 @@ use App\ServerPing;
 use App\ServerVote;
 use App\Events\ServerCreated;
 use Carbon\Carbon;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Model;
 
@@ -171,56 +170,66 @@ class Server extends Model
         return $result->exists();
     }
 
-    public function sendDiscordNotification()
+    public function getDiff()
     {
-        $username = isset(request()->username) ? request()->username : 'someone';
+        $changed = $this->getDirty();
 
-        $data = [
-            'content' => $this->name . ' has received a vote from ' . $username .  '.',
-            'username' => 'serverlister.io',
-            'embeds' => [
-                [
-                    'title' => 'Vote for ' . $this->name,
-                    'description' => 'Support ' . $this->name . ' by voting',
-                    'url' => 'https://serverlister.io/servers/' . $this->id . '/vote',
-                    'thumbnail' => [
-                        'url' => asset($this->favicon),
-                    ],
-                    'fields' => [
-                        [
-                            'name' => 'Today\'s Votes',
-                            'value' => number_format($this->votes->whereBetween('created_at', [now()->subDays(1), now()])->count()),
-                        ],
-                        [
-                            'name' => 'Month\'s Votes',
-                            'value' => number_format($this->votes->whereBetween('created_at', [now()->subMonths(1), now()])->count()),
-                        ],
-                    ],
-                ],
-            ],
-        ];
+        $before = json_encode(array_intersect_key($this->fresh()->toArray(), $changed));
+        $after = json_encode($changed);
 
-        $payload = json_encode($data);
-
-        $curl = curl_init(decrypt($this->webhook_discord));
-        curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-        curl_setopt($curl, CURLINFO_HEADER_OUT, true);
-        curl_setopt($curl, CURLOPT_POST, true);
-        curl_setopt($curl, CURLOPT_POSTFIELDS, $payload);
-
-        curl_setopt($curl, CURLOPT_HTTPHEADER, [
-            'Content-Type: application/json',
-            'Content-Length: ' . strlen($payload),
-        ]);
-
-        if (curl_exec($curl))
-        {
-            curl_close($curl);
-            return true;
-        }
-        curl_close($curl);
-        return false;
+        return compact(['before', 'after']);
     }
+
+    // public function sendDiscordNotification()
+    // {
+    //     $username = isset(request()->username) ? request()->username : 'someone';
+
+    //     $data = [
+    //         'content' => $this->name . ' has received a vote from ' . $username .  '.',
+    //         'username' => 'serverlister.io',
+    //         'embeds' => [
+    //             [
+    //                 'title' => 'Vote for ' . $this->name,
+    //                 'description' => 'Support ' . $this->name . ' by voting',
+    //                 'url' => 'https://serverlister.io/servers/' . $this->id . '/vote',
+    //                 'thumbnail' => [
+    //                     'url' => asset($this->favicon),
+    //                 ],
+    //                 'fields' => [
+    //                     [
+    //                         'name' => 'Today\'s Votes',
+    //                         'value' => number_format($this->votes->whereBetween('created_at', [now()->subDays(1), now()])->count()),
+    //                     ],
+    //                     [
+    //                         'name' => 'Month\'s Votes',
+    //                         'value' => number_format($this->votes->whereBetween('created_at', [now()->subMonths(1), now()])->count()),
+    //                     ],
+    //                 ],
+    //             ],
+    //         ],
+    //     ];
+
+    //     $payload = json_encode($data);
+
+    //     $curl = curl_init(decrypt($this->webhook_discord));
+    //     curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+    //     curl_setopt($curl, CURLINFO_HEADER_OUT, true);
+    //     curl_setopt($curl, CURLOPT_POST, true);
+    //     curl_setopt($curl, CURLOPT_POSTFIELDS, $payload);
+
+    //     curl_setopt($curl, CURLOPT_HTTPHEADER, [
+    //         'Content-Type: application/json',
+    //         'Content-Length: ' . strlen($payload),
+    //     ]);
+
+    //     if (curl_exec($curl))
+    //     {
+    //         curl_close($curl);
+    //         return true;
+    //     }
+    //     curl_close($curl);
+    //     return false;
+    // }
 
     public function user()
     {
@@ -237,16 +246,6 @@ class Server extends Model
         return $this->belongsToMany('App\User', 'server_verifications')
             ->withPivot(['before', 'after'])
             ->withTimeStamps();
-    }
-
-    public function getDiff()
-    {
-        $changed = $this->getDirty();
-
-        $before = json_encode(array_intersect_key($this->fresh()->toArray(), $changed));
-        $after = json_encode($changed);
-
-        return compact(['before', 'after']);
     }
 
     public function country()
