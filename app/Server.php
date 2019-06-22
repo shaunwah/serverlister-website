@@ -94,7 +94,7 @@ class Server extends Model
             return [
                 $server->id => [
                     'players_current' => $server->pings->last()->players_current,
-                    'votes' => $server->votes->whereBetween('created_at', [now()->subDays(1), now()])->count(),
+                    'votes' => $server->votes->whereBetween('created_at', [today(), now()])->count(),
                     'pings' => [
                         'total' => $server->pings->count(),
                         'successful' => $server->pings->where('status', true)->count(),
@@ -200,11 +200,11 @@ class Server extends Model
                     'fields' => [
                         [
                             'name' => 'Today\'s Votes',
-                            'value' => number_format($this->votes->whereBetween('created_at', [today()->subDays(1), today()])->count()),
+                            'value' => number_format($this->votes->whereBetween('created_at', [today(), now()])->count()),
                         ],
                         [
                             'name' => 'Month\'s Votes',
-                            'value' => number_format($this->votes->whereBetween('created_at', [today()->subMonths(1), today()])->count()),
+                            'value' => number_format($this->votes->whereBetween('created_at', [today()->subMonths(1), now()])->count()),
                         ],
                     ],
                 ],
