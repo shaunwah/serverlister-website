@@ -53,7 +53,7 @@ class ServerVoteController extends Controller
         if ($server->hasUserVotedToday())
         {
             session()->flash('alert_colour', 'danger');
-            session()->flash('alert', __('alerts.server_votes.create.failure'));
+            session()->flash('alert', __('alerts.server_votes.create.failure', ['time_difference' => now()->tomorrow()->diffForHumans()]));
 
             return redirect('/servers/' . $server->id);
         }

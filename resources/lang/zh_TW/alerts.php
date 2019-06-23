@@ -43,7 +43,7 @@ return [
     'server_votes' => [
         'create' => [
             'success' => '感謝您的投票。 您明天可以再投票。',
-            'failure' => '您今天已經投了票。 請明天再試一次。',
+            'failure' => '您今天已經投了票。 請明天再試一次 :time_difference。',
         ],
     ],
 

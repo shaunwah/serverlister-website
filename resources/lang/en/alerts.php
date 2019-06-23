@@ -50,7 +50,7 @@ return [
     'server_votes' => [
         'create' => [
             'success' => 'Thank you for your vote. You may vote again tomorrow.',
-            'failure' => 'You have already voted today. Please try again tomorrow.',
+            'failure' => 'You have already voted today. Please try again :time_difference.',
         ],
     ],
 
