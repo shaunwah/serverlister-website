@@ -111,15 +111,15 @@ class Server extends Model
             return [
                 $serverId => [
                     'players' => [
-                        'weight' => 0.5,
+                        'weight' => 0.005,
                         'value' => $item['players_current'],
                     ],
                     'votes' => [
-                        'weight' => 3,
+                        'weight' => 5,
                         'value' => $item['votes'],
                     ],
                     'uptime' => [
-                        'weight' => 1.5,
+                        'weight' => 3,
                         'value' => ($item['pings']['total'] == 0 ? 0 : $item['pings']['successful']/$item['pings']['total']),
                     ],
                 ],
