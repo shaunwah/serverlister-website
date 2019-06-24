@@ -89,12 +89,11 @@ class Server extends Model
     {
         $servers = Server::all();
 
-
         $data = $servers->mapWithKeys(function ($server) {
             return [
                 $server->id => [
                     'players_current' => $server->pings->last()->players_current,
-                    'votes' => $server->votes->whereBetween('created_at', [today(), now()])->count(),
+                    'votes' => $server->votes->whereBetween('created_at', [today()->subMonths(1), now()])->count(),
                     'pings' => [
                         'total' => $server->pings->count(),
                         'successful' => $server->pings->where('status', true)->count(),
@@ -111,9 +110,13 @@ class Server extends Model
         $attributes = $data->mapWithKeys(function ($item, $serverId) {
             return [
                 $serverId => [
-                    'popularity' => [
-                        'weight' => 1,
-                        'value' => ($item['players_current'] == 0 ? 0 : $item['votes']/$item['players_current']),
+                    'players' => [
+                        'weight' => 0.5,
+                        'value' => $item['players_current'],
+                    ],
+                    'votes' => [
+                        'weight' => 3,
+                        'value' => $item['votes'],
                     ],
                     'uptime' => [
                         'weight' => 1.5,
@@ -125,7 +128,7 @@ class Server extends Model
 
         $scores = $attributes->mapWithKeys(function ($item, $serverId) {
             return [
-                $serverId => 5/7 * ($item['popularity']['weight'] * $item['popularity']['value']) + ($item['uptime']['weight'] * $item['uptime']['value']) / 3,
+                $serverId => 5/7 * ($item['players']['weight'] * $item['players']['value']) + ($item['votes']['weight'] * $item['votes']['value']) + ($item['uptime']['weight'] * $item['uptime']['value']) / 3,
             ];
         });
 
@@ -194,6 +197,7 @@ class Server extends Model
                     'title' => "Vote for {$this->name}",
                     'description' => "Support {$this->name} by voting daily.",
                     'url' => route('servers.votes.create', $this->id),
+                    'color' => '31743',
                     'thumbnail' => [
                         'url' => asset($this->favicon),
                     ],
