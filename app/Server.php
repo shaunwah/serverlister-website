@@ -111,7 +111,7 @@ class Server extends Model
             return [
                 $serverId => [
                     'players' => [
-                        'weight' => 0.005,
+                        'weight' => 0.0025,
                         'value' => $item['players_current'],
                     ],
                     'votes' => [
