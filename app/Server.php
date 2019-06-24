@@ -115,11 +115,11 @@ class Server extends Model
                         'value' => $item['players_current'],
                     ],
                     'votes' => [
-                        'weight' => 5,
+                        'weight' => 3,
                         'value' => $item['votes'],
                     ],
                     'uptime' => [
-                        'weight' => 3,
+                        'weight' => 0.75,
                         'value' => ($item['pings']['total'] == 0 ? 0 : $item['pings']['successful']/$item['pings']['total']),
                     ],
                 ],
