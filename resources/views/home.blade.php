@@ -69,18 +69,30 @@
 </div>
 
 {{-- Features Section --}}
-{{-- <div class="container mb-3">
+<div class="container mb-3">
     <h2 class="font-weight-bold">Features</h2>
     <div class="card-deck">
         <div class="card">
             <div class="card-body">
                 <span class="fa-stack fa-2x">
                     <i class="fas fa-circle fa-stack-2x text-dark"></i>
+                    <i class="fal fa-award fa-stack-1x fa-inverse"></i>
+                </span>
+                <h3 class="font-weight-bold">Server Grading</h3>
+                <p class="lead mb-0">
+                    Unlike competitors, we grade servers not just based
+                    off votes, but other factors including players.
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-body">
+                <span class="fa-stack fa-2x">
+                    <i class="fas fa-circle fa-stack-2x text-dark"></i>
                     <i class="fal fa-chart-line fa-stack-1x fa-inverse"></i>
                 </span>
-                <h3 class="font-weight-bold">Server Console</h3>
+                <h3 class="font-weight-bold">Data Analytics</h3>
                 <p class="lead mb-0">
-                    Select and view multiple server datasets<sup>1</sup>, including player trend
+                    Select and view multiple server datasets, including player trend
                     and vote tracking.
                 </p>
             </div>
@@ -93,26 +105,13 @@
                 </span>
                 <h3 class="font-weight-bold">Downtime Alerts</h3>
                 <p class="lead mb-0">
-                    Get updates via email<sup>1</sup> if your server goes offline for a
+                    Get updates if your server goes down or offline for a
                     period of time.
                 </p>
             </div>
         </div>
-        <div class="card">
-            <div class="card-body">
-                <span class="fa-stack fa-2x">
-                    <i class="fas fa-circle fa-stack-2x text-dark"></i>
-                    <i class="fal fa-lock fa-stack-1x fa-inverse"></i>
-                </span>
-                <h3 class="font-weight-bold">Secure</h3>
-                <p class="lead mb-0">
-                    Your user and server information are encrypted and stored in accordance
-                    to the best guidelines.
-                </p>
-            </div>
-        </div>
     </div>
-</div> --}}
+</div>
 <div class="container">
     <small class="text-muted">
         <ul class="list-unstyled">
