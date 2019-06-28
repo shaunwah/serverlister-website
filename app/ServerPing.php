@@ -4,6 +4,7 @@ namespace App;
 
 use App\Minecraft\Query\MinecraftPing;
 use App\Minecraft\Query\MinecraftPingException;
+use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Database\Eloquent\Model;
 
@@ -11,12 +12,12 @@ class ServerPing extends Model
 {
     protected $guarded = [];
 
-    public function queryServer($host, $port) // To be set to protected
+    public function pingServer(Server $server)
     {
         try
         {
-            $ping = new MinecraftPing($host, $port);
-            return $ping->query();
+            $ping = new MinecraftPing($server->host, $server->port);
+            $response = $ping->query();
         }
         catch (MinecraftPingException $e)
         {
@@ -25,39 +26,50 @@ class ServerPing extends Model
         }
         finally
         {
-            if (isset($ping))
+            if (!isset($ping))
             {
-                $ping->close();
+                return false;
             }
-        }
-    }
 
-    public function pingServer(Server $server) //!!!
-    {
-        $data = $this->queryServer($server->host, $server->port);
+            $ping->close();
 
-        $attributes = [
-            'rank' => $server->rank,
-            'score' => $server->score,
-            'status' => isset($data['version']['protocol']),
-        ];
-
-        if (isset($data))
-        {
-            $attributes['protocol'] = $data['version']['protocol'];
-            $attributes['description'] = null; // To be implemented
-            $attributes['players_total'] = $data['players']['max'];
-            $attributes['players_current'] = $data['players']['online'];
-
-            if (isset($data['favicon']))
+            if ($response == null)
             {
-                $dataFavicon = base64_decode(preg_replace('#^data:image/\w+;base64,#i', '', $data['favicon']));
-                $file = Storage::disk('local')->put('public/servers/favicons/' . md5($server->id) . '.png', $dataFavicon);
-                $server->update(['favicon' => Storage::url('servers/favicons/' . md5($server->id) . '.png')]);
-            }
-        }
+                $data = [
+                    'rank' => $server->rank,
+                    'score' => $server->score,
+                    'status' => false,
+                ];
 
-        $server->addPing($attributes);
+                $server->addPing($data);
+                return false;
+            }
+
+            $data = [
+                'rank' => $server->rank,
+                'score' => $server->score,
+                'status' => true,
+                'protocol' => $response['version']['protocol'],
+                'players_total' => $response['players']['max'],
+                'players_current' => $response['players']['online'],
+            ];
+
+            $server->addPing($data);
+
+            // Fetch and update favicon
+            if (Arr::has($response, ['favicon']))
+            {
+                $favicon = base64_decode(preg_replace('#^data:image/\w+;base64,#i', '', $response['favicon']));
+                $path = 'servers/favicons/' . md5($server->id) . '.png';
+
+                Storage::disk('local')->put('public/' . $path, $favicon);
+
+                $server->update([
+                    'favicon' => Storage::url($path),
+                ]);
+            }
+            return true;
+        }
     }
 
     public function server()
