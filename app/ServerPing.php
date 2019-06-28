@@ -33,7 +33,7 @@ class ServerPing extends Model
 
             $ping->close();
 
-            if ($response == null)
+            if (!Arr::has($response, ['version']))
             {
                 $data = [
                     'rank' => $server->rank,
