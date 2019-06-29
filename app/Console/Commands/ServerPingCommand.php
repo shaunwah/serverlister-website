@@ -44,8 +44,14 @@ class ServerPingCommand extends Command
         foreach ($servers as $server)
         {
             $ping = new ServerPing;
-            $ping->pingServer($server);
-            $this->info('Pinged ' . $server->name . '!');
+            if ($ping->pingServer($server))
+            {
+                $this->info("Pinged {$server->name} passed!");
+            }
+            else
+            {
+                $this->info("Pinged {$server->name} failed!");
+            }
         }
         $this->info('Finished pinging servers!');
     }

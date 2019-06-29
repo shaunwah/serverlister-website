@@ -28,13 +28,6 @@ class ServerPing extends Model
         {
             if (!isset($ping))
             {
-                return false;
-            }
-
-            $ping->close();
-
-            if (!Arr::has($response, ['version']))
-            {
                 $data = [
                     'rank' => $server->rank,
                     'score' => $server->score,
@@ -44,6 +37,8 @@ class ServerPing extends Model
                 $server->addPing($data);
                 return false;
             }
+
+            $ping->close();
 
             $data = [
                 'rank' => $server->rank,
