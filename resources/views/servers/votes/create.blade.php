@@ -17,7 +17,7 @@
                 @csrf
                 @recaptcha
                 @endrecaptcha
-                <div class="card">
+                <div class="card mb-3">
                     <div class="card-body">
                         @if ($server->voting_service_enabled)
                             <p>
