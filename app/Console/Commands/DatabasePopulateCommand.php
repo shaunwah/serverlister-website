@@ -26,7 +26,7 @@ class DatabasePopulateCommand extends Command
      *
      * @var string
      */
-    protected $description = 'Command description';
+    protected $description = 'Populate the database with country, server versions, and server types data.';
 
     /**
      * Create a new command instance.
