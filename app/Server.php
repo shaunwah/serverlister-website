@@ -154,8 +154,8 @@ class Server extends Model
     public function checkIfServerMotdMatches()
     {
         $ping = new MinecraftPing($this->host, $this->port);
-        $phrase = hash('sha256', $this->id . '-' . $this->host . ':' . $this->port);
         $ping->connect();
+        $phrase = hash('sha256', $this->id . '-' . $this->host . ':' . $this->port);
         $data = $ping->query();
 
         if (@$data['description']['text'] != $phrase)

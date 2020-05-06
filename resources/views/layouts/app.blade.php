@@ -42,7 +42,7 @@
     <link rel="stylesheet" href="{{ asset('css/flag-icon.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/all.css') }}">
 
-    <script src="https://kit.fontawesome.com/ef9f9fad9d.js"></script>
+    <script src="https://kit.fontawesome.com/246cf8c7d0.js"></script>
 </head>
 <body>
     <div id="app">

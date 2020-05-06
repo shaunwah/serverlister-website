@@ -31,7 +31,7 @@ class MinecraftPing
 	private $ServerPort;
 	private $Timeout;
 
-	public function __construct( $Address, $Port = 25565, $Timeout = 5, $ResolveSRV = true )
+	public function __construct( $Address, $Port = 25565, $Timeout = 2, $ResolveSRV = true )
 	{
 		$this->ServerAddress = $Address;
 		$this->ServerPort = (int)$Port;
@@ -39,18 +39,18 @@ class MinecraftPing
 
 		if( $ResolveSRV )
 		{
-			$this->resolveSRV();
+			$this->ResolveSRV();
 		}
 
-		$this->connect( );
+		$this->Connect( );
 	}
 
 	public function __destruct( )
 	{
-		$this->close( );
+		$this->Close( );
 	}
 
-	public function close( )
+	public function Close( )
 	{
 		if( $this->Socket !== null )
 		{
@@ -60,7 +60,7 @@ class MinecraftPing
 		}
 	}
 
-	public function connect( )
+	public function Connect( )
 	{
 		$connectTimeout = $this->Timeout;
 		$this->Socket = @fsockopen( $this->ServerAddress, $this->ServerPort, $errno, $errstr, $connectTimeout );
@@ -68,7 +68,7 @@ class MinecraftPing
 		if( !$this->Socket )
 		{
 			$this->Socket = null;
-
+			
 			throw new MinecraftPingException( "Failed to connect or create a socket: $errno ($errstr)" );
 		}
 
@@ -76,7 +76,7 @@ class MinecraftPing
 		stream_set_timeout( $this->Socket, $this->Timeout );
 	}
 
-	public function query( )
+	public function Query( )
 	{
 		$TimeStart = microtime(true); // for read timeout purposes
 
@@ -93,16 +93,16 @@ class MinecraftPing
 		fwrite( $this->Socket, $Data ); // handshake
 		fwrite( $this->Socket, "\x01\x00" ); // status ping
 
-		$Length = $this->readVarInt( ); // full packet length
+		$Length = $this->ReadVarInt( ); // full packet length
 
 		if( $Length < 10 )
 		{
 			return FALSE;
 		}
 
-		fgetc( $this->Socket ); // packet type, in server ping it's 0
+		$this->ReadVarInt( ); // packet type, in server ping it's 0
 
-		$Length = $this->readVarInt( ); // string length
+		$Length = $this->ReadVarInt( ); // string length
 
 		$Data = "";
 		do
@@ -147,7 +147,7 @@ class MinecraftPing
 		return $Data;
 	}
 
-	public function queryOldPre17( )
+	public function QueryOldPre17( )
 	{
 		fwrite( $this->Socket, "\xFE\x01" );
 		$Data = fread( $this->Socket, 512 );
@@ -186,7 +186,7 @@ class MinecraftPing
 		);
 	}
 
-	private function readVarInt( )
+	private function ReadVarInt( )
 	{
 		$i = 0;
 		$j = 0;
@@ -218,7 +218,7 @@ class MinecraftPing
 		return $i;
 	}
 
-	private function resolveSRV()
+	private function ResolveSRV()
 	{
 		if( ip2long( $this->ServerAddress ) !== false )
 		{
