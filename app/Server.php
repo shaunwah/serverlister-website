@@ -5,6 +5,8 @@ namespace App;
 use App\Reports;
 use App\ServerPing;
 use App\ServerVote;
+use App\Minecraft\Query\MinecraftPing;
+use App\Minecraft\Query\MinecraftPingException;
 use App\Events\ServerCreated;
 use Carbon\Carbon;
 use GuzzleHttp\Client;
@@ -151,9 +153,10 @@ class Server extends Model
 
     public function checkIfServerMotdMatches()
     {
-        $ping = new ServerPing;
+        $ping = new MinecraftPing($this->host, $this->port);
         $phrase = hash('sha256', $this->id . '-' . $this->host . ':' . $this->port);
-        $data = $ping->queryServer($this->host, $this->port);
+        $ping->connect();
+        $data = $ping->query();
 
         if (@$data['description']['text'] != $phrase)
         {
