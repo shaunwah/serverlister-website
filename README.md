@@ -1,4 +1,7 @@
 # ServerLister
+
+NOTE: I built this as a personal project of mine and it's pretty much unfinished. Use at your own risk! I may do a rewrite in the future.
+
 The Minecraft server list project. ServerLister is a website that allows anyone to list and advertise their own Minecraft server publicly. Its features include:
 
 * Self-service server verification for owners
